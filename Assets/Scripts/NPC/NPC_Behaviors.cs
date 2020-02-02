@@ -11,10 +11,23 @@ public class NPC_Behaviors : MonoBehaviour
     bool clean = false;
     bool fix = false;
     [SerializeField] ParticleSystem[] ps;
+
+    #region movement Stuff
+    [SerializeField] Transform myRoom;
+    [SerializeField] Transform[] FirstFloorAOI;
+    [SerializeField] Transform[] SecondFloorAOI;
+    [SerializeField] int currentLocation = 0;
+    SpriteRenderer sprite;
+    [SerializeField] float speed = 1;
+    [SerializeField] Room_Class[] stairs;
+    #endregion
+    int i = 0;
     // Start is called before the first frame update
+
     void Start()
     {
         //myStats = GameObject.Find("TennantsListPanel").GetComponent<TennantSelector>();
+        sprite = GetComponentInChildren<SpriteRenderer>();
         ps = GetComponentsInChildren<ParticleSystem>();  
     }
 
@@ -22,22 +35,26 @@ public class NPC_Behaviors : MonoBehaviour
     void Update()
     {
         meanIncome = (myStats.incomeMax + myStats.incomeMin) / 2;
-        if (clean == true)
+        if (clean)
         {
                 if (myStats.cleanliness >= 6 && myStats.cleanliness < 8) StartCoroutine(Cleanning(10, temp.GetComponent<Room_Class>()));
                 else if (myStats.cleanliness >= 8 && myStats.cleanliness <= 10) StartCoroutine(Cleanning(7, temp.GetComponent<Room_Class>()));
                 else if (myStats.cleanliness >= 6 && myStats.like == "Cleanning") StartCoroutine(Cleanning(10, temp.GetComponent<Room_Class>()));
         }
-        else if (fix == true)
+        else if (fix)
         {
             if (myStats.handyness >= 6 && myStats.handyness < 8) StartCoroutine(Fixing(10, temp.GetComponent<Room_Class>()));
             else if (myStats.handyness >= 8 && myStats.handyness <= 10) StartCoroutine(Fixing(7, temp.GetComponent<Room_Class>()));
             else if (myStats.cleanliness >= 6 && myStats.like == "Fixing Things") StartCoroutine(Fixing(10, temp.GetComponent<Room_Class>()));
         }
+        //else if (!clean && !fix)
+        //{
+        //    if(myStats.like == "Cooking") {  }
+        //}
     }
-   
+  //  "Cooking" "TV" "Fixing Things" "Quiet" "Drinking" "Gardening" "Working Out" "Cosmetics" "Cleanning"}
 
-    public void ManageHappiness(float y)
+public void ManageHappiness(float y)
     {
         myStats.happiness += y;
     }
@@ -66,6 +83,44 @@ public class NPC_Behaviors : MonoBehaviour
         yield return new WaitForSeconds(t);
         p.Stop();
     }
+
+    private void Move()
+    {
+        if (transform.position.x != FirstFloorAOI[currentLocation].transform.position.x)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(FirstFloorAOI[currentLocation].transform.position.x, transform.position.y,transform.position.z), speed * Time.deltaTime);
+        }
+        if (transform.position.x == FirstFloorAOI[currentLocation].transform.position.x)
+        {
+            currentLocation = Random.Range(0,FirstFloorAOI.Length);
+        }
+        if (currentLocation >= FirstFloorAOI.Length)
+        {
+            currentLocation = 0;
+        }
+        if (currentLocation == 0)
+        {
+            FlipSprite(true);
+        }
+        else
+        {
+            FlipSprite(false);
+        }
+    }
+
+    void FlipSprite(bool M)
+    {
+        sprite.flipX = M;
+    }
+
+    private void OnTriggerStay2D(Collider2D c)
+    {
+        if (c.gameObject.tag == "Movement" && !clean && !fix)
+        {
+            Move();
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D c)
     {
         if (myStats.happiness >= Random.Range(0.7f, 1))
@@ -85,7 +140,7 @@ public class NPC_Behaviors : MonoBehaviour
 
             else if (c.gameObject.GetComponent<Room_Class>().roomState == Room_Class.RoomState.Broken)
             {
-                if (myStats.handyness >= Random.Range(6,10))
+                if (myStats.handyness >= Random.Range(6, 10))
                 {
                     if (myStats.handyness >= 6 && myStats.like.Contains("Fixing Things")) { ManageHappiness(0.1f); print(":D Fixing the " + c.gameObject.GetComponent<Room_Class>().roomType); fix = true; temp = c.gameObject; }
                     else if (myStats.dislikes.Contains("Fixing Things")) { ManageHappiness(-0.2f); print(":O GROSS!! Im not fixing that up"); }
@@ -93,6 +148,12 @@ public class NPC_Behaviors : MonoBehaviour
                 }
                 else print(":| This " + c.gameObject.GetComponent<Room_Class>().roomType + " is wrecked");
             }
+
+        }
+        if (c.gameObject.GetComponent<Room_Class>().roomType == Room_Class.RoomType.Stairwell && c.gameObject.GetComponent<Room_Class>().roomState == Room_Class.RoomState.Fixed_Clean)
+        {
+            if (c.gameObject == stairs[0].gameObject) transform.position = SecondFloorAOI[0].transform.position;
+            if (c.gameObject == stairs[1].gameObject && stairs[0].roomState == Room_Class.RoomState.Fixed_Clean) transform.position = FirstFloorAOI[3].transform.position;
         }
     }
 }

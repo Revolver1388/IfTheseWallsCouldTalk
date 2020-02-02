@@ -35,6 +35,10 @@ TagManager:
   - BasementItem2
   - m_Level
   - sfx
+  - Movement
+  - Waypoint
+  - 2ndFloor
+  - 1stFloor
   layers:
   - Default
   - TransparentFX
