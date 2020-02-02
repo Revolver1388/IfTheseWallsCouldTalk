@@ -11,7 +11,7 @@ public class View_UI : MonoBehaviour
     [SerializeField] HouseManager houseManager;
 
     [SerializeField] public Text bankAccountText;
-    [SerializeField] public Text timeText;
+    //[SerializeField] public Text timeText;
     [SerializeField] public Text dayText;
     [SerializeField] public Image TimeImage;
 
