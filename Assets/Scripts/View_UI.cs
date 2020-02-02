@@ -6,10 +6,28 @@ using UnityEngine.UI;
 public class View_UI : MonoBehaviour
 {
 
+# region : Variables etc.......................
+
+
     [SerializeField] public Text bankAccountText;
     [SerializeField] public Text timeText;
     [SerializeField] public Text dayText;
     [SerializeField] public Image TimeImage;
+
+
+    // Public bools that indicate whether a given room is available or not
+    public bool Kitchen = true;
+    public bool LivingRoom = false;
+    public bool Bathroom = true;
+    public bool Bedroom1 = true;
+    public bool Bedroom2 = false;
+    public bool Bedroom3 = false;
+    public bool Basement = true;
+    public bool WineCellar = false;
+    public bool RecRoom = false;
+    public bool Outside = true;
+    public bool Attic = false;
+    public bool Study = false;
 
  
     // Manager Panels
@@ -24,18 +42,36 @@ public class View_UI : MonoBehaviour
     [SerializeField] GameObject BedRoom3Panel;
     [SerializeField] GameObject RecRoomPanel;
     [SerializeField] GameObject WineCellarRoomPanel;
-    [SerializeField] GameObject OutDoorRoomPanel;
     [SerializeField] GameObject BathRoomPanel;
     [SerializeField] GameObject AtticRoomPanel;
     [SerializeField] GameObject BasementRoomPanel;
     [SerializeField] GameObject OutsideRoomPanel;
+    [SerializeField] GameObject StudyRoomPanel;
+
+    //Room Buttons
+    [SerializeField] GameObject KitchenButton;
+    [SerializeField] GameObject LivingRoomButton;
+    [SerializeField] GameObject Bedroom1Button;
+    [SerializeField] GameObject Bedroom2Button;
+    [SerializeField] GameObject Bedroom3Button;
+    [SerializeField] GameObject RecRoomButton;
+    [SerializeField] GameObject WineCellarButton;
+    [SerializeField] GameObject BathroomButton;
+    [SerializeField] GameObject AtticButton;
+    [SerializeField] GameObject BasementButton;
+    [SerializeField] GameObject OutsideButton;
+    [SerializeField] GameObject StudyButton;
+
+    // Item Confirm stuff
     [SerializeField] GameObject ItemConfirmModal;
     [SerializeField] Text ItemConfirmModalItemNameText;
     [SerializeField] Text ItemConfirmModalFullPriceText;
     [SerializeField] Text ItemConfirmModalDiscountPriceText;
 
+    #endregion
 
 
+#region : Start and Update...................
 
     // Start is called before the first frame update
     void Start()
@@ -46,10 +82,48 @@ public class View_UI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Kitchen) { KitchenButton.SetActive(true); }
+        else { KitchenButton.SetActive(false); }
+
+        if (LivingRoom) { LivingRoomButton.SetActive(true); }
+        else { LivingRoomButton.SetActive(false); }
+
+        if (Bathroom) { BathroomButton.SetActive(true); }
+        else { BathroomButton.SetActive(false); }
+
+        if (Bedroom1) { Bedroom1Button.SetActive(true); }
+        else { Bedroom1Button.SetActive(false); }
+
+        if (Bedroom2) { Bedroom2Button.SetActive(true); }
+        else { Bedroom2Button.SetActive(false); }
+
+        if (Bedroom3) { Bedroom3Button.SetActive(true); }
+        else { Bedroom3Button.SetActive(false); }
+
+        if (Basement) { BasementButton.SetActive(true); }
+        else { BasementButton.SetActive(false); }
+
+        if (WineCellar) { WineCellarButton.SetActive(true); }
+        else { WineCellarButton.SetActive(false); }
+
+        if (RecRoom) { RecRoomButton.SetActive(true); }
+        else { RecRoomButton.SetActive(false); }
+
+        if (Study) { StudyButton.SetActive(true); }
+        else { StudyButton.SetActive(false); }
+
+        if (Outside) { OutsideButton.SetActive(true); }
+        else { OutsideButton.SetActive(false); }
+
+        if (Attic) { AtticButton.SetActive(true); }
+        else { AtticButton.SetActive(false); }
+
     }
 
+    #endregion
 
+
+    #region: Open/Close Panels................
 
     /// <summary>
     /// Open/Close NPC Manager Panel
@@ -162,18 +236,7 @@ public class View_UI : MonoBehaviour
     }
 
 
-    /// <summary>
-    /// Open Close OutDoorRoomPanel
-    /// </summary>
-    public void OpenOutDoorRoomPanel()
-    {
-        OutDoorRoomPanel.SetActive(true);
-    }
-
-    public void CloseOutDoorRoomPanel()
-    {
-        OutDoorRoomPanel.SetActive(false);
-    }
+  
 
 
     /// <summary>
@@ -229,6 +292,25 @@ public class View_UI : MonoBehaviour
     {
         OutsideRoomPanel.SetActive(false);
     }
+
+
+    /// <summary>
+    /// Open Close StudyRoomPanel
+    /// </summary>
+    public void OpenStudyRoomPanel()
+    {
+        StudyRoomPanel.SetActive(true);
+    }
+
+    public void CloseStudyRoomPanel()
+    {
+        StudyRoomPanel.SetActive(false);
+    }
+
+    #endregion
+
+
+#region: Item stuff.....................
 
     //public void ItemButton(string itemName, int fullPrice, int discountPrice)
     //{
@@ -292,11 +374,16 @@ public class View_UI : MonoBehaviour
         {
             OutsideRoomPanel.SetActive(false);
         }
+        else if (StudyRoomPanel.activeSelf)
+        {
+            StudyRoomPanel.SetActive(false);
+        }
     }
 
     public void CloseConfirmModalOnly()
     {
         ItemConfirmModal.SetActive(false);
+        Debug.Log("Cancel Item Button!!!");
 
     }
 
@@ -304,15 +391,23 @@ public class View_UI : MonoBehaviour
     {
         // TODO: Purchase Item for full price via game controller
         CloseConfirmItemModalAndRoomPanel();
+        Debug.Log("Full Price Button!!!");
+
     }
 
     public void DiscountPriceButton()
     {
         // TODO: Purchase Item for discount price via game controller
         CloseConfirmItemModalAndRoomPanel();
+        Debug.Log("Discount Price Button!!!");
+
 
     }
 
+    #endregion
+
+
+#region: Buttons and such.......................
 
     public void RoomManagerButton()
     {
@@ -329,22 +424,34 @@ public class View_UI : MonoBehaviour
     public void PlayPauseButton()
     {
         // TODO: Play Pause Button
+        Debug.Log("Play/Pause Button!!!");
     }
 
     public void DoubleSpeedButton()
     {
         // TODO: Double Speed Button
+        Debug.Log("Double speed Button!!!");
+
     }
 
     public void QuadSpeedButton()
     {
         // TODO: Quad speed button
+        Debug.Log("quad speed Button!!!");
+
     }
 
     public void RepairRoomButton(string roomName)
     {
         // TODO: hook up to game controller
+        Debug.Log("Repair " + roomName + " Button!!!");
+
     }
+
+    #endregion
+
+
+
 
 }
 
