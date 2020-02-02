@@ -13,14 +13,6 @@ public class NPC_Base : MonoBehaviour
     public string like;
     public string dislikes;
     public int cleanliness;
-    public  int handyness;
-
-    //public struct NPCBase
-    //{
-    //    #region things we may use
-    //    //string hates;
-    //    //string loves;
-    //    #endregion
-    //}
+    public int handyness;
     //must link the NPC attripbutes to the items in the game, e.g. if an NPC is happy cooking, their happyness is tied to the state of the kitchen
 }

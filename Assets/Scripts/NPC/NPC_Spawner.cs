@@ -6,6 +6,7 @@ public class NPC_Spawner : NPC_Base
 {
     //NPC_Spawner[] characters;
 
+
     private void Awake()
     {
         NPC_name = names[Random.Range(0, names.Length)];

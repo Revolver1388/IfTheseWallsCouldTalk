@@ -10,4 +10,5 @@ public class Room_Class : MonoBehaviour
     public enum RoomType { Kitchen, Bathroom, LivingRoom, Bedroom, Outdoor, Basement, Attic, RecRoom, WineCellar }
     [SerializeField]
     public RoomType roomType;
+
 }

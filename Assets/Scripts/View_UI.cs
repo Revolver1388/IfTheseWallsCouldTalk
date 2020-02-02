@@ -6,12 +6,12 @@ using UnityEngine.UI;
 public class View_UI : MonoBehaviour
 {
 
-    [SerializeField] Text timeText;
-    [SerializeField] Text dayText;
+    [SerializeField] public Text bankAccountText;
+    [SerializeField] public Text timeText;
+    [SerializeField] public Text dayText;
     [SerializeField] Button playPauseButton;
     [SerializeField] Button doubleSpeedButton;
     [SerializeField] Button quadSpeedButton;
-    [SerializeField] Text bankAccountText;
     [SerializeField] Button npcManagerOpenButton;
     [SerializeField] Button npcManagerCloseButton;
     [SerializeField] Button roomUpgradePanelOpenButton;
