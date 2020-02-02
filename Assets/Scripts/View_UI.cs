@@ -9,7 +9,6 @@ public class View_UI : MonoBehaviour
     #region : Variables etc.......................
 
     [SerializeField] HouseManager houseManager;
-
     [SerializeField] public Text bankAccountText;
     //[SerializeField] public Text timeText;
     [SerializeField] public Text dayText;
@@ -387,7 +386,10 @@ public class View_UI : MonoBehaviour
         int fullPrice = 100;
         int discountPrice = 50;
         choice = EventSystem.current.currentSelectedGameObject.transform.gameObject.name;
-        OpenConfirmItemModal(itemName, fullPrice, discountPrice);
+        if (houseManager.bank >= fullPrice)
+        {
+            OpenConfirmItemModal(itemName, fullPrice, discountPrice);
+        }
         
     }
 
@@ -455,15 +457,14 @@ public class View_UI : MonoBehaviour
 
     public void FullPriceButton()
     {
+      
         // TODO: Purchase Item for full price via game controller
         CloseConfirmItemModalAndRoomPanel();
-        print(choice);
         for (int i = 0; i < theButtons.Length; i++)
         {
             if (theButtons[i].name == choice)
                 Item[i].SetActive(true);
         }
-        //Item[].SetActive(true);
         Debug.Log("Full Price Button!!!");
         choice = null;
     }
@@ -472,11 +473,13 @@ public class View_UI : MonoBehaviour
     {
         // TODO: Purchase Item for discount price via game controller
         CloseConfirmItemModalAndRoomPanel();
-        //Item[choice].SetActive(true);
+        for (int i = 0; i < theButtons.Length; i++)
+        {
+            if (theButtons[i].name == choice)
+                Item[i].SetActive(true);
+        }
         Debug.Log("Discount Price Button!!!");
         choice = null;
-
-
     }
 
     #endregion
@@ -521,6 +524,48 @@ public class View_UI : MonoBehaviour
         // TODO: hook up to game controller
         Debug.Log("Repair " + roomName + " Button!!!");
 
+        foreach (var item in houseManager.rooms)
+        {
+            if(item.name == roomName)
+            {
+                item.roomState = Room_Class.RoomState.Fixed_Clean;
+                if (Kitchen) { KitchenButton.SetActive(true); }
+                else { KitchenButton.SetActive(false); }
+
+                if (LivingRoom) { LivingRoomButton.SetActive(true); }
+                else { LivingRoomButton.SetActive(false); }
+
+                if (Bathroom) { BathroomButton.SetActive(true); }
+                else { BathroomButton.SetActive(false); }
+
+                if (Bedroom1) { Bedroom1Button.SetActive(true); }
+                else { Bedroom1Button.SetActive(false); }
+
+                if (Bedroom2) { Bedroom2Button.SetActive(true); }
+                else { Bedroom2Button.SetActive(false); }
+
+                if (Bedroom3) { Bedroom3Button.SetActive(true); }
+                else { Bedroom3Button.SetActive(false); }
+
+                if (Basement) { BasementButton.SetActive(true); }
+                else { BasementButton.SetActive(false); }
+
+                if (WineCellar) { WineCellarButton.SetActive(true); }
+                else { WineCellarButton.SetActive(false); }
+
+                if (RecRoom) { RecRoomButton.SetActive(true); }
+                else { RecRoomButton.SetActive(false); }
+
+                if (Study) { StudyButton.SetActive(true); }
+                else { StudyButton.SetActive(false); }
+
+                if (Outside) { OutsideButton.SetActive(true); }
+                else { OutsideButton.SetActive(false); }
+
+                if (Attic) { AtticButton.SetActive(true); }
+                else { AtticButton.SetActive(false); }
+            }
+        }
     }
 
     #endregion

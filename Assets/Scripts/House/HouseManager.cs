@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class HouseManager : MonoBehaviour
 {
     [SerializeField] NPC_Behaviors[] tennants;
-    Room_Class[] rooms;
+    public Room_Class[] rooms;
     View_UI UI;
     public Texture[] portraits;
     [SerializeField] int score;
@@ -14,7 +14,7 @@ public class HouseManager : MonoBehaviour
     private float dayLength = 120;
     int days = 1;
     float totalCash = 0;
-    float bank;
+    public float bank;
     float endOfDayCash;
     bool tabulate = false;
     bool dayStart = true;
