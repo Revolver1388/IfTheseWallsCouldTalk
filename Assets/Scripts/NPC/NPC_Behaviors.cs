@@ -10,10 +10,12 @@ public class NPC_Behaviors : MonoBehaviour
     GameObject temp;
     bool clean = false;
     bool fix = false;
+    [SerializeField] ParticleSystem[] ps;
     // Start is called before the first frame update
     void Start()
     {
         myStats = this.gameObject.GetComponent<NPC_Spawner>();
+        ps = GetComponentsInChildren<ParticleSystem>();
     }
 
     // Update is called once per frame
@@ -49,35 +51,47 @@ public class NPC_Behaviors : MonoBehaviour
 
     IEnumerator Fixing(float t, Room_Class x)
     {
+        StartCoroutine(MovingAround(ps[0],t));
         fix = false;
         yield return new WaitForSeconds(t);
-        x.roomState = Room_Class.RoomState.Fixed_Dirty;
+        ps[1].Play();
+        x.roomState = Room_Class.RoomState.Fixed_Clean;
     }
 
+    IEnumerator MovingAround(ParticleSystem p, float t)
+    {
+        yield return new WaitForSeconds(0.2f);
+        p.Play();
+        yield return new WaitForSeconds(t);
+        p.Stop();
+    }
     private void OnTriggerEnter2D(Collider2D c)
     {
-        //cleanliness and cleanning rooms
-        if (c.gameObject.GetComponent<Room_Class>().roomState == Room_Class.RoomState.Fixed_Dirty)
+        if (myStats.happiness >= Random.Range(0.7f, 1))
         {
-            if (myStats.cleanliness >= 6)
+            if (c.gameObject.GetComponent<Room_Class>().roomState == Room_Class.RoomState.Fixed_Dirty)
             {
-                temp = c.gameObject;
-                if (myStats.cleanliness >= 6 && myStats.like.Contains("Cleanning")) { ManageHappiness(0.1f); print(":D Cleaning the " + c.gameObject.GetComponent<Room_Class>().roomType); clean = true; }
-                else if (myStats.dislikes.Contains("Cleanning")) { ManageHappiness(-0.05f); print(":O GROSS!! Im not cleaning that up"); }
-                else { ManageHappiness(-0.2f); print(":( Cleanning the " + c.gameObject.GetComponent<Room_Class>().roomType); clean = true; }
+                if (myStats.cleanliness >= Random.Range(6, 10))
+                {
+                    temp = c.gameObject;
+                    if (myStats.cleanliness >= 6 && myStats.like.Contains("Cleanning")) { ManageHappiness(0.1f); print(":D Cleaning the " + c.gameObject.GetComponent<Room_Class>().roomType); clean = true; temp = c.gameObject; }
+                    else if (myStats.dislikes.Contains("Cleanning")) { ManageHappiness(-0.2f); print(":O GROSS!! Im not cleaning that up"); }
+                    else { ManageHappiness(-0.1f); print(":( Cleanning the " + c.gameObject.GetComponent<Room_Class>().roomType); clean = true; temp = c.gameObject; }
+                }
+                else print(":| This " + c.gameObject.GetComponent<Room_Class>().roomType + " is a mess");
             }
-            else print(":| This " + c.gameObject.GetComponent<Room_Class>().roomType + " is a mess");
-        }
 
-        else if (c.gameObject.GetComponent<Room_Class>().roomState == Room_Class.RoomState.Broken)
-        {
-            if (myStats.cleanliness >= 6)
+
+            else if (c.gameObject.GetComponent<Room_Class>().roomState == Room_Class.RoomState.Broken)
             {
-                if (myStats.cleanliness >= 6 && myStats.like.Contains("Fixing Things")) { ManageHappiness(0.1f); print(":D Fixing the " + c.gameObject.GetComponent<Room_Class>().roomType); fix = true ; }
-                else if (myStats.dislikes.Contains("Fixing Things")) { ManageHappiness(-0.05f); print(":O GROSS!! Im not fixing that up"); }
-                else { ManageHappiness(-0.2f); print(":( Fixxing the " + c.gameObject.GetComponent<Room_Class>().roomType); fix = true; }
+                if (myStats.handyness >= Random.Range(6,10))
+                {
+                    if (myStats.handyness >= 6 && myStats.like.Contains("Fixing Things")) { ManageHappiness(0.1f); print(":D Fixing the " + c.gameObject.GetComponent<Room_Class>().roomType); fix = true; temp = c.gameObject; }
+                    else if (myStats.dislikes.Contains("Fixing Things")) { ManageHappiness(-0.2f); print(":O GROSS!! Im not fixing that up"); }
+                    else { ManageHappiness(-0.1f); print(":( Fixxing the " + c.gameObject.GetComponent<Room_Class>().roomType); fix = true; temp = c.gameObject; }
+                }
+                else print(":| This " + c.gameObject.GetComponent<Room_Class>().roomType + " is wrecked");
             }
-            else print(":| This " + c.gameObject.GetComponent<Room_Class>().roomType + " is wrecked");
         }
     }
 }
