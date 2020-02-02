@@ -24,7 +24,6 @@ public class TennantSelector : NPC_Base
     
     public void InstantiateTennant(int i)
     {
-        print(timesPicked);
         switch (i)
         {
             case 0:

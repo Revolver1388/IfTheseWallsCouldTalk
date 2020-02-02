@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NPC_Behaviors : MonoBehaviour
 {
-    [SerializeField] TennantSelector myStats;
+    [SerializeField] public TennantSelector myStats;
     public int meanIncome;
     [SerializeField]
     GameObject temp;
@@ -21,6 +21,8 @@ public class NPC_Behaviors : MonoBehaviour
     [SerializeField] float speed = 1;
     [SerializeField] public Room_Class[] stairs;
     bool stairTravel = false;
+    [SerializeField] bool bathroom = false;
+    [SerializeField] Animator bathroomDoor;
     #endregion
     int i = 0;
     // Start is called before the first frame update
@@ -35,6 +37,7 @@ public class NPC_Behaviors : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        bathroomDoor.SetBool("Bool", bathroom);
         meanIncome = (myStats.incomeMax + myStats.incomeMin) / 2;
         if (clean)
         {
@@ -48,16 +51,15 @@ public class NPC_Behaviors : MonoBehaviour
             else if (myStats.handyness >= 8 && myStats.handyness <= 10) StartCoroutine(Fixing(7, temp.GetComponent<Room_Class>()));
             else if (myStats.cleanliness >= 6 && myStats.like == "Fixing Things") StartCoroutine(Fixing(10, temp.GetComponent<Room_Class>()));
         }
-        //else if (!clean && !fix)
-        //{
-        //    if(myStats.like == "Cooking") {  }
-        //}
+       
     }
   //  "Cooking" "TV" "Fixing Things" "Quiet" "Drinking" "Gardening" "Working Out" "Cosmetics" "Cleanning"}
 
 public void ManageHappiness(float y)
     {
+        print(myStats.happiness);
         myStats.happiness += y;
+        print(myStats.happiness);
     }
 
     IEnumerator Cleanning(float t, Room_Class x)
