@@ -525,6 +525,31 @@ PrefabInstance:
       propertyPath: portraits.Array.data[4]
       value: 
       objectReference: {fileID: 2800000, guid: 79f3405e95fbf9e4683aedb6771738c7, type: 3}
+    - target: {fileID: 589172453693625273, guid: e13cfd1602870d246acb25e1882855a8,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 589172454170993585, guid: e13cfd1602870d246acb25e1882855a8,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 589172455011195601, guid: e13cfd1602870d246acb25e1882855a8,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7597996050279216375, guid: e13cfd1602870d246acb25e1882855a8,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4658579057232944160, guid: e13cfd1602870d246acb25e1882855a8,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e13cfd1602870d246acb25e1882855a8, type: 3}
 --- !u!1 &12314369
