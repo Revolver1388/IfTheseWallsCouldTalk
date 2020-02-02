@@ -4,12 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 public class HouseManager : MonoBehaviour
 {
-    NPC_Behaviors[] tennants;
+    [SerializeField] NPC_Behaviors[] tennants;
     Room_Class[] rooms;
     View_UI UI;
     public Texture[] portraits;
     [SerializeField] int score;
-
+    [SerializeField] Room_Class[] bedrooms;
     protected float dayTimer = 0.0f;
     private float dayLength = 120;
     int days = 1;
@@ -18,11 +18,14 @@ public class HouseManager : MonoBehaviour
     float endOfDayCash;
     bool tabulate = false;
     bool dayStart = true;
+    bool bedOne = false;
+    bool bedTwo = false;
+    bool bedThree = false;
     public bool dayOver = false;
     // Start is called before the first frame update
     void Start()
     {
-        tennants = FindObjectsOfType<NPC_Behaviors>();
+      //  tennants = FindObjectsOfType<NPC_Behaviors>();
         rooms = FindObjectsOfType<Room_Class>();
         UI = FindObjectOfType<View_UI>();
     }
@@ -36,7 +39,7 @@ public class HouseManager : MonoBehaviour
             if (dayTimer < dayLength) { dayTimer += 1 * Time.deltaTime; }
             else if (dayTimer >= dayLength) { dayOver = true; dayStart = false; }
         }
-
+        OpenTennantRental();
         if (dayOver == true)
         {
             //if (tabulate) AddIncome();
@@ -50,6 +53,11 @@ public class HouseManager : MonoBehaviour
         }
     }
 
+    void OpenTennantRental()
+    {
+        if (bedrooms[1].roomState != Room_Class.RoomState.Broken && !bedTwo) { UI.OpenNpcManagerPanel(); bedTwo = true; }
+        else if (bedrooms[2].roomState != Room_Class.RoomState.Broken && !bedThree) { UI.OpenNpcManagerPanel(); bedThree = true; }
+    }
     //void TimeOfDay()
     //{
     //    UI.timeText.text = $"{Mathf.Floor((dayTimer * (1440/2)))}:{Mathf.Floor((dayTimer *((1448/2))%60))}";

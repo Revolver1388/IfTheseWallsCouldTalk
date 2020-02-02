@@ -20,6 +20,7 @@ public class NPC_Behaviors : MonoBehaviour
     SpriteRenderer sprite;
     [SerializeField] float speed = 1;
     [SerializeField] Room_Class[] stairs;
+    bool stairTravel = false;
     #endregion
     int i = 0;
     // Start is called before the first frame update
@@ -138,7 +139,7 @@ public void ManageHappiness(float y)
             }
 
 
-            else if (c.gameObject.GetComponent<Room_Class>().roomState == Room_Class.RoomState.Broken)
+            else if (c.gameObject.GetComponent<Room_Class>().roomState == Room_Class.RoomState.Broken && c.gameObject.GetComponent<Room_Class>().roomType != Room_Class.RoomType.Stairwell)
             {
                 if (myStats.handyness >= Random.Range(6, 10))
                 {
@@ -150,10 +151,21 @@ public void ManageHappiness(float y)
             }
 
         }
-        if (c.gameObject.GetComponent<Room_Class>().roomType == Room_Class.RoomType.Stairwell && c.gameObject.GetComponent<Room_Class>().roomState == Room_Class.RoomState.Fixed_Clean)
+
+        else if (c.gameObject.GetComponent<Room_Class>().roomType == Room_Class.RoomType.Stairwell && !stairTravel)
         {
-            if (c.gameObject == stairs[0].gameObject) transform.position = SecondFloorAOI[0].transform.position;
-            if (c.gameObject == stairs[1].gameObject && stairs[0].roomState == Room_Class.RoomState.Fixed_Clean) transform.position = FirstFloorAOI[3].transform.position;
+            int randomChance = Random.Range(0, 100);
+            if (randomChance >= 51)
+            {
+                if (c.gameObject == stairs[0].gameObject && c.gameObject.GetComponent<Room_Class>().roomState == Room_Class.RoomState.Fixed_Clean) transform.position = SecondFloorAOI[0].transform.position;
+                else if (c.gameObject == stairs[1].gameObject && stairs[0].roomState == Room_Class.RoomState.Fixed_Clean) transform.position = FirstFloorAOI[3].transform.position;
+            }
+            stairTravel = true;
         }
+    }
+
+    private void OnTriggerExit2D(Collider2D c)
+    {
+        if (c.gameObject.GetComponent<Room_Class>().roomType == Room_Class.RoomType.Stairwell && stairTravel) stairTravel = false;
     }
 }
