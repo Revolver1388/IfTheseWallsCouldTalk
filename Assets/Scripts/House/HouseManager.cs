@@ -76,6 +76,7 @@ public class HouseManager : MonoBehaviour
         days += 1;
         dayStart = true;
     }
+
     int TallyRooms()
     {
         foreach (var room in rooms)

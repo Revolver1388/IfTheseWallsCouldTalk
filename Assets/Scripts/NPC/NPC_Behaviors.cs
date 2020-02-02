@@ -19,7 +19,7 @@ public class NPC_Behaviors : MonoBehaviour
     [SerializeField] int currentLocation = 0;
     SpriteRenderer sprite;
     [SerializeField] float speed = 1;
-    [SerializeField] Room_Class[] stairs;
+    [SerializeField] public Room_Class[] stairs;
     bool stairTravel = false;
     #endregion
     int i = 0;
