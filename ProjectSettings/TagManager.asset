@@ -39,6 +39,7 @@ TagManager:
   - Waypoint
   - 2ndFloor
   - 1stFloor
+  - Happy
   layers:
   - Default
   - TransparentFX

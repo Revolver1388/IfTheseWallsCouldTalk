@@ -14,8 +14,8 @@ public class View_UI : MonoBehaviour
     //[SerializeField] public Text timeText;
     [SerializeField] public Text dayText;
     [SerializeField] public Image TimeImage;
-
-
+    [SerializeField] GameObject[] Item;
+    [SerializeField] Button[] theButtons;
     // Public bools that indicate whether a given room is available or not
     // Stairwells
     public bool StairwellFirstFloor = false;
@@ -451,6 +451,7 @@ public class View_UI : MonoBehaviour
     {
         // TODO: Purchase Item for full price via game controller
         CloseConfirmItemModalAndRoomPanel();
+        //Item[].SetActive(true);
         Debug.Log("Full Price Button!!!");
 
     }
@@ -459,6 +460,7 @@ public class View_UI : MonoBehaviour
     {
         // TODO: Purchase Item for discount price via game controller
         CloseConfirmItemModalAndRoomPanel();
+        //Item.SetActive(true);
         Debug.Log("Discount Price Button!!!");
 
 

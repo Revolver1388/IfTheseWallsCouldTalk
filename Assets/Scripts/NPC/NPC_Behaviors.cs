@@ -62,19 +62,14 @@ public class NPC_Behaviors : MonoBehaviour
 public void ManageHappiness(float y)
     {
         isHappy = true;
-        if(isHappy)
-        StartCoroutine(happyTime());
+        if (isHappy)
+            happyMetre.gameObject.SetActive(true);
         if (y > 0) happyMetre.sprite = happy[0];
         else if (y < 0) happyMetre.sprite = happy[1];
         myStats.happiness += y;
-    }
-    IEnumerator happyTime()
-    {
         isHappy = false;
-        happyMetre.gameObject.SetActive(true);
-        yield return new WaitForSeconds(1);
-        happyMetre.gameObject.SetActive(false) ;
     }
+
     IEnumerator Cleanning(float t, Room_Class x)
     {
         clean = false;
