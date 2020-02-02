@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NPC_Behaviors : MonoBehaviour
+public class NPC_Behaviors : NPC_Base
 {
-    NPC_Spawner myStats;
+    NPC_Base myStats;
     public int meanIncome;
     [SerializeField]
     GameObject temp;
@@ -14,7 +14,7 @@ public class NPC_Behaviors : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        myStats = this.gameObject.GetComponent<NPC_Spawner>();
+        myStats = this.gameObject.GetComponent<NPC_Base>();
         ps = GetComponentsInChildren<ParticleSystem>();
     }
 
@@ -35,6 +35,7 @@ public class NPC_Behaviors : MonoBehaviour
             else if (myStats.cleanliness >= 6 && myStats.like == "Fixing Things") StartCoroutine(Fixing(10, temp.GetComponent<Room_Class>()));
         }
     }
+   
 
     public void ManageHappiness(float y)
     {

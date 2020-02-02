@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class NPC_Base : MonoBehaviour
 {
     protected string[] names = { "Matt", "Cam", "Kyle", "Marion", "Bernadette", "Chelsea", "Leif" };
     protected string[] likes = { "Cooking", "TV", "Fixing Things", "Quiet", "Drinking", "Gardening", "Working Out", "Cosmetics", "Cleanning"};
+    [SerializeField] public RawImage portrait;
     public string NPC_name;
     public float happiness;
     public int incomeMin;
