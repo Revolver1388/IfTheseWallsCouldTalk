@@ -9,14 +9,8 @@ public class View_UI : MonoBehaviour
     [SerializeField] public Text bankAccountText;
     [SerializeField] public Text timeText;
     [SerializeField] public Text dayText;
-    [SerializeField] Button playPauseButton;
-    [SerializeField] Button doubleSpeedButton;
-    [SerializeField] Button quadSpeedButton;
-    [SerializeField] Button npcManagerOpenButton;
-    [SerializeField] Button npcManagerCloseButton;
-    [SerializeField] Button roomUpgradePanelOpenButton;
-    [SerializeField] Button roomUpgradePanelCloseButton;
 
+ 
     // Manager Panels
     [SerializeField] GameObject npcManagerPanel;
 
@@ -32,6 +26,10 @@ public class View_UI : MonoBehaviour
     [SerializeField] GameObject AtticRoomPanel;
     [SerializeField] GameObject BasementRoomPanel;
     [SerializeField] GameObject OutsideRoomPanel;
+    [SerializeField] GameObject ItemConfirmModal;
+    [SerializeField] Text ItemConfirmModalItemNameText;
+    [SerializeField] Text ItemConfirmModalFullPriceText;
+    [SerializeField] Text ItemConfirmModalDiscountPriceText;
 
 
 
@@ -83,7 +81,7 @@ public class View_UI : MonoBehaviour
     /// </summary>
     public void OpenLivingRoomPanel()
     {
-        KitchenRoomPanel.SetActive(true);
+        LivingRoomPanel.SetActive(true);
     }
 
     public void CloseLivingRoomPanel()
@@ -214,7 +212,88 @@ public class View_UI : MonoBehaviour
         OutsideRoomPanel.SetActive(false);
     }
 
+    //public void ItemButton(string itemName, int fullPrice, int discountPrice)
+    //{
+    //    OpenConfirmItemModal(itemName, fullPrice, discountPrice);
+    //}
 
+    public void ItemButton()
+    {
+        string itemName = "itemName";
+        int fullPrice = 100;
+        int discountPrice = 50;
+        OpenConfirmItemModal(itemName, fullPrice, discountPrice);
+    }
+
+
+    public void OpenConfirmItemModal(string itemName, int fullPrice, int discountPrice)
+    {
+        ItemConfirmModal.SetActive(true);
+        ItemConfirmModalItemNameText.text = itemName;
+        ItemConfirmModalFullPriceText.text = "Full Price: $" + fullPrice.ToString();
+        ItemConfirmModalDiscountPriceText.text = "Discount Price: $" + discountPrice.ToString();
+    }
+
+    public void CloseConfirmItemModalAndRoomPanel()
+    {
+        ItemConfirmModal.SetActive(false);
+
+        if (KitchenRoomPanel.activeSelf)
+        {
+            KitchenRoomPanel.SetActive(false);
+        }
+        else if (LivingRoomPanel.activeSelf)
+        {
+            LivingRoomPanel.SetActive(false);
+        }
+        else if (BathRoomPanel.activeSelf)
+        {
+            BathRoomPanel.SetActive(false);
+        }
+        else if (BedRoom1Panel.activeSelf)
+        {
+            BedRoom1Panel.SetActive(false);
+        }
+        else if (AtticRoomPanel.activeSelf)
+        {
+            AtticRoomPanel.SetActive(false);
+        }
+        else if (BasementRoomPanel.activeSelf)
+        {
+            BasementRoomPanel.SetActive(false);
+        }
+        else if (WineCellarRoomPanel.activeSelf)
+        {
+            WineCellarRoomPanel.SetActive(false);
+        }
+        else if (RecRoomPanel.activeSelf)
+        {
+            RecRoomPanel.SetActive(false);
+        }
+        else if (OutsideRoomPanel.activeSelf)
+        {
+            OutsideRoomPanel.SetActive(false);
+        }
+    }
+
+    public void CloseConfirmModalOnly()
+    {
+        ItemConfirmModal.SetActive(false);
+
+    }
+
+    public void FullPriceButton()
+    {
+        // TODO: Purchase Item for full price via game controller
+        CloseConfirmItemModalAndRoomPanel();
+    }
+
+    public void DiscountPriceButton()
+    {
+        // TODO: Purchase Item for discount price via game controller
+        CloseConfirmItemModalAndRoomPanel();
+
+    }
 }
 
 

@@ -3,7 +3,36 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - KitchenItem1
+  - KitchenItem2
+  - KitchenItem3
+  - LivingRoomItem1
+  - LivingRoomItem2
+  - LivingRoomItem3
+  - BathRoomItem1
+  - BathRoomItem2
+  - BathRoomItem3
+  - BedRoom1Item1
+  - BedRoom1Item2
+  - BedRoom1Item3
+  - BedRoom2Item1
+  - BedRoom2Item2
+  - BedRoom2Item3
+  - RecRoomItem1
+  - RecRoomItem2
+  - RecRoomItem3
+  - WineCellarItem1
+  - WineCellarItem2
+  - WineCellarItem3
+  - AtticItem1
+  - AtticItem2
+  - AtticItem3
+  - OutsideItem1
+  - OutsideItem2
+  - OutsideItem3
+  - BasementItem1
+  - BasementItem2
   layers:
   - Default
   - TransparentFX
