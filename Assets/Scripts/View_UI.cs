@@ -14,9 +14,13 @@ public class View_UI : MonoBehaviour
     [SerializeField] Button quadSpeedButton;
     [SerializeField] Button npcManagerOpenButton;
     [SerializeField] Button npcManagerCloseButton;
-    [SerializeField] GameObject npcManager;
     [SerializeField] Button roomUpgradePanelOpenButton;
     [SerializeField] Button roomUpgradePanelCloseButton;
+
+    // Manager Panels
+    [SerializeField] GameObject npcManagerPanel;
+
+    // Room Panels
     [SerializeField] GameObject KitchenRoomPanel;
     [SerializeField] GameObject LivingRoomPanel;
     [SerializeField] GameObject BedRoom1Panel;
@@ -25,6 +29,9 @@ public class View_UI : MonoBehaviour
     [SerializeField] GameObject WineCellarRoomPanel;
     [SerializeField] GameObject OutDoorRoomPanel;
     [SerializeField] GameObject BathRoomPanel;
+    [SerializeField] GameObject AtticRoomPanel;
+    [SerializeField] GameObject BasementRoomPanel;
+    [SerializeField] GameObject OutsideRoomPanel;
 
 
 
@@ -48,12 +55,12 @@ public class View_UI : MonoBehaviour
     /// </summary>
     public void OpenNpcManagerPanel()
     {
-        npcManager.SetActive(true);
+        npcManagerPanel.SetActive(true);
     }
 
     public void CloseNpcManagerPanel()
     {
-        npcManager.SetActive(false);
+        npcManagerPanel.SetActive(false);
     }
 
     /// <summary>
@@ -166,6 +173,46 @@ public class View_UI : MonoBehaviour
         BathRoomPanel.SetActive(false);
     }
 
+    /// <summary>
+    /// Open Close AtticRoomPanel
+    /// </summary>
+    public void OpenAtticRoomPanel()
+    {
+        AtticRoomPanel.SetActive(true);
+    }
+
+    public void CloseAtticRoomPanel()
+    {
+        AtticRoomPanel.SetActive(false);
+    }
+
+    
+
+    /// <summary>
+    /// Open Close BasementRoomPanel
+    /// </summary>
+    public void OpenBasementRoomPanel()
+    {
+        BasementRoomPanel.SetActive(true);
+    }
+
+    public void CloseBasementRoomPanel()
+    {
+        BasementRoomPanel.SetActive(false);
+    }
+
+    /// <summary>
+    /// Open Close OutsideRoomPanel
+    /// </summary>
+    public void OpenOutsideRoomPanel()
+    {
+        OutsideRoomPanel.SetActive(true);
+    }
+
+    public void CloseOutsideRoomPanel()
+    {
+        OutsideRoomPanel.SetActive(false);
+    }
 
 
 }
