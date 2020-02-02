@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.EventSystems;
 public class View_UI : MonoBehaviour
 {
 
@@ -16,6 +16,7 @@ public class View_UI : MonoBehaviour
     [SerializeField] public Image TimeImage;
     [SerializeField] GameObject[] Item;
     [SerializeField] Button[] theButtons;
+    string choice;
     // Public bools that indicate whether a given room is available or not
     // Stairwells
     public bool StairwellFirstFloor = false;
@@ -108,7 +109,10 @@ public class View_UI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        foreach (var item in Item)
+        {
+            item.SetActive(false);
+        }   
     }
 
     // Update is called once per frame
@@ -382,7 +386,9 @@ public class View_UI : MonoBehaviour
         string itemName = "itemName";
         int fullPrice = 100;
         int discountPrice = 50;
+        choice = EventSystem.current.currentSelectedGameObject.transform.gameObject.name;
         OpenConfirmItemModal(itemName, fullPrice, discountPrice);
+        
     }
 
 
@@ -451,17 +457,24 @@ public class View_UI : MonoBehaviour
     {
         // TODO: Purchase Item for full price via game controller
         CloseConfirmItemModalAndRoomPanel();
+        print(choice);
+        for (int i = 0; i < theButtons.Length; i++)
+        {
+            if (theButtons[i].name == choice)
+                Item[i].SetActive(true);
+        }
         //Item[].SetActive(true);
         Debug.Log("Full Price Button!!!");
-
+        choice = null;
     }
 
     public void DiscountPriceButton()
     {
         // TODO: Purchase Item for discount price via game controller
         CloseConfirmItemModalAndRoomPanel();
-        //Item.SetActive(true);
+        //Item[choice].SetActive(true);
         Debug.Log("Discount Price Button!!!");
+        choice = null;
 
 
     }

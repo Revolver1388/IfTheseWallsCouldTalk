@@ -215,7 +215,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &42207335
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -279,7 +279,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   applianceName: Dresser
   state: 1
-  sprites: {fileID: 0}
+  sprites: {fileID: 21300000, guid: 32c676f87ce2bfa418e7fce1164f31b8, type: 3}
   depreciation: 0
   type: 8
   tennants:
@@ -317,7 +317,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &114486419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -402,6 +402,108 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &195317575
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 195317578}
+  - component: {fileID: 195317577}
+  - component: {fileID: 195317576}
+  m_Layer: 0
+  m_Name: P_Stereo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &195317576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 195317575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4f9effc89ab84342889942f5e0a5af1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  applianceName: Stero
+  state: 1
+  sprites: {fileID: 21300000, guid: cece24efd9ff803408c7369f806eba3e, type: 3}
+  depreciation: 0
+  type: 4
+  tennants:
+  - {fileID: 1927171452}
+  - {fileID: 18130957}
+  - {fileID: 244256002}
+--- !u!212 &195317577
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 195317575}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: cece24efd9ff803408c7369f806eba3e, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1.13, y: 1.5}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!4 &195317578
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 195317575}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 8.98, y: 7.8, z: -8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 21
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &244256002 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1596251218520699528, guid: 072ed9c665a15964e947258608b2d892,
@@ -949,7 +1051,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &668800078
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1142,7 +1244,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &726898177
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1206,7 +1308,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   applianceName: Dresser
   state: 1
-  sprites: {fileID: 0}
+  sprites: {fileID: 21300000, guid: 32c676f87ce2bfa418e7fce1164f31b8, type: 3}
   depreciation: 0
   type: 8
   tennants:
@@ -1456,7 +1558,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &822344639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1471,7 +1573,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   applianceName: Lamp
   state: 1
-  sprites: {fileID: 0}
+  sprites: {fileID: 21300000, guid: 41d41e81daba7154bacd45343b0f5fd7, type: 3}
   depreciation: 0
   type: 3
   tennants:
@@ -1674,7 +1776,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &1156935921
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1738,7 +1840,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   applianceName: Dresser
   state: 1
-  sprites: {fileID: 0}
+  sprites: {fileID: 21300000, guid: 32c676f87ce2bfa418e7fce1164f31b8, type: 3}
   depreciation: 0
   type: 8
   tennants:
@@ -2242,17 +2344,23 @@ MonoBehaviour:
   dayText: {fileID: 7765717241461938558}
   TimeImage: {fileID: 7765717240561072245}
   Item:
+  - {fileID: 1273746405}
+  - {fileID: 1612560718}
+  - {fileID: 1652389459}
+  - {fileID: 1823471539}
+  - {fileID: 195317575}
+  - {fileID: 1975725220}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 822344638}
+  - {fileID: 42207334}
   - {fileID: 0}
+  - {fileID: 1712257589}
+  - {fileID: 1156935920}
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2043369406}
+  - {fileID: 726898176}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -2301,6 +2409,12 @@ MonoBehaviour:
   - {fileID: 7765717241089528784}
   - {fileID: 7765717242148051751}
   - {fileID: 7765717241989719302}
+  - {fileID: 7765717242215840068}
+  - {fileID: 7765717241502311441}
+  - {fileID: 7765717240638513124}
+  - {fileID: 7765717240342061538}
+  - {fileID: 7765717241029206027}
+  - {fileID: 7765717242230079248}
   StairwellFirstFloor: 0
   StairwellSecondFloor: 0
   StairwellThirdFloor: 0
@@ -2695,6 +2809,7 @@ MonoBehaviour:
   images:
   - {fileID: 21300000, guid: a76f09c9583ed6a4092b1b3a2a180b40, type: 3}
   - {fileID: 21300000, guid: 78b3e9520b7d2e44ba94fc98266da3dc, type: 3}
+  - {fileID: 21300000, guid: 551b861f2563f3141afa4be33fd347d9, type: 3}
   appliances: 0
 --- !u!61 &1673404372
 BoxCollider2D:
@@ -2775,7 +2890,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1712257590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2790,7 +2905,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   applianceName: Lamp
   state: 1
-  sprites: {fileID: 0}
+  sprites: {fileID: 21300000, guid: 41d41e81daba7154bacd45343b0f5fd7, type: 3}
   depreciation: 0
   type: 3
   tennants:
@@ -2919,6 +3034,108 @@ Transform:
   m_Children: []
   m_Father: {fileID: 589172455021291372}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1823471539
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1823471542}
+  - component: {fileID: 1823471541}
+  - component: {fileID: 1823471540}
+  m_Layer: 0
+  m_Name: P_Recliner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1823471540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1823471539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4f9effc89ab84342889942f5e0a5af1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  applianceName: Recliner
+  state: 1
+  sprites: {fileID: 21300000, guid: 439bd54276efd5b48aa140814f5cc3a8, type: 3}
+  depreciation: 0
+  type: 1
+  tennants:
+  - {fileID: 1927171452}
+  - {fileID: 18130957}
+  - {fileID: 244256002}
+--- !u!212 &1823471541
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1823471539}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 439bd54276efd5b48aa140814f5cc3a8, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1.13, y: 1.5}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!4 &1823471542
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1823471539}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 16.09, y: 7.8, z: -8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1879551266
 GameObject:
@@ -3339,6 +3556,108 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 1596251218520699535, guid: 072ed9c665a15964e947258608b2d892, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 072ed9c665a15964e947258608b2d892, type: 3}
+--- !u!1 &1975725220
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1975725223}
+  - component: {fileID: 1975725222}
+  - component: {fileID: 1975725221}
+  m_Layer: 0
+  m_Name: P_TV
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1975725221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1975725220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4f9effc89ab84342889942f5e0a5af1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  applianceName: Stero
+  state: 1
+  sprites: {fileID: 21300000, guid: 498c67eb0d229c248836c6b42bc22d62, type: 3}
+  depreciation: 0
+  type: 1
+  tennants:
+  - {fileID: 1927171452}
+  - {fileID: 18130957}
+  - {fileID: 244256002}
+--- !u!212 &1975725222
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1975725220}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 498c67eb0d229c248836c6b42bc22d62, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1.13, y: 1.5}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!4 &1975725223
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1975725220}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 12.73, y: 6.74, z: -8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 22
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2015601319
 GameObject:
   m_ObjectHideFlags: 0
@@ -3491,7 +3810,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2043369407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3506,7 +3825,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   applianceName: Lamp
   state: 1
-  sprites: {fileID: 0}
+  sprites: {fileID: 21300000, guid: 41d41e81daba7154bacd45343b0f5fd7, type: 3}
   depreciation: 0
   type: 3
   tennants:
@@ -5584,10 +5903,10 @@ RectTransform:
   m_Father: {fileID: 3897910329668934189}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 435, y: -70.19685}
-  m_SizeDelta: {x: 250, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3897910328574788201
 MonoBehaviour:
@@ -5800,10 +6119,10 @@ RectTransform:
   m_Father: {fileID: 3897910329668934189}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 165, y: -180.19685}
-  m_SizeDelta: {x: 250, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3897910328682228754
 MonoBehaviour:
@@ -6234,10 +6553,10 @@ RectTransform:
   m_Father: {fileID: 3897910329668934189}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 435, y: -180.19685}
-  m_SizeDelta: {x: 250, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3897910328945489075
 MonoBehaviour:
@@ -7305,10 +7624,10 @@ RectTransform:
   m_Father: {fileID: 3897910329668934189}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 165, y: -70.19685}
-  m_SizeDelta: {x: 250, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3897910329659187648
 MonoBehaviour:
@@ -8454,7 +8773,7 @@ GameObject:
   - component: {fileID: 7765717240342061539}
   - component: {fileID: 7765717240342061538}
   m_Layer: 5
-  m_Name: Item1
+  m_Name: 32
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9289,7 +9608,7 @@ GameObject:
   - component: {fileID: 7765717240400722532}
   - component: {fileID: 7765717240400722535}
   m_Layer: 5
-  m_Name: Item1
+  m_Name: 15
   m_TagString: BedRoom2Item1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9507,7 +9826,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Texture: {fileID: 0}
+  m_Texture: {fileID: 2800000, guid: 41d41e81daba7154bacd45343b0f5fd7, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -9657,7 +9976,7 @@ GameObject:
   - component: {fileID: 7765717240421758345}
   - component: {fileID: 7765717240421758344}
   m_Layer: 5
-  m_Name: Item3
+  m_Name: 17
   m_TagString: BedRoom2Item3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10333,7 +10652,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Texture: {fileID: 0}
+  m_Texture: {fileID: 2800000, guid: cece24efd9ff803408c7369f806eba3e, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -11063,7 +11382,7 @@ GameObject:
   - component: {fileID: 7765717240501260286}
   - component: {fileID: 7765717240501260284}
   m_Layer: 5
-  m_Name: Item1
+  m_Name: 0
   m_TagString: KitchenItem1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11089,10 +11408,10 @@ RectTransform:
   m_Father: {fileID: 7765717240505896653}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 145, y: -106.39685}
+  m_SizeDelta: {x: 160, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7765717240501260284
 MonoBehaviour:
@@ -12551,7 +12870,7 @@ GameObject:
   - component: {fileID: 7765717240569953722}
   - component: {fileID: 7765717240569953720}
   m_Layer: 5
-  m_Name: Item1
+  m_Name: 3
   m_TagString: LivingRoomItem1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12695,7 +13014,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Texture: {fileID: 0}
+  m_Texture: {fileID: 2800000, guid: 439bd54276efd5b48aa140814f5cc3a8, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -12912,7 +13231,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: $$$$
+  m_Text: 50
 --- !u!222 &7765717240595866041
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12971,7 +13290,7 @@ GameObject:
   - component: {fileID: 7765717240596490358}
   - component: {fileID: 7765717240596490356}
   m_Layer: 5
-  m_Name: Item3
+  m_Name: 23
   m_TagString: WineCellarItem3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13173,7 +13492,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Item2 Name
+  m_Text: Dresser
 --- !u!224 &7765717240597625128
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13365,7 +13684,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: $$$$
+  m_Text: 300
 --- !u!222 &7765717240622505187
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -13424,7 +13743,7 @@ GameObject:
   - component: {fileID: 7765717240638513126}
   - component: {fileID: 7765717240638513124}
   m_Layer: 5
-  m_Name: Item3
+  m_Name: 31
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14521,7 +14840,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Item2 Name
+  m_Text: 'Dresser
+
+'
 --- !u!1 &7765717240716843087
 GameObject:
   m_ObjectHideFlags: 0
@@ -15742,7 +16063,7 @@ GameObject:
   - component: {fileID: 7765717240814308226}
   - component: {fileID: 7765717240814308224}
   m_Layer: 5
-  m_Name: Item1
+  m_Name: 24
   m_TagString: AtticItem1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16680,7 +17001,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: $$$
+  m_Text: 25
 --- !u!1 &7765717240855093707
 GameObject:
   m_ObjectHideFlags: 0
@@ -16799,7 +17120,7 @@ GameObject:
   - component: {fileID: 7765717240858304126}
   - component: {fileID: 7765717240858304124}
   m_Layer: 5
-  m_Name: Item2
+  m_Name: 13
   m_TagString: BedRoom2Item2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17103,7 +17424,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 278.3, y: -98.125}
+  m_AnchoredPosition: {x: 295.3, y: -107.82185}
   m_SizeDelta: {x: 160, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7765717240867689133
@@ -17148,7 +17469,7 @@ GameObject:
   - component: {fileID: 7765717240867689133}
   - component: {fileID: 7765717240867689299}
   m_Layer: 5
-  m_Name: Item2
+  m_Name: 10
   m_TagString: BedRoom1Item2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18406,7 +18727,7 @@ GameObject:
   - component: {fileID: 7765717240953955595}
   - component: {fileID: 7765717240953955593}
   m_Layer: 5
-  m_Name: Item2
+  m_Name: 22
   m_TagString: WineCellarItem2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19084,7 +19405,7 @@ GameObject:
   - component: {fileID: 7765717240984946358}
   - component: {fileID: 7765717240984946356}
   m_Layer: 5
-  m_Name: Item2
+  m_Name: 19
   m_TagString: RecRoomItem2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20206,7 +20527,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: $$$
+  m_Text: 100
 --- !u!222 &7765717241023408301
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -20285,7 +20606,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Item3 Name
+  m_Text: TV
 --- !u!222 &7765717241024696033
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -20423,7 +20744,7 @@ GameObject:
   - component: {fileID: 7765717241029206024}
   - component: {fileID: 7765717241029206027}
   m_Layer: 5
-  m_Name: Item2
+  m_Name: 33
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20970,7 +21291,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Item1 Name
+  m_Text: Recliner
 --- !u!222 &7765717241062240233
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -21345,7 +21666,7 @@ GameObject:
   - component: {fileID: 7765717241089528786}
   - component: {fileID: 7765717241089528784}
   m_Layer: 5
-  m_Name: Item3
+  m_Name: 26
   m_TagString: AtticItem3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22138,7 +22459,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Item1 Name
+  m_Text: Lamp
 --- !u!222 &7765717241129737483
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -22768,7 +23089,7 @@ GameObject:
   - component: {fileID: 7765717241172674421}
   - component: {fileID: 7765717241172674427}
   m_Layer: 5
-  m_Name: Item3
+  m_Name: 5
   m_TagString: LivingRoomItem3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22851,7 +23172,7 @@ GameObject:
   - component: {fileID: 7765717241176147591}
   - component: {fileID: 7765717241176147589}
   m_Layer: 5
-  m_Name: Item3
+  m_Name: 20
   m_TagString: RecRoomItem3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23245,7 +23566,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Item2 Name
+  m_Text: Stereo
 --- !u!222 &7765717241202786477
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -23598,7 +23919,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: $$$
+  m_Text: 10
 --- !u!222 &7765717241227927899
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -24280,7 +24601,7 @@ GameObject:
   - component: {fileID: 7765717241267051083}
   - component: {fileID: 7765717241267051081}
   m_Layer: 5
-  m_Name: Item1
+  m_Name: 9
   m_TagString: BedRoom1Item1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24372,7 +24693,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 98.29999, y: -98.125}
+  m_AnchoredPosition: {x: 115.29999, y: -107.82185}
   m_SizeDelta: {x: 160, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7765717241267051083
@@ -24703,7 +25024,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: $$$
+  m_Text: 150
 --- !u!1 &7765717241290103135
 GameObject:
   m_ObjectHideFlags: 0
@@ -24953,7 +25274,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Texture: {fileID: 0}
+  m_Texture: {fileID: 2800000, guid: 32c676f87ce2bfa418e7fce1164f31b8, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -25117,7 +25438,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: $$$$
+  m_Text: 100
 --- !u!222 &7765717241340116617
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -25255,7 +25576,7 @@ GameObject:
   - component: {fileID: 7765717241347731787}
   - component: {fileID: 7765717241347731785}
   m_Layer: 5
-  m_Name: Item2
+  m_Name: 25
   m_TagString: AtticItem2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25497,7 +25818,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Texture: {fileID: 0}
+  m_Texture: {fileID: 2800000, guid: 41d41e81daba7154bacd45343b0f5fd7, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -26622,7 +26943,7 @@ GameObject:
   - component: {fileID: 7765717241461138521}
   - component: {fileID: 7765717241461138527}
   m_Layer: 5
-  m_Name: Item1
+  m_Name: 6
   m_TagString: BathRoomItem1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27259,7 +27580,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Texture: {fileID: 0}
+  m_Texture: {fileID: 2800000, guid: 41d41e81daba7154bacd45343b0f5fd7, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -27644,7 +27965,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: $$$$
+  m_Text: 100
 --- !u!222 &7765717241483748275
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -28229,7 +28550,7 @@ GameObject:
   - component: {fileID: 7765717241502311443}
   - component: {fileID: 7765717241502311441}
   m_Layer: 5
-  m_Name: Item2
+  m_Name: 30
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28982,7 +29303,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Texture: {fileID: 0}
+  m_Texture: {fileID: 2800000, guid: 32c676f87ce2bfa418e7fce1164f31b8, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -29851,7 +30172,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Item1 Name
+  m_Text: Lamp
 --- !u!222 &7765717241617626985
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -30384,7 +30705,7 @@ GameObject:
   - component: {fileID: 7765717241678900606}
   - component: {fileID: 7765717241678900604}
   m_Layer: 5
-  m_Name: Item1
+  m_Name: 21
   m_TagString: WineCellarItem1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30891,7 +31212,7 @@ GameObject:
   - component: {fileID: 7765717241716630445}
   - component: {fileID: 7765717241716632659}
   m_Layer: 5
-  m_Name: Item2
+  m_Name: 4
   m_TagString: LivingRoomItem2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30974,7 +31295,7 @@ GameObject:
   - component: {fileID: 7765717241718913688}
   - component: {fileID: 7765717241718913691}
   m_Layer: 5
-  m_Name: Item2
+  m_Name: 16
   m_TagString: BedRoom2Item2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32618,7 +32939,7 @@ GameObject:
   - component: {fileID: 7765717241778828109}
   - component: {fileID: 7765717241778828147}
   m_Layer: 5
-  m_Name: Item3
+  m_Name: 14
   m_TagString: BedRoom2Item3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34046,7 +34367,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: $$$$
+  m_Text: 200
 --- !u!222 &7765717241840168331
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -34792,7 +35113,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: $$$$
+  m_Text: 25
 --- !u!222 &7765717241891298243
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -35463,7 +35784,7 @@ GameObject:
   - component: {fileID: 7765717241922610037}
   - component: {fileID: 7765717241922610036}
   m_Layer: 5
-  m_Name: Item2
+  m_Name: 1
   m_TagString: KitchenItem2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35489,10 +35810,10 @@ RectTransform:
   m_Father: {fileID: 7765717240505896653}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 325, y: -106.39685}
+  m_SizeDelta: {x: 160, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7765717241922610042
 CanvasRenderer:
@@ -35594,7 +35915,7 @@ GameObject:
   - component: {fileID: 7765717241936714302}
   - component: {fileID: 7765717241936714300}
   m_Layer: 5
-  m_Name: Item3
+  m_Name: 11
   m_TagString: BedRoom1Item3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35622,7 +35943,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 458.3, y: -98.125}
+  m_AnchoredPosition: {x: 475.3, y: -107.82185}
   m_SizeDelta: {x: 160, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7765717241936714300
@@ -35785,7 +36106,7 @@ GameObject:
   - component: {fileID: 7765717241937767713}
   - component: {fileID: 7765717241937767719}
   m_Layer: 5
-  m_Name: Item1
+  m_Name: 12
   m_TagString: BedRoom2Item1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35951,7 +36272,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7765717241951949345
 RectTransform:
   m_ObjectHideFlags: 0
@@ -36301,7 +36622,7 @@ GameObject:
   - component: {fileID: 7765717241989719296}
   - component: {fileID: 7765717241989719302}
   m_Layer: 5
-  m_Name: Item2
+  m_Name: 28
   m_TagString: BasementItem2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36401,7 +36722,7 @@ GameObject:
   - component: {fileID: 7765717242003722967}
   - component: {fileID: 7765717242003722965}
   m_Layer: 5
-  m_Name: Item2
+  m_Name: 7
   m_TagString: BathRoomItem2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36656,7 +36977,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Item1 Name
+  m_Text: 'Lamp
+
+'
 --- !u!1 &7765717242013756099
 GameObject:
   m_ObjectHideFlags: 0
@@ -36716,7 +37039,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: $$$$
+  m_Text: 500
 --- !u!222 &7765717242017945117
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -36861,7 +37184,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Texture: {fileID: 0}
+  m_Texture: {fileID: 2800000, guid: 32c676f87ce2bfa418e7fce1164f31b8, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -36991,7 +37314,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: $$$
+  m_Text: 25
 --- !u!224 &7765717242031323096
 RectTransform:
   m_ObjectHideFlags: 0
@@ -37141,7 +37464,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: $$$
+  m_Text: 250
 --- !u!222 &7765717242033481591
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -38406,7 +38729,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: $$$$
+  m_Text: 100
 --- !u!224 &7765717242084334384
 RectTransform:
   m_ObjectHideFlags: 0
@@ -38553,7 +38876,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: $$$
+  m_Text: 50
 --- !u!222 &7765717242086733395
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -39069,7 +39392,7 @@ GameObject:
   - component: {fileID: 7765717242119094183}
   - component: {fileID: 7765717242119094181}
   m_Layer: 5
-  m_Name: Item3
+  m_Name: 8
   m_TagString: BathRoomItem3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39550,7 +39873,7 @@ GameObject:
   - component: {fileID: 7765717242148051745}
   - component: {fileID: 7765717242148051751}
   m_Layer: 5
-  m_Name: Item1
+  m_Name: 27
   m_TagString: BasementItem1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40655,7 +40978,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: $$$
+  m_Text: 50
 --- !u!222 &7765717242191788731
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -40749,7 +41072,7 @@ GameObject:
   - component: {fileID: 7765717242215840070}
   - component: {fileID: 7765717242215840068}
   m_Layer: 5
-  m_Name: Item1
+  m_Name: 29
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40971,7 +41294,7 @@ GameObject:
   - component: {fileID: 7765717242230079249}
   - component: {fileID: 7765717242230079248}
   m_Layer: 5
-  m_Name: Item3
+  m_Name: 34
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41317,7 +41640,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: $$$
+  m_Text: '50
+
+'
 --- !u!222 &7765717242245983719
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -41554,7 +41879,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Item2 Name
+  m_Text: Dresser
 --- !u!222 &7765717242262161179
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -42306,7 +42631,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Texture: {fileID: 0}
+  m_Texture: {fileID: 2800000, guid: 498c67eb0d229c248836c6b42bc22d62, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -42629,7 +42954,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: $$$$
+  m_Text: 50
 --- !u!1 &7765717242334841003
 GameObject:
   m_ObjectHideFlags: 0
@@ -43588,7 +43913,7 @@ GameObject:
   - component: {fileID: 7765717242383174450}
   - component: {fileID: 7765717242383174448}
   m_Layer: 5
-  m_Name: Item1
+  m_Name: 18
   m_TagString: RecRoomItem1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44807,10 +45132,10 @@ RectTransform:
   m_Father: {fileID: 7765717240505896653}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 505, y: -106.39685}
+  m_SizeDelta: {x: 160, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7765717242476670501
 MonoBehaviour:
@@ -44881,7 +45206,7 @@ GameObject:
   - component: {fileID: 7765717242476670506}
   - component: {fileID: 7765717242476670501}
   m_Layer: 5
-  m_Name: Item3
+  m_Name: 2
   m_TagString: KitchenItem3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
