@@ -9,6 +9,7 @@ public class View_UI : MonoBehaviour
     [SerializeField] public Text bankAccountText;
     [SerializeField] public Text timeText;
     [SerializeField] public Text dayText;
+    [SerializeField] public Image TimeImage;
 
  
     // Manager Panels
