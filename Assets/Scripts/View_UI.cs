@@ -14,12 +14,14 @@ public class View_UI : MonoBehaviour
  
     // Manager Panels
     [SerializeField] GameObject npcManagerPanel;
+    [SerializeField] GameObject roomManagerPanel;
 
     // Room Panels
     [SerializeField] GameObject KitchenRoomPanel;
     [SerializeField] GameObject LivingRoomPanel;
     [SerializeField] GameObject BedRoom1Panel;
     [SerializeField] GameObject BedRoom2Panel;
+    [SerializeField] GameObject BedRoom3Panel;
     [SerializeField] GameObject RecRoomPanel;
     [SerializeField] GameObject WineCellarRoomPanel;
     [SerializeField] GameObject OutDoorRoomPanel;
@@ -117,6 +119,21 @@ public class View_UI : MonoBehaviour
     {
         BedRoom2Panel.SetActive(false);
     }
+
+    /// <summary>
+    /// Open Close BedRoom3Panel
+    /// </summary>
+    public void OpenBedRoom3Panel()
+    {
+        BedRoom3Panel.SetActive(true);
+    }
+
+    public void CloseBedRoom3Panel()
+    {
+        BedRoom3Panel.SetActive(false);
+    }
+
+
 
     /// <summary>
     /// Open Close RecRoomPanel
@@ -295,6 +312,40 @@ public class View_UI : MonoBehaviour
         CloseConfirmItemModalAndRoomPanel();
 
     }
+
+
+    public void RoomManagerButton()
+    {
+        if (roomManagerPanel.activeSelf)
+        {
+            roomManagerPanel.SetActive(false);
+        }
+        else
+        {
+            roomManagerPanel.SetActive(true);
+        }
+    }
+
+    public void PlayPauseButton()
+    {
+        // TODO: Play Pause Button
+    }
+
+    public void DoubleSpeedButton()
+    {
+        // TODO: Double Speed Button
+    }
+
+    public void QuadSpeedButton()
+    {
+        // TODO: Quad speed button
+    }
+
+    public void RepairRoomButton(string roomName)
+    {
+        // TODO: hook up to game controller
+    }
+
 }
 
 
