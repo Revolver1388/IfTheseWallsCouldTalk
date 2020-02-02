@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NPC_Behaviors : NPC_Base
+public class NPC_Behaviors : MonoBehaviour
 {
-    NPC_Base myStats;
+    [SerializeField] TennantSelector myStats;
     public int meanIncome;
     [SerializeField]
     GameObject temp;
@@ -14,8 +14,8 @@ public class NPC_Behaviors : NPC_Base
     // Start is called before the first frame update
     void Start()
     {
-        myStats = this.gameObject.GetComponent<NPC_Base>();
-        ps = GetComponentsInChildren<ParticleSystem>();
+        //myStats = GameObject.Find("TennantsListPanel").GetComponent<TennantSelector>();
+        ps = GetComponentsInChildren<ParticleSystem>();  
     }
 
     // Update is called once per frame

@@ -33,6 +33,8 @@ TagManager:
   - OutsideItem3
   - BasementItem1
   - BasementItem2
+  - m_Level
+  - sfx
   layers:
   - Default
   - TransparentFX

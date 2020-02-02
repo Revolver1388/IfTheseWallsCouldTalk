@@ -8,6 +8,7 @@ public class TennantSelector : NPC_Base
     [SerializeField] NPC_Spawner[] tennants;
     [SerializeField] NPC_Behaviors[] npc;
     View_UI ui;
+    int timesPicked = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,17 +27,18 @@ public class TennantSelector : NPC_Base
         switch (i)
         {
             case 0:
-                npc[0].NPC_name = tennants[i].NPC_name;
-                npc[0].incomeMax = tennants[i].incomeMax;
-                npc[0].incomeMin = tennants[i].incomeMin;
-                npc[0].happiness = tennants[i].happiness;
-                npc[0].handyness = tennants[i].handyness;
-                npc[0].cleanliness = tennants[i].cleanliness;
-                npc[0].portrait = tennants[i].portrait;
-                npc[0].like = tennants[i].like;
-                npc[0].dislikes = tennants[i].dislikes;
-                npc[0].gameObject.SetActive(true);
+                NPC_name = tennants[i].NPC_name;
+                incomeMax = tennants[i].incomeMax;
+                incomeMin = tennants[i].incomeMin;
+                happiness = tennants[i].happiness;
+                handyness = tennants[i].handyness;
+                cleanliness = tennants[i].cleanliness;
+                portrait = tennants[i].portrait;
+                like = tennants[i].like;
+                dislikes = tennants[i].dislikes;
+                npc[timesPicked].gameObject.SetActive(true);
                 ui.CloseNpcManagerPanel();
+                timesPicked += 1;
                 break;
             case 1:
                 NPC_name = tennants[i].NPC_name;
@@ -48,8 +50,9 @@ public class TennantSelector : NPC_Base
                 portrait = tennants[i].portrait;
                 like = tennants[i].like;
                 dislikes = tennants[i].dislikes;
-                npc[0].gameObject.SetActive(true);
-
+                npc[timesPicked].gameObject.SetActive(true);
+                ui.CloseNpcManagerPanel();
+                timesPicked += 1;
                 break;
             case 2:
                 NPC_name = tennants[i].NPC_name;
@@ -61,8 +64,9 @@ public class TennantSelector : NPC_Base
                 portrait = tennants[i].portrait;
                 like = tennants[i].like;
                 dislikes = tennants[i].dislikes;
-                npc[0].gameObject.SetActive(true);
-
+                npc[timesPicked].gameObject.SetActive(true);
+                ui.CloseNpcManagerPanel();
+                timesPicked += 1;
                 break;
             case 3:
                 NPC_name = tennants[i].NPC_name;
@@ -74,8 +78,9 @@ public class TennantSelector : NPC_Base
                 portrait = tennants[i].portrait;
                 like = tennants[i].like;
                 dislikes = tennants[i].dislikes;
-                npc[0].gameObject.SetActive(true);
-
+                npc[timesPicked].gameObject.SetActive(true);
+                ui.CloseNpcManagerPanel();
+                timesPicked += 1;
                 break;
 
             default:

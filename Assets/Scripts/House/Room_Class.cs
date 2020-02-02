@@ -7,7 +7,7 @@ public class Room_Class : MonoBehaviour
     public enum RoomState { Broken, Fixed_Dirty, Fixed_Clean, Idle }
     [SerializeField]
     public RoomState roomState;
-    public enum RoomType { Kitchen, Bathroom, LivingRoom, Bedroom, Outdoor, Basement, Attic, RecRoom, WineCellar }
+    public enum RoomType { Kitchen, Bathroom, LivingRoom, Bedroom, Outdoor, Basement, Attic, RecRoom, WineCellar, Stairwell }
     [SerializeField]
     public RoomType roomType;
     [SerializeField]Sprite[] images;
