@@ -10,7 +10,7 @@ public class HouseManager : MonoBehaviour
     public Texture[] portraits;
     [SerializeField] int score;
     [SerializeField] Room_Class[] bedrooms;
-    protected float dayTimer = 0.0f;
+    public float dayTimer = 0.0f;
     private float dayLength = 120;
     int days = 1;
     float totalCash = 0;

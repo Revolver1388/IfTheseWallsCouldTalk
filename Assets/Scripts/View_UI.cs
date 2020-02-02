@@ -6,8 +6,9 @@ using UnityEngine.UI;
 public class View_UI : MonoBehaviour
 {
 
-# region : Variables etc.......................
+    #region : Variables etc.......................
 
+    [SerializeField] HouseManager houseManager;
 
     [SerializeField] public Text bankAccountText;
     [SerializeField] public Text timeText;
@@ -16,18 +17,30 @@ public class View_UI : MonoBehaviour
 
 
     // Public bools that indicate whether a given room is available or not
+    // Stairwells
+    public bool StairwellFirstFloor = false;
+    public bool StairwellSecondFloor = false;
+    public bool StairwellThirdFloor = false;
+    // First Floor
     public bool Kitchen = true;
-    public bool LivingRoom = false;
-    public bool Bathroom = true;
     public bool Bedroom1 = true;
-    public bool Bedroom2 = false;
-    public bool Bedroom3 = false;
-    public bool Basement = true;
-    public bool WineCellar = false;
-    public bool RecRoom = false;
     public bool Outside = true;
-    public bool Attic = false;
-    public bool Study = false;
+    // Second Floor
+    public bool LivingRoom;
+    public bool Bedroom2;
+    public bool Bedroom3;
+    //Basement
+    public bool Basement;
+    public bool WineCellar;
+    public bool RecRoom;
+    // Third Floor
+    public bool Study;
+    // Bathroom
+    public bool Bathroom;  
+    // Attic
+    public bool Attic;
+
+
 
  
     // Manager Panels
@@ -67,11 +80,30 @@ public class View_UI : MonoBehaviour
     [SerializeField] Text ItemConfirmModalItemNameText;
     [SerializeField] Text ItemConfirmModalFullPriceText;
     [SerializeField] Text ItemConfirmModalDiscountPriceText;
+    //[SerializeField] GameObject KitchenItems;
+    //[SerializeField] GameObject LivingroomItems;
+    //[SerializeField] GameObject BathroomItems;
+    //[SerializeField] GameObject Bedroom1Items;
+    //[SerializeField] GameObject Bedroom2Items;
+    //[SerializeField] GameObject Bedroom3Items;
+    //[SerializeField] GameObject BasementItems;
+    //[SerializeField] GameObject WinecellarItems;
+    //[SerializeField] GameObject RecRoomItems;
+    //[SerializeField] GameObject StudyItems;
+    //[SerializeField] GameObject OutsideItems;
+    //[SerializeField] GameObject AtticItems;
+
+
+
+
+
+
+
 
     #endregion
 
 
-#region : Start and Update...................
+    #region : Start and Update...................
 
     // Start is called before the first frame update
     void Start()
@@ -118,12 +150,40 @@ public class View_UI : MonoBehaviour
         if (Attic) { AtticButton.SetActive(true); }
         else { AtticButton.SetActive(false); }
 
+
+        // Bool logic that connects starwell repair to availability of rooms in the room manager
+
+        if (StairwellFirstFloor)
+        {
+            LivingRoom = true;
+            Bedroom2 = true;
+            Bedroom3 = true;
+        }
+
+        if (StairwellSecondFloor)
+        {
+            Study = true;
+        }
+
+        if (StairwellThirdFloor)
+        {
+            Attic = true;
+        }
+
+
+        // Update the clock
+        TimeImage.fillAmount = houseManager.dayTimer;
+
+
+
     }
 
-    #endregion
 
 
-    #region: Open/Close Panels................
+#endregion
+
+
+#region: Open/Close Panels................
 
     /// <summary>
     /// Open/Close NPC Manager Panel
