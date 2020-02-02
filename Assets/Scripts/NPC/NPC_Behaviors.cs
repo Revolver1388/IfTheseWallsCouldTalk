@@ -23,6 +23,9 @@ public class NPC_Behaviors : MonoBehaviour
     bool stairTravel = false;
     [SerializeField] bool bathroom = false;
     [SerializeField] Animator bathroomDoor;
+    [SerializeField] SpriteRenderer happyMetre;
+    [SerializeField] Sprite[] happy;
+    bool isHappy = false;
     #endregion
     int i = 0;
     // Start is called before the first frame update
@@ -30,6 +33,7 @@ public class NPC_Behaviors : MonoBehaviour
     void Start()
     {
         //myStats = GameObject.Find("TennantsListPanel").GetComponent<TennantSelector>();
+        happyMetre.gameObject.SetActive(false);
         sprite = GetComponentInChildren<SpriteRenderer>();
         ps = GetComponentsInChildren<ParticleSystem>();  
     }
@@ -57,11 +61,20 @@ public class NPC_Behaviors : MonoBehaviour
 
 public void ManageHappiness(float y)
     {
-        print(myStats.happiness);
+        isHappy = true;
+        if(isHappy)
+        StartCoroutine(happyTime());
+        if (y > 0) happyMetre.sprite = happy[0];
+        else if (y < 0) happyMetre.sprite = happy[1];
         myStats.happiness += y;
-        print(myStats.happiness);
     }
-
+    IEnumerator happyTime()
+    {
+        isHappy = false;
+        happyMetre.gameObject.SetActive(true);
+        yield return new WaitForSeconds(1);
+        happyMetre.gameObject.SetActive(false) ;
+    }
     IEnumerator Cleanning(float t, Room_Class x)
     {
         clean = false;

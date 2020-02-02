@@ -9,7 +9,7 @@ public class Appliance_Class : MonoBehaviour
     [SerializeField] string applianceName;
     public State state;
     [SerializeField]
-    Sprite[] sprites;
+    Sprite sprites;
     [SerializeField] float depreciation;
     public Type type;
     SpriteRenderer appearance;
@@ -18,7 +18,7 @@ public class Appliance_Class : MonoBehaviour
     private void Start()
     {
         appearance = GetComponent<SpriteRenderer>();
-        appearance.sprite = sprites[0];
+        appearance.sprite = sprites;
     }
 
     private void Update()
