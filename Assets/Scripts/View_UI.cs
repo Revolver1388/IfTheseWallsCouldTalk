@@ -122,65 +122,65 @@ public class View_UI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Kitchen) { KitchenButton.SetActive(true); }
-        else { KitchenButton.SetActive(false); }
+        //if (Kitchen) { KitchenButton.SetActive(true); }
+        //else { KitchenButton.SetActive(false); }
 
-        if (LivingRoom) { LivingRoomButton.SetActive(true); }
-        else { LivingRoomButton.SetActive(false); }
+        //if (LivingRoom) { LivingRoomButton.SetActive(true); }
+        //else { LivingRoomButton.SetActive(false); }
 
-        if (Bathroom) { BathroomButton.SetActive(true); }
-        else { BathroomButton.SetActive(false); }
+        //if (Bathroom) { BathroomButton.SetActive(true); }
+        //else { BathroomButton.SetActive(false); }
 
-        if (Bedroom1) { Bedroom1Button.SetActive(true); }
-        else { Bedroom1Button.SetActive(false); }
+        //if (Bedroom1) { Bedroom1Button.SetActive(true); }
+        //else { Bedroom1Button.SetActive(false); }
 
-        if (Bedroom2) { Bedroom2Button.SetActive(true); }
-        else { Bedroom2Button.SetActive(false); }
+        //if (Bedroom2) { Bedroom2Button.SetActive(true); }
+        //else { Bedroom2Button.SetActive(false); }
 
-        if (Bedroom3) { Bedroom3Button.SetActive(true); }
-        else { Bedroom3Button.SetActive(false); }
+        //if (Bedroom3) { Bedroom3Button.SetActive(true); }
+        //else { Bedroom3Button.SetActive(false); }
 
-        if (Basement) { BasementButton.SetActive(true); }
-        else { BasementButton.SetActive(false); }
+        //if (Basement) { BasementButton.SetActive(true); }
+        //else { BasementButton.SetActive(false); }
 
-        if (WineCellar) { WineCellarButton.SetActive(true); }
-        else { WineCellarButton.SetActive(false); }
+        //if (WineCellar) { WineCellarButton.SetActive(true); }
+        //else { WineCellarButton.SetActive(false); }
 
-        if (RecRoom) { RecRoomButton.SetActive(true); }
-        else { RecRoomButton.SetActive(false); }
+        //if (RecRoom) { RecRoomButton.SetActive(true); }
+        //else { RecRoomButton.SetActive(false); }
 
-        if (Study) { StudyButton.SetActive(true); }
-        else { StudyButton.SetActive(false); }
+        //if (Study) { StudyButton.SetActive(true); }
+        //else { StudyButton.SetActive(false); }
 
-        if (Outside) { OutsideButton.SetActive(true); }
-        else { OutsideButton.SetActive(false); }
+        //if (Outside) { OutsideButton.SetActive(true); }
+        //else { OutsideButton.SetActive(false); }
 
-        if (Attic) { AtticButton.SetActive(true); }
-        else { AtticButton.SetActive(false); }
+        //if (Attic) { AtticButton.SetActive(true); }
+        //else { AtticButton.SetActive(false); }
 
 
         // Bool logic that connects starwell repair to availability of rooms in the room manager
 
-        if (StairwellFirstFloor)
-        {
-            LivingRoom = true;
-            Bedroom2 = true;
-            Bedroom3 = true;
-        }
+        //if (StairwellFirstFloor)
+        //{
+        //    LivingRoom = true;
+        //    Bedroom2 = true;
+        //    Bedroom3 = true;
+        //}
 
-        if (StairwellSecondFloor)
-        {
-            Study = true;
-        }
+        //if (StairwellSecondFloor)
+        //{
+        //    Study = true;
+        //}
 
-        if (StairwellThirdFloor)
-        {
-            Attic = true;
-        }
+        //if (StairwellThirdFloor)
+        //{
+        //    Attic = true;
+        //}
 
 
         // Update the clock
-        TimeImage.fillAmount = houseManager.dayTimer * Time.smoothDeltaTime;
+        TimeImage.fillAmount = (houseManager.dayTimer * Time.smoothDeltaTime)/2;
 
 
 
@@ -593,41 +593,41 @@ public class View_UI : MonoBehaviour
             if(item.name == roomName)
             {
                 item.roomState = Room_Class.RoomState.Fixed_Clean;
-                if (Kitchen) { KitchenButton.SetActive(true); }
-                else { KitchenButton.SetActive(false); }
+                //if (Kitchen) { KitchenButton.SetActive(true); }
+                //else { KitchenButton.SetActive(false); }
 
-                if (LivingRoom) { LivingRoomButton.SetActive(true); }
-                else { LivingRoomButton.SetActive(false); }
+                //if (LivingRoom) { LivingRoomButton.SetActive(true); }
+                //else { LivingRoomButton.SetActive(false); }
 
-                if (Bathroom) { BathroomButton.SetActive(true); }
-                else { BathroomButton.SetActive(false); }
+                //if (Bathroom) { BathroomButton.SetActive(true); }
+                //else { BathroomButton.SetActive(false); }
 
-                if (Bedroom1) { Bedroom1Button.SetActive(true); }
-                else { Bedroom1Button.SetActive(false); }
+                //if (Bedroom1) { Bedroom1Button.SetActive(true); }
+                //else { Bedroom1Button.SetActive(false); }
 
-                if (Bedroom2) { Bedroom2Button.SetActive(true); }
-                else { Bedroom2Button.SetActive(false); }
+                //if (Bedroom2) { Bedroom2Button.SetActive(true); }
+                //else { Bedroom2Button.SetActive(false); }
 
-                if (Bedroom3) { Bedroom3Button.SetActive(true); }
-                else { Bedroom3Button.SetActive(false); }
+                //if (Bedroom3) { Bedroom3Button.SetActive(true); }
+                //else { Bedroom3Button.SetActive(false); }
 
-                if (Basement) { BasementButton.SetActive(true); }
-                else { BasementButton.SetActive(false); }
+                //if (Basement) { BasementButton.SetActive(true); }
+                //else { BasementButton.SetActive(false); }
 
-                if (WineCellar) { WineCellarButton.SetActive(true); }
-                else { WineCellarButton.SetActive(false); }
+                //if (WineCellar) { WineCellarButton.SetActive(true); }
+                //else { WineCellarButton.SetActive(false); }
 
-                if (RecRoom) { RecRoomButton.SetActive(true); }
-                else { RecRoomButton.SetActive(false); }
+                //if (RecRoom) { RecRoomButton.SetActive(true); }
+                //else { RecRoomButton.SetActive(false); }
 
-                if (Study) { StudyButton.SetActive(true); }
-                else { StudyButton.SetActive(false); }
+                //if (Study) { StudyButton.SetActive(true); }
+                //else { StudyButton.SetActive(false); }
 
-                if (Outside) { OutsideButton.SetActive(true); }
-                else { OutsideButton.SetActive(false); }
+                //if (Outside) { OutsideButton.SetActive(true); }
+                //else { OutsideButton.SetActive(false); }
 
-                if (Attic) { AtticButton.SetActive(true); }
-                else { AtticButton.SetActive(false); }
+                //if (Attic) { AtticButton.SetActive(true); }
+                //else { AtticButton.SetActive(false); }
             }
         }
     }
