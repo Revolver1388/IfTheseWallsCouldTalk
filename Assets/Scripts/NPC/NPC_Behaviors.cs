@@ -150,7 +150,7 @@ public void ManageHappiness(float y)
 
     private void OnTriggerEnter2D(Collider2D c)
     {
-        if (myStats.happiness >= Random.Range(0.7f, 1))
+        if (myStats.happiness >= .5f)
         {
             if (c.gameObject.GetComponent<Room_Class>().roomState == Room_Class.RoomState.Fixed_Dirty)
             {
