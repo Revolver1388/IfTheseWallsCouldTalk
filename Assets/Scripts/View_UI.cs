@@ -112,7 +112,7 @@ public class View_UI : MonoBehaviour
     void Start()
     {
         audioManager = FindObjectOfType<AudioManager>();
-        audioManager.PlayMusic("Normal");
+        //audioManager.PlayMusic("Normal");
         foreach (var item in Item)
         {
             item.SetActive(false);

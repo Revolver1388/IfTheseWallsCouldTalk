@@ -41,7 +41,7 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
         thisScene = SceneManager.GetActiveScene();
-        StartCoroutine(PlayMusic("Music"));
+        StartCoroutine(PlayMusic("Normal"));
     }
     //private void Update()
     //{
