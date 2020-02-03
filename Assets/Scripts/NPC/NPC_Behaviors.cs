@@ -25,7 +25,9 @@ public class NPC_Behaviors : MonoBehaviour
     [SerializeField] Animator bathroomDoor;
     [SerializeField] SpriteRenderer happyMetre;
     [SerializeField] Sprite[] happy;
+    [SerializeField] Animator anim;
     bool isHappy = false;
+    bool moving;
     #endregion
     int i = 0;
     // Start is called before the first frame update
@@ -43,14 +45,17 @@ public class NPC_Behaviors : MonoBehaviour
     {
         bathroomDoor.SetBool("Bool", bathroom);
         meanIncome = (myStats.incomeMax + myStats.incomeMin) / 2;
+        anim.SetBool("New Bool", moving);
         if (clean)
         {
+            moving = false;
                 if (myStats.cleanliness >= 6 && myStats.cleanliness < 8) StartCoroutine(Cleanning(10, temp.GetComponent<Room_Class>()));
                 else if (myStats.cleanliness >= 8 && myStats.cleanliness <= 10) StartCoroutine(Cleanning(7, temp.GetComponent<Room_Class>()));
                 else if (myStats.cleanliness >= 6 && myStats.like == "Cleanning") StartCoroutine(Cleanning(10, temp.GetComponent<Room_Class>()));
         }
         else if (fix)
         {
+            moving = false;
             if (myStats.handyness >= 6 && myStats.handyness < 8) StartCoroutine(Fixing(10, temp.GetComponent<Room_Class>()));
             else if (myStats.handyness >= 8 && myStats.handyness <= 10) StartCoroutine(Fixing(7, temp.GetComponent<Room_Class>()));
             else if (myStats.cleanliness >= 6 && myStats.like == "Fixing Things") StartCoroutine(Fixing(10, temp.GetComponent<Room_Class>()));
@@ -97,13 +102,15 @@ public void ManageHappiness(float y)
 
     private void Move()
     {
+
         if (transform.position.x != FirstFloorAOI[currentLocation].transform.position.x)
         {
+            moving = true;
             transform.position = Vector3.MoveTowards(transform.position, new Vector3(FirstFloorAOI[currentLocation].transform.position.x, transform.position.y,transform.position.z), speed * Time.deltaTime);
         }
         if (transform.position.x == FirstFloorAOI[currentLocation].transform.position.x)
         {
-            currentLocation = Random.Range(0,FirstFloorAOI.Length);
+            StartCoroutine(wait());
         }
         if (currentLocation >= FirstFloorAOI.Length)
         {
@@ -119,6 +126,13 @@ public void ManageHappiness(float y)
         }
     }
 
+    IEnumerator wait()
+    {
+        moving = false;
+      yield return new  WaitForSeconds(1);
+        currentLocation = Random.Range(0, FirstFloorAOI.Length);
+        Move();
+    }
     void FlipSprite(bool M)
     {
         sprite.flipX = M;
@@ -128,6 +142,8 @@ public void ManageHappiness(float y)
     {
         if (c.gameObject.tag == "Movement" && !clean && !fix)
         {
+           
+     
             Move();
         }
     }
