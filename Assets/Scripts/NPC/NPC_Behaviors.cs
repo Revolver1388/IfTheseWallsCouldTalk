@@ -117,10 +117,14 @@ public void ManageHappiness(float y)
         {
             currentLocation = 0;
         }
-        if (currentLocation == 0)
+        if (FirstFloorAOI[currentLocation].transform.position.x > transform.position.x)
         {
             FlipSprite(true);
         }
+        //if (currentLocation == 0)
+        //{
+        //    FlipSprite(true);
+        //}
         else
         {
             FlipSprite(false);
@@ -177,7 +181,7 @@ public void ManageHappiness(float y)
 
         }
 
-        else if (c.gameObject.GetComponent<Room_Class>().roomType == Room_Class.RoomType.Stairwell /*&& !stairTravel*/)
+        if (c.gameObject.GetComponent<Room_Class>().roomType == Room_Class.RoomType.Stairwell /*&& !stairTravel*/)
         {
             int randomChance = Random.Range(0, 100);
             if (randomChance >= 51)
