@@ -110,7 +110,8 @@ public void ManageHappiness(float y)
         }
         if (transform.position.x == FirstFloorAOI[currentLocation].transform.position.x)
         {
-            StartCoroutine(wait());
+            currentLocation = Random.Range(0, FirstFloorAOI.Length);
+            //   StartCoroutine(wait());
         }
         if (currentLocation >= FirstFloorAOI.Length)
         {
@@ -126,13 +127,13 @@ public void ManageHappiness(float y)
         }
     }
 
-    IEnumerator wait()
-    {
-        moving = false;
-      yield return new  WaitForSeconds(1);
-        currentLocation = Random.Range(0, FirstFloorAOI.Length);
-        Move();
-    }
+    //IEnumerator wait()
+    //{
+    //    moving = false;
+    //  yield return new  WaitForSeconds(1);
+    //    currentLocation = Random.Range(0, FirstFloorAOI.Length);
+    //    Move();
+    //}
     void FlipSprite(bool M)
     {
         sprite.flipX = M;
@@ -141,9 +142,7 @@ public void ManageHappiness(float y)
     private void OnTriggerStay2D(Collider2D c)
     {
         if (c.gameObject.tag == "Movement" && !clean && !fix)
-        {
-           
-     
+        {    
             Move();
         }
     }
@@ -178,7 +177,7 @@ public void ManageHappiness(float y)
 
         }
 
-        else if (c.gameObject.GetComponent<Room_Class>().roomType == Room_Class.RoomType.Stairwell && !stairTravel)
+        else if (c.gameObject.GetComponent<Room_Class>().roomType == Room_Class.RoomType.Stairwell /*&& !stairTravel*/)
         {
             int randomChance = Random.Range(0, 100);
             if (randomChance >= 51)
@@ -186,12 +185,12 @@ public void ManageHappiness(float y)
                 if (c.gameObject == stairs[0].gameObject && c.gameObject.GetComponent<Room_Class>().roomState == Room_Class.RoomState.Fixed_Clean) transform.position = SecondFloorAOI[0].transform.position;
                 else if (c.gameObject == stairs[1].gameObject && stairs[0].roomState == Room_Class.RoomState.Fixed_Clean) transform.position = FirstFloorAOI[3].transform.position;
             }
-            stairTravel = true;
+         //   stairTravel = true;
         }
     }
 
-    private void OnTriggerExit2D(Collider2D c)
-    {
-        if (c.gameObject.GetComponent<Room_Class>().roomType == Room_Class.RoomType.Stairwell && stairTravel) stairTravel = false;
-    }
+    //private void OnTriggerExit2D(Collider2D c)
+    //{
+    //    if (c.gameObject.GetComponent<Room_Class>().roomType == Room_Class.RoomType.Stairwell && stairTravel) stairTravel = false;
+    //}
 }

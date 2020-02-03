@@ -442,11 +442,10 @@ public class View_UI : MonoBehaviour
         int fullPrice = 100;
         int discountPrice = 50;
         choice = EventSystem.current.currentSelectedGameObject.transform.gameObject.name;
-        if (houseManager.bank >= fullPrice)
-        {
+     
             OpenConfirmItemModal(itemName, fullPrice, discountPrice);
 
-        }
+        
 
     }
 
