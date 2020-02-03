@@ -43,11 +43,6 @@ public class AudioManager : MonoBehaviour
         thisScene = SceneManager.GetActiveScene();
         StartCoroutine(PlayMusic("Normal"));
     }
-    //private void Update()
-    //{
-    //    musicGroup.audioMixer.SetFloat("lvl_Music", music_Volume.value);
-    //    sfxGroup.audioMixer.SetFloat("sfx", SFX_Volume.value); 
-    //}    
 
     public IEnumerator PlayMusic(string clipName)
     {
