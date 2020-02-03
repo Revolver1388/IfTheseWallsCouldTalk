@@ -180,7 +180,7 @@ public class View_UI : MonoBehaviour
 
 
         // Update the clock
-        TimeImage.fillAmount = houseManager.dayTimer;
+        TimeImage.fillAmount = houseManager.dayTimer * Time.smoothDeltaTime;
 
 
 
