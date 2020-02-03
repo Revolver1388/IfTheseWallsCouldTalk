@@ -6,7 +6,10 @@ using UnityEngine.EventSystems;
 public class View_UI : MonoBehaviour
 {
 
-    #region : Variables etc.......................
+    #region : Imports and Variables etc.......................
+
+    AudioManager audioManager;
+
 
     [SerializeField] HouseManager houseManager;
     [SerializeField] public Text bankAccountText;
@@ -108,6 +111,8 @@ public class View_UI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audioManager = FindObjectOfType<AudioManager>();
+        audioManager.PlayMusic("Normal");
         foreach (var item in Item)
         {
             item.SetActive(false);
@@ -194,11 +199,14 @@ public class View_UI : MonoBehaviour
     public void OpenNpcManagerPanel()
     {
         npcManagerPanel.SetActive(true);
+        audioManager.PlayOneShotByName("OpenPanel");
     }
 
     public void CloseNpcManagerPanel()
     {
         npcManagerPanel.SetActive(false);
+        audioManager.PlayOneShotByName("ClosePanel");
+
     }
 
     /// <summary>
@@ -207,11 +215,15 @@ public class View_UI : MonoBehaviour
     public void OpenKitchenRoomPanel()
     {
         KitchenRoomPanel.SetActive(true);
+        audioManager.PlayOneShotByName("OpenPanel");
+
     }
 
     public void CloseKitchenRoomPanel()
     {
         KitchenRoomPanel.SetActive(false);
+        audioManager.PlayOneShotByName("ClosePanel");
+
     }
 
 
@@ -222,11 +234,15 @@ public class View_UI : MonoBehaviour
     public void OpenLivingRoomPanel()
     {
         LivingRoomPanel.SetActive(true);
+        audioManager.PlayOneShotByName("OpenPanel");
+
     }
 
     public void CloseLivingRoomPanel()
     {
         LivingRoomPanel.SetActive(false);
+        audioManager.PlayOneShotByName("ClosePanel");
+
     }
 
 
@@ -237,11 +253,15 @@ public class View_UI : MonoBehaviour
     public void OpenBedRoom1Panel()
     {
         BedRoom1Panel.SetActive(true);
+        audioManager.PlayOneShotByName("OpenPanel");
+
     }
 
     public void CloseBedRoom1Panel()
     {
         BedRoom1Panel.SetActive(false);
+        audioManager.PlayOneShotByName("ClosePanel");
+
     }
 
     /// <summary>
@@ -250,11 +270,15 @@ public class View_UI : MonoBehaviour
     public void OpenBedRoom2Panel()
     {
         BedRoom2Panel.SetActive(true);
+        audioManager.PlayOneShotByName("OpenPanel");
+
     }
 
     public void CloseBedRoom2Panel()
     {
         BedRoom2Panel.SetActive(false);
+        audioManager.PlayOneShotByName("ClosePanel");
+
     }
 
     /// <summary>
@@ -263,11 +287,15 @@ public class View_UI : MonoBehaviour
     public void OpenBedRoom3Panel()
     {
         BedRoom3Panel.SetActive(true);
+        audioManager.PlayOneShotByName("OpenPanel");
+
     }
 
     public void CloseBedRoom3Panel()
     {
         BedRoom3Panel.SetActive(false);
+        audioManager.PlayOneShotByName("ClosePanel");
+
     }
 
 
@@ -278,11 +306,15 @@ public class View_UI : MonoBehaviour
     public void OpenRecRoomPanel()
     {
         RecRoomPanel.SetActive(true);
+        audioManager.PlayOneShotByName("OpenPanel");
+
     }
 
     public void CloseRecRoomPanel()
     {
         RecRoomPanel.SetActive(false);
+        audioManager.PlayOneShotByName("ClosePanel");
+
     }
 
     /// <summary>
@@ -291,15 +323,19 @@ public class View_UI : MonoBehaviour
     public void OpenWineCellarRoomPanel()
     {
         WineCellarRoomPanel.SetActive(true);
+        audioManager.PlayOneShotByName("OpenPanel");
+
     }
 
     public void CloseWineCellarRoomPanel()
     {
         WineCellarRoomPanel.SetActive(false);
+        audioManager.PlayOneShotByName("ClosePanel");
+
     }
 
 
-  
+
 
 
     /// <summary>
@@ -308,11 +344,15 @@ public class View_UI : MonoBehaviour
     public void OpenBathRoomPanel()
     {
         BathRoomPanel.SetActive(true);
+        audioManager.PlayOneShotByName("OpenPanel");
+
     }
 
     public void CloseBathRoomPanel()
     {
         BathRoomPanel.SetActive(false);
+        audioManager.PlayOneShotByName("ClosePanel");
+
     }
 
     /// <summary>
@@ -321,14 +361,18 @@ public class View_UI : MonoBehaviour
     public void OpenAtticRoomPanel()
     {
         AtticRoomPanel.SetActive(true);
+        audioManager.PlayOneShotByName("OpenPanel");
+
     }
 
     public void CloseAtticRoomPanel()
     {
         AtticRoomPanel.SetActive(false);
+        audioManager.PlayOneShotByName("ClosePanel");
+
     }
 
-    
+
 
     /// <summary>
     /// Open Close BasementRoomPanel
@@ -336,11 +380,15 @@ public class View_UI : MonoBehaviour
     public void OpenBasementRoomPanel()
     {
         BasementRoomPanel.SetActive(true);
+        audioManager.PlayOneShotByName("OpenPanel");
+
     }
 
     public void CloseBasementRoomPanel()
     {
         BasementRoomPanel.SetActive(false);
+        audioManager.PlayOneShotByName("ClosePanel");
+
     }
 
     /// <summary>
@@ -349,11 +397,15 @@ public class View_UI : MonoBehaviour
     public void OpenOutsideRoomPanel()
     {
         OutsideRoomPanel.SetActive(true);
+        audioManager.PlayOneShotByName("OpenPanel");
+
     }
 
     public void CloseOutsideRoomPanel()
     {
         OutsideRoomPanel.SetActive(false);
+        audioManager.PlayOneShotByName("ClosePanel");
+
     }
 
 
@@ -363,17 +415,21 @@ public class View_UI : MonoBehaviour
     public void OpenStudyRoomPanel()
     {
         StudyRoomPanel.SetActive(true);
+        audioManager.PlayOneShotByName("OpenPanel");
+
     }
 
     public void CloseStudyRoomPanel()
     {
         StudyRoomPanel.SetActive(false);
+        audioManager.PlayOneShotByName("ClosePanel");
+
     }
 
     #endregion
 
 
-#region: Item stuff.....................
+    #region: Item stuff.....................
 
     //public void ItemButton(string itemName, int fullPrice, int discountPrice)
     //{
@@ -389,8 +445,9 @@ public class View_UI : MonoBehaviour
         if (houseManager.bank >= fullPrice)
         {
             OpenConfirmItemModal(itemName, fullPrice, discountPrice);
+
         }
-        
+
     }
 
 
@@ -400,6 +457,8 @@ public class View_UI : MonoBehaviour
         ItemConfirmModalItemNameText.text = itemName;
         ItemConfirmModalFullPriceText.text = "Full Price: $" + fullPrice.ToString();
         ItemConfirmModalDiscountPriceText.text = "Discount Price: $" + discountPrice.ToString();
+        audioManager.PlayOneShotByName("OpenPanel");
+
     }
 
     public void CloseConfirmItemModalAndRoomPanel()
@@ -467,6 +526,8 @@ public class View_UI : MonoBehaviour
         }
         Debug.Log("Full Price Button!!!");
         choice = null;
+        audioManager.PlayOneShotByName("Purchase");
+
     }
 
     public void DiscountPriceButton()
@@ -480,12 +541,14 @@ public class View_UI : MonoBehaviour
         }
         Debug.Log("Discount Price Button!!!");
         choice = null;
+        audioManager.PlayOneShotByName("Purchase");
+
     }
 
     #endregion
 
 
-#region: Buttons and such.......................
+    #region: Buttons and such.......................
 
     public void RoomManagerButton()
     {
@@ -497,6 +560,8 @@ public class View_UI : MonoBehaviour
         {
             roomManagerPanel.SetActive(true);
         }
+        audioManager.PlayOneShotByName("RoomManager");
+
     }
 
     public void PlayPauseButton()

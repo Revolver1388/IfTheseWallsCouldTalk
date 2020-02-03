@@ -8404,18 +8404,123 @@ PrefabInstance:
     - target: {fileID: 4831980353976675392, guid: c3eafe1df560bc64da5fd5ae7b3d8ece,
         type: 3}
       propertyPath: sfx.Array.size
-      value: 15
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4831980353976675392, guid: c3eafe1df560bc64da5fd5ae7b3d8ece,
         type: 3}
       propertyPath: lvl_Music.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4831980353976675392, guid: c3eafe1df560bc64da5fd5ae7b3d8ece,
         type: 3}
       propertyPath: sfx.Array.data[0].name
-      value: pop
+      value: OpenPanel
       objectReference: {fileID: 0}
+    - target: {fileID: 4831980353976675392, guid: c3eafe1df560bc64da5fd5ae7b3d8ece,
+        type: 3}
+      propertyPath: sfx.Array.data[1].name
+      value: ClosePanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 4831980353976675392, guid: c3eafe1df560bc64da5fd5ae7b3d8ece,
+        type: 3}
+      propertyPath: sfx.Array.data[2].name
+      value: Purchase
+      objectReference: {fileID: 0}
+    - target: {fileID: 4831980353976675392, guid: c3eafe1df560bc64da5fd5ae7b3d8ece,
+        type: 3}
+      propertyPath: sfx.Array.data[3].name
+      value: RoomManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 4831980353976675392, guid: c3eafe1df560bc64da5fd5ae7b3d8ece,
+        type: 3}
+      propertyPath: sfx.Array.data[4].name
+      value: RepairRoom
+      objectReference: {fileID: 0}
+    - target: {fileID: 4831980353976675392, guid: c3eafe1df560bc64da5fd5ae7b3d8ece,
+        type: 3}
+      propertyPath: sfx.Array.data[5].name
+      value: CleanRoom
+      objectReference: {fileID: 0}
+    - target: {fileID: 4831980353976675392, guid: c3eafe1df560bc64da5fd5ae7b3d8ece,
+        type: 3}
+      propertyPath: sfx.Array.data[6].name
+      value: DamageRoom
+      objectReference: {fileID: 0}
+    - target: {fileID: 4831980353976675392, guid: c3eafe1df560bc64da5fd5ae7b3d8ece,
+        type: 3}
+      propertyPath: sfx.Array.data[7].name
+      value: ItemButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 4831980353976675392, guid: c3eafe1df560bc64da5fd5ae7b3d8ece,
+        type: 3}
+      propertyPath: lvl_Music.Array.data[0].name
+      value: Normal
+      objectReference: {fileID: 0}
+    - target: {fileID: 4831980353976675392, guid: c3eafe1df560bc64da5fd5ae7b3d8ece,
+        type: 3}
+      propertyPath: lvl_Music.Array.data[1].name
+      value: BadMusic
+      objectReference: {fileID: 0}
+    - target: {fileID: 4831980353976675392, guid: c3eafe1df560bc64da5fd5ae7b3d8ece,
+        type: 3}
+      propertyPath: lvl_Music.Array.data[2].name
+      value: GoodMusic
+      objectReference: {fileID: 0}
+    - target: {fileID: 4831980353976675392, guid: c3eafe1df560bc64da5fd5ae7b3d8ece,
+        type: 3}
+      propertyPath: lvl_Music.Array.data[1].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 006331fd90698ad49a8c67e9e2e8b2c4, type: 3}
+    - target: {fileID: 4831980353976675392, guid: c3eafe1df560bc64da5fd5ae7b3d8ece,
+        type: 3}
+      propertyPath: lvl_Music.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 913d2fff566cf144984454aa9408dc83, type: 3}
+    - target: {fileID: 4831980353976675392, guid: c3eafe1df560bc64da5fd5ae7b3d8ece,
+        type: 3}
+      propertyPath: lvl_Music.Array.data[2].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: c68788866aeacbf4bbc7cb21bbb383b4, type: 3}
+    - target: {fileID: 4831980353976675392, guid: c3eafe1df560bc64da5fd5ae7b3d8ece,
+        type: 3}
+      propertyPath: sfx.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: ffb159a21c8a04135a5616979c828fab, type: 3}
+    - target: {fileID: 4831980353976675392, guid: c3eafe1df560bc64da5fd5ae7b3d8ece,
+        type: 3}
+      propertyPath: sfx.Array.data[1].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: b99da9a57308d4ba1bee1cf1d9038376, type: 3}
+    - target: {fileID: 4831980353976675392, guid: c3eafe1df560bc64da5fd5ae7b3d8ece,
+        type: 3}
+      propertyPath: sfx.Array.data[2].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 4e1ff8faed12a475eba9be0e46072269, type: 3}
+    - target: {fileID: 4831980353976675392, guid: c3eafe1df560bc64da5fd5ae7b3d8ece,
+        type: 3}
+      propertyPath: sfx.Array.data[7].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: b9eff218e132a4e76be78840eca96fb2, type: 3}
+    - target: {fileID: 4831980353976675392, guid: c3eafe1df560bc64da5fd5ae7b3d8ece,
+        type: 3}
+      propertyPath: sfx.Array.data[5].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 52320e590bf774734a288886eba557ba, type: 3}
+    - target: {fileID: 4831980353976675392, guid: c3eafe1df560bc64da5fd5ae7b3d8ece,
+        type: 3}
+      propertyPath: sfx.Array.data[3].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 7bd6b897eb5ca4b7d88a205c4a51640c, type: 3}
+    - target: {fileID: 4831980353976675392, guid: c3eafe1df560bc64da5fd5ae7b3d8ece,
+        type: 3}
+      propertyPath: sfx.Array.data[6].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 7e26c9daf4c32483b9c2790e662d3f1b, type: 3}
+    - target: {fileID: 4831980353976675392, guid: c3eafe1df560bc64da5fd5ae7b3d8ece,
+        type: 3}
+      propertyPath: sfx.Array.data[4].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 2c5292ba5cf254919a6b9e2b18e04f49, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3eafe1df560bc64da5fd5ae7b3d8ece, type: 3}
 --- !u!212 &4877753329764779527
