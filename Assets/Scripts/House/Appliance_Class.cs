@@ -26,6 +26,7 @@ public class Appliance_Class : MonoBehaviour
         IncreaseHappyiness();
         GetComponentInParent<Room_Class>().applianceCount++;
     }
+
     private void OnDisable()
     {
         GetComponentInParent<Room_Class>().applianceCount--;
