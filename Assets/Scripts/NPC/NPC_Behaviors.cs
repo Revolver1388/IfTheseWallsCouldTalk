@@ -16,7 +16,7 @@ public class NPC_Behaviors : MonoBehaviour
     [SerializeField] Transform myRoom;
     [SerializeField] Transform[] FirstFloorAOI;
     [SerializeField] Transform[] SecondFloorAOI;
-    [SerializeField] int currentLocation = 0;
+    int currentLocation = 0;
     SpriteRenderer sprite;
     [SerializeField] float speed = 1;
     [SerializeField] public Room_Class[] stairs;
@@ -28,10 +28,10 @@ public class NPC_Behaviors : MonoBehaviour
     [SerializeField] Animator anim;
     [SerializeField] Animator anim_Metre;
     [SerializeField] public bool[] hasDisplayed = { false, false, false, false };// 1 = likes, 2 = dislikes, 3 = Happyness, 4= 
-
     bool isHappy = false;
+    bool isStairs = false;
     bool happySad;
-    [SerializeField] bool moving = true;
+    bool moving = true;
     #endregion
     int i = 0;
 
@@ -41,13 +41,15 @@ public class NPC_Behaviors : MonoBehaviour
         sprite = GetComponentInChildren<SpriteRenderer>();
         ps = GetComponentsInChildren<ParticleSystem>();
     }
-
+    private void OnEnable()
+    {        
+        meanIncome = Random.Range(myStats.incomeMax, myStats.incomeMin);
+        anim.SetBool("New Bool", moving);
+    }
     // Update is called once per frame
     void Update()
     {
         bathroomDoor.SetBool("Bool", bathroom);
-        anim.SetBool("New Bool", moving);
-        meanIncome = Random.Range(myStats.incomeMax, myStats.incomeMin);
         if (clean)
         {
             moving = false;
@@ -72,7 +74,7 @@ public class NPC_Behaviors : MonoBehaviour
         {
             isHappy = true;
             myStats.happiness += y;
-            if (isHappy) StartCoroutine(HappySign());
+            if (isHappy) { StartCoroutine(HappySign()); }
 
             if (y > 0) { happyMetre.sprite = happy[0]; happySad = true; }
             else if (y < 0) { happyMetre.sprite = happy[1]; happySad = false; }
@@ -86,8 +88,9 @@ public class NPC_Behaviors : MonoBehaviour
     {
        
         happyMetre.gameObject.SetActive(true);
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2.5f);
         happyMetre.gameObject.SetActive(false);
+        isHappy = false;
     }
 
     IEnumerator Cleanning(float t, Room_Class x)
@@ -125,7 +128,12 @@ public class NPC_Behaviors : MonoBehaviour
         moving = true;
         Move();
     }
-
+    IEnumerator StairCooldown()
+    {
+        isStairs = true;
+        yield return new WaitForSeconds(2);
+        isStairs = false;
+    }
     private void Move()
     {
 
@@ -149,24 +157,21 @@ public class NPC_Behaviors : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D c)
     {
 
-        if (c.gameObject != null) this.gameObject.transform.position = new Vector3(transform.position.x, transform.position.y,c.gameObject.transform.position.z - 1); 
+       // if (c.gameObject != null) this.gameObject.transform.position = new Vector3(transform.position.x, transform.position.y,c.gameObject.transform.position.z - 1); 
         if (c.gameObject != null && c.gameObject.tag != "Movement") { temp = c.gameObject.GetComponent<Room_Class>(); CheckHappiness(); }
-        if(temp)print(temp.gameObject.name);
+        //if(temp)print(temp.gameObject.name);
         if (!temp) return;
     }
 
     private void OnTriggerStay2D(Collider2D c)
     {
-        if (c.gameObject.tag == "Movement" && !clean && !fix)
-        {
-            Move();
-        }
+        if (c.gameObject.tag == "Movement" && !clean && !fix) Move();    
     }
 
 
     void CheckHappiness()
     {
-        if (temp.roomType == Room_Class.RoomType.Stairwell)
+        if (temp.roomType != Room_Class.RoomType.Stairwell)
         {
             if (myStats.happiness >= 0.5f)
             {
@@ -181,9 +186,7 @@ public class NPC_Behaviors : MonoBehaviour
                     }
                     else print(":| This " + temp.GetComponent<Room_Class>().roomType + " is a mess");
                     return;
-                }
-
-                /*else*/
+                }            
                 if (temp.roomState == Room_Class.RoomState.Broken && temp.roomType != Room_Class.RoomType.Stairwell)
                 {
                     if (myStats.handyness >= Random.Range(6, 10))
@@ -198,9 +201,9 @@ public class NPC_Behaviors : MonoBehaviour
                 else
                     return;
             }
-            else if (myStats.happiness <= 0.4f) return;
+            //else if (myStats.happiness <= 0.4f) return;
         }
-        if (temp.roomType == Room_Class.RoomType.Stairwell)
+        if (temp.roomType == Room_Class.RoomType.Stairwell && !isStairs)
         {
             int randomChance = Random.Range(0, 100);
             print(randomChance);
@@ -208,6 +211,7 @@ public class NPC_Behaviors : MonoBehaviour
             {
                 if (temp.gameObject == stairs[0].gameObject && temp.roomState == Room_Class.RoomState.Fixed_Clean) transform.position = SecondFloorAOI[0].transform.position;
                 else if (temp.gameObject == stairs[1].gameObject && stairs[0].roomState == Room_Class.RoomState.Fixed_Clean) transform.position = FirstFloorAOI[3].transform.position;
+                StartCoroutine(StairCooldown());
             }
         }
     }

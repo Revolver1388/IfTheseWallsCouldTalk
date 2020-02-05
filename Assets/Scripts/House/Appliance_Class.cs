@@ -21,21 +21,23 @@ public class Appliance_Class : MonoBehaviour
         appearance.sprite = sprites;
     }
 
-    private void Update()
+    private void OnEnable()
     {
-        if (this.gameObject.activeSelf == true)
-        {
-            IncreaseHappyiness();
-        }
+        IncreaseHappyiness();
+        GetComponentInParent<Room_Class>().applianceCount++;
+    }
+    private void OnDisable()
+    {
+        GetComponentInParent<Room_Class>().applianceCount--;
     }
     void IncreaseHappyiness()
     {
         foreach (var nPC in tennants)
         {
             if (nPC.myStats.like == type.ToString()) nPC.ManageHappiness(0.2f);
+            if (nPC.myStats.dislikes == type.ToString()) nPC.ManageHappiness(-0.2f);
         }
     }
-
     //[System.Serializable]
     //public struct Appliance { public string name; public State state; [SerializeField] Sprite[] sprites; [SerializeField] float depreciation;  public Type type};
 }

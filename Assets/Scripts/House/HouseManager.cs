@@ -11,7 +11,7 @@ public class HouseManager : MonoBehaviour
     [SerializeField] int score;
     [SerializeField] Room_Class[] bedrooms;
     public float dayTimer = 0.0f;
-    private float dayLength = 120;
+    public float dayLength = 100;
     int days = 1;
     float totalCash = 0;
     public float bank;
@@ -81,7 +81,7 @@ public class HouseManager : MonoBehaviour
     {
         foreach (var room in rooms)
         {
-            switch (room.appliances)
+            switch (room.applianceCount)
             {
                 case 0:
                     score += 0;
@@ -102,8 +102,10 @@ public class HouseManager : MonoBehaviour
             else if (room.roomState == Room_Class.RoomState.Fixed_Dirty) score += 1;
             else if (room.roomState == Room_Class.RoomState.Fixed_Clean) score += 2;
         }
+        print(score);
         return score;
     }
+
     float AddIncome()
     {
         foreach (var npc in tennants)

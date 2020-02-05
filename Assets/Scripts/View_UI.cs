@@ -179,8 +179,8 @@ public class View_UI : MonoBehaviour
         //}
 
 
-        // Update the clock
-        TimeImage.fillAmount = (houseManager.dayTimer * Time.smoothDeltaTime)/2;
+        // Update the clock ********FIGURE THIS OUT!!**********
+        TimeImage.fillAmount = ((houseManager.dayTimer) * Time.fixedDeltaTime);
 
 
 
@@ -442,7 +442,7 @@ public class View_UI : MonoBehaviour
         int fullPrice = 100;
         int discountPrice = 50;
         choice = EventSystem.current.currentSelectedGameObject.transform.gameObject.name;
-     
+        
             OpenConfirmItemModal(itemName, fullPrice, discountPrice);
 
         
@@ -457,13 +457,51 @@ public class View_UI : MonoBehaviour
         ItemConfirmModalFullPriceText.text = "Full Price: $" + fullPrice.ToString();
         ItemConfirmModalDiscountPriceText.text = "Discount Price: $" + discountPrice.ToString();
         audioManager.PlayOneShotByName("OpenPanel");
-
+        CloseAllPurchasePanels();
     }
 
     public void CloseConfirmItemModalAndRoomPanel()
     {
         ItemConfirmModal.SetActive(false);
+        CloseAllPurchasePanels();
+    }
 
+    public void CloseConfirmModalOnly()
+    {
+        ItemConfirmModal.SetActive(false);
+    }
+
+    public void FullPriceButton()
+    {
+      
+        // TODO: Purchase Item for full price via game controller
+        CloseConfirmItemModalAndRoomPanel();
+        for (int i = 0; i < theButtons.Length; i++)
+        {
+            if (theButtons[i].name == choice)
+                Item[i].SetActive(true);
+        }
+        choice = null;
+        audioManager.PlayOneShotByName("Purchase");
+
+    }
+
+    public void DiscountPriceButton()
+    {
+        // TODO: Purchase Item for discount price via game controller
+        CloseConfirmItemModalAndRoomPanel();
+        for (int i = 0; i < theButtons.Length; i++)
+        {
+            if (theButtons[i].name == choice)
+                Item[i].SetActive(true);
+        }
+        choice = null;
+        audioManager.PlayOneShotByName("Purchase");
+
+    }
+     
+    void CloseAllPurchasePanels()
+    {
         if (KitchenRoomPanel.activeSelf)
         {
             KitchenRoomPanel.SetActive(false);
@@ -479,6 +517,14 @@ public class View_UI : MonoBehaviour
         else if (BedRoom1Panel.activeSelf)
         {
             BedRoom1Panel.SetActive(false);
+        }
+        else if (BedRoom2Panel.activeSelf)
+        {
+            BedRoom2Panel.SetActive(false);
+        }
+        else if (BedRoom3Panel.activeSelf)
+        {
+            BedRoom3Panel.SetActive(false);
         }
         else if (AtticRoomPanel.activeSelf)
         {
@@ -504,46 +550,8 @@ public class View_UI : MonoBehaviour
         {
             StudyRoomPanel.SetActive(false);
         }
-    }
-
-    public void CloseConfirmModalOnly()
-    {
-        ItemConfirmModal.SetActive(false);
-        Debug.Log("Cancel Item Button!!!");
 
     }
-
-    public void FullPriceButton()
-    {
-      
-        // TODO: Purchase Item for full price via game controller
-        CloseConfirmItemModalAndRoomPanel();
-        for (int i = 0; i < theButtons.Length; i++)
-        {
-            if (theButtons[i].name == choice)
-                Item[i].SetActive(true);
-        }
-        Debug.Log("Full Price Button!!!");
-        choice = null;
-        audioManager.PlayOneShotByName("Purchase");
-
-    }
-
-    public void DiscountPriceButton()
-    {
-        // TODO: Purchase Item for discount price via game controller
-        CloseConfirmItemModalAndRoomPanel();
-        for (int i = 0; i < theButtons.Length; i++)
-        {
-            if (theButtons[i].name == choice)
-                Item[i].SetActive(true);
-        }
-        Debug.Log("Discount Price Button!!!");
-        choice = null;
-        audioManager.PlayOneShotByName("Purchase");
-
-    }
-
     #endregion
 
 
@@ -565,69 +573,28 @@ public class View_UI : MonoBehaviour
 
     public void PlayPauseButton()
     {
-        // TODO: Play Pause Button
-        Debug.Log("Play/Pause Button!!!");
+        if (Time.timeScale == 1) Time.timeScale = 0;
+        else Time.timeScale = 1;
     }
 
     public void DoubleSpeedButton()
     {
-        // TODO: Double Speed Button
-        Debug.Log("Double speed Button!!!");
-
+        Time.timeScale = 2;
     }
 
     public void QuadSpeedButton()
     {
-        // TODO: Quad speed button
-        Debug.Log("quad speed Button!!!");
-
+        Time.timeScale = 4;
     }
 
     public void RepairRoomButton(string roomName)
-    {
-        // TODO: hook up to game controller
-        Debug.Log("Repair " + roomName + " Button!!!");
-
+    { 
+        CloseAllPurchasePanels();
         foreach (var item in houseManager.rooms)
         {
             if(item.name == roomName)
             {
                 item.roomState = Room_Class.RoomState.Fixed_Clean;
-                //if (Kitchen) { KitchenButton.SetActive(true); }
-                //else { KitchenButton.SetActive(false); }
-
-                //if (LivingRoom) { LivingRoomButton.SetActive(true); }
-                //else { LivingRoomButton.SetActive(false); }
-
-                //if (Bathroom) { BathroomButton.SetActive(true); }
-                //else { BathroomButton.SetActive(false); }
-
-                //if (Bedroom1) { Bedroom1Button.SetActive(true); }
-                //else { Bedroom1Button.SetActive(false); }
-
-                //if (Bedroom2) { Bedroom2Button.SetActive(true); }
-                //else { Bedroom2Button.SetActive(false); }
-
-                //if (Bedroom3) { Bedroom3Button.SetActive(true); }
-                //else { Bedroom3Button.SetActive(false); }
-
-                //if (Basement) { BasementButton.SetActive(true); }
-                //else { BasementButton.SetActive(false); }
-
-                //if (WineCellar) { WineCellarButton.SetActive(true); }
-                //else { WineCellarButton.SetActive(false); }
-
-                //if (RecRoom) { RecRoomButton.SetActive(true); }
-                //else { RecRoomButton.SetActive(false); }
-
-                //if (Study) { StudyButton.SetActive(true); }
-                //else { StudyButton.SetActive(false); }
-
-                //if (Outside) { OutsideButton.SetActive(true); }
-                //else { OutsideButton.SetActive(false); }
-
-                //if (Attic) { AtticButton.SetActive(true); }
-                //else { AtticButton.SetActive(false); }
             }
         }
     }
