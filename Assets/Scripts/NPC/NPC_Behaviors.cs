@@ -7,7 +7,7 @@ public class NPC_Behaviors : MonoBehaviour
     [SerializeField] public TennantSelector myStats;
     public int meanIncome;
     [SerializeField]
-    GameObject temp;
+    Room_Class temp;
     bool clean = false;
     bool fix = false;
     [SerializeField] ParticleSystem[] ps;
@@ -26,53 +26,68 @@ public class NPC_Behaviors : MonoBehaviour
     [SerializeField] SpriteRenderer happyMetre;
     [SerializeField] Sprite[] happy;
     [SerializeField] Animator anim;
+    [SerializeField] Animator anim_Metre;
+    [SerializeField] public bool[] hasDisplayed = { false, false, false, false };// 1 = likes, 2 = dislikes, 3 = Happyness, 4= 
+
     bool isHappy = false;
-    bool moving;
+    bool happySad;
+    [SerializeField] bool moving = true;
     #endregion
     int i = 0;
-    // Start is called before the first frame update
 
     void Start()
     {
-        //myStats = GameObject.Find("TennantsListPanel").GetComponent<TennantSelector>();
         happyMetre.gameObject.SetActive(false);
         sprite = GetComponentInChildren<SpriteRenderer>();
-        ps = GetComponentsInChildren<ParticleSystem>();  
+        ps = GetComponentsInChildren<ParticleSystem>();
     }
 
     // Update is called once per frame
     void Update()
     {
         bathroomDoor.SetBool("Bool", bathroom);
-        meanIncome = (myStats.incomeMax + myStats.incomeMin) / 2;
         anim.SetBool("New Bool", moving);
+        meanIncome = Random.Range(myStats.incomeMax, myStats.incomeMin);
         if (clean)
         {
             moving = false;
-                if (myStats.cleanliness >= 6 && myStats.cleanliness < 8) StartCoroutine(Cleanning(10, temp.GetComponent<Room_Class>()));
-                else if (myStats.cleanliness >= 8 && myStats.cleanliness <= 10) StartCoroutine(Cleanning(7, temp.GetComponent<Room_Class>()));
-                else if (myStats.cleanliness >= 6 && myStats.like == "Cleanning") StartCoroutine(Cleanning(10, temp.GetComponent<Room_Class>()));
+            if (myStats.cleanliness >= 6 && myStats.cleanliness < 8) StartCoroutine(Cleanning(10, temp));
+            else if (myStats.cleanliness >= 8 && myStats.cleanliness <= 10) StartCoroutine(Cleanning(7, temp));
+            else if (myStats.cleanliness >= 6 && myStats.like == "Cleanning") StartCoroutine(Cleanning(10, temp));
         }
         else if (fix)
         {
             moving = false;
-            if (myStats.handyness >= 6 && myStats.handyness < 8) StartCoroutine(Fixing(10, temp.GetComponent<Room_Class>()));
-            else if (myStats.handyness >= 8 && myStats.handyness <= 10) StartCoroutine(Fixing(7, temp.GetComponent<Room_Class>()));
-            else if (myStats.cleanliness >= 6 && myStats.like == "Fixing Things") StartCoroutine(Fixing(10, temp.GetComponent<Room_Class>()));
+            if (myStats.handyness >= 6 && myStats.handyness < 8) StartCoroutine(Fixing(10, temp));
+            else if (myStats.handyness >= 8 && myStats.handyness <= 10) StartCoroutine(Fixing(7, temp));
+            else if (myStats.cleanliness >= 6 && myStats.like == "Fixing Things") StartCoroutine(Fixing(10, temp));
         }
-       
-    }
-  //  "Cooking" "TV" "Fixing Things" "Quiet" "Drinking" "Gardening" "Working Out" "Cosmetics" "Cleanning"}
 
-public void ManageHappiness(float y)
+    }
+    //  "Cooking" "TV" "Fixing Things" "Quiet" "Drinking" "Gardening" "Working Out" "Cosmetics" "Cleanning"}
+
+    public void ManageHappiness(float y)
     {
-        isHappy = true;
-        if (isHappy)
-            happyMetre.gameObject.SetActive(true);
-        if (y > 0) happyMetre.sprite = happy[0];
-        else if (y < 0) happyMetre.sprite = happy[1];
-        myStats.happiness += y;
-        isHappy = false;
+        if (this.gameObject.activeSelf && !isHappy)
+        {
+            isHappy = true;
+            myStats.happiness += y;
+            if (isHappy) StartCoroutine(HappySign());
+
+            if (y > 0) { happyMetre.sprite = happy[0]; happySad = true; }
+            else if (y < 0) { happyMetre.sprite = happy[1]; happySad = false; }
+            anim_Metre.SetBool("isHappy", happySad);
+        }
+        else
+            return;
+    }
+
+    IEnumerator HappySign()
+    {
+       
+        happyMetre.gameObject.SetActive(true);
+        yield return new WaitForSeconds(1);
+        happyMetre.gameObject.SetActive(false);
     }
 
     IEnumerator Cleanning(float t, Room_Class x)
@@ -81,15 +96,17 @@ public void ManageHappiness(float y)
         print("cleanning");
         yield return new WaitForSeconds(t);
         x.roomState = Room_Class.RoomState.Fixed_Clean;
+        moving = true;
     }
 
     IEnumerator Fixing(float t, Room_Class x)
     {
-        StartCoroutine(MovingAround(ps[0],t));
+        StartCoroutine(MovingAround(ps[0], t));
         fix = false;
         yield return new WaitForSeconds(t);
         ps[1].Play();
         x.roomState = Room_Class.RoomState.Fixed_Clean;
+        moving = true;
     }
 
     IEnumerator MovingAround(ParticleSystem p, float t)
@@ -100,101 +117,103 @@ public void ManageHappiness(float y)
         p.Stop();
     }
 
+    IEnumerator Wait()
+    {
+        moving = false;
+        yield return new WaitForSeconds(3);
+        currentLocation = Random.Range(0, FirstFloorAOI.Length);
+        moving = true;
+        Move();
+    }
+
     private void Move()
     {
 
         if (transform.position.x != FirstFloorAOI[currentLocation].transform.position.x)
         {
-            moving = true;
-            transform.position = Vector3.MoveTowards(transform.position, new Vector3(FirstFloorAOI[currentLocation].transform.position.x, transform.position.y,transform.position.z), speed * Time.deltaTime);
+          transform.position = Vector3.MoveTowards(transform.position, new Vector3(FirstFloorAOI[currentLocation].transform.position.x, transform.position.y, transform.position.z), speed * Time.deltaTime);
+          moving = true;
         }
-        if (transform.position.x == FirstFloorAOI[currentLocation].transform.position.x)
-        {
-            currentLocation = Random.Range(0, FirstFloorAOI.Length);
-            //   StartCoroutine(wait());
-        }
-        if (currentLocation >= FirstFloorAOI.Length)
-        {
-            currentLocation = 0;
-        }
-        if (FirstFloorAOI[currentLocation].transform.position.x > transform.position.x)
-        {
-            FlipSprite(true);
-        }
-        //if (currentLocation == 0)
-        //{
-        //    FlipSprite(true);
-        //}
-        else
-        {
-            FlipSprite(false);
-        }
+
+        if (transform.position.x == FirstFloorAOI[currentLocation].transform.position.x) StartCoroutine(Wait());
+
+        if (FirstFloorAOI[currentLocation].transform.position.x > transform.position.x) FlipSprite(true);
+        else FlipSprite(false);
     }
 
-    //IEnumerator wait()
-    //{
-    //    moving = false;
-    //  yield return new  WaitForSeconds(1);
-    //    currentLocation = Random.Range(0, FirstFloorAOI.Length);
-    //    Move();
-    //}
     void FlipSprite(bool M)
     {
         sprite.flipX = M;
     }
 
+    private void OnTriggerEnter2D(Collider2D c)
+    {
+
+        if (c.gameObject != null) this.gameObject.transform.position = new Vector3(transform.position.x, transform.position.y,c.gameObject.transform.position.z - 1); 
+        if (c.gameObject != null && c.gameObject.tag != "Movement") { temp = c.gameObject.GetComponent<Room_Class>(); CheckHappiness(); }
+        if(temp)print(temp.gameObject.name);
+        if (!temp) return;
+    }
+
     private void OnTriggerStay2D(Collider2D c)
     {
         if (c.gameObject.tag == "Movement" && !clean && !fix)
-        {    
+        {
             Move();
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D c)
+
+    void CheckHappiness()
     {
-        if (myStats.happiness >= .5f)
+        if (temp.roomType == Room_Class.RoomType.Stairwell)
         {
-            if (c.gameObject.GetComponent<Room_Class>().roomState == Room_Class.RoomState.Fixed_Dirty)
+            if (myStats.happiness >= 0.5f)
             {
-                if (myStats.cleanliness >= Random.Range(6, 10))
+                if (temp.roomState == Room_Class.RoomState.Fixed_Dirty)
                 {
-                    temp = c.gameObject;
-                    if (myStats.cleanliness >= 6 && myStats.like.Contains("Cleanning")) { ManageHappiness(0.1f); print(":D Cleaning the " + c.gameObject.GetComponent<Room_Class>().roomType); clean = true; temp = c.gameObject; }
-                    else if (myStats.dislikes.Contains("Cleanning")) { ManageHappiness(-0.2f); print(":O GROSS!! Im not cleaning that up"); }
-                    else { ManageHappiness(-0.1f); print(":( Cleanning the " + c.gameObject.GetComponent<Room_Class>().roomType); clean = true; temp = c.gameObject; }
+                    if (myStats.cleanliness >= Random.Range(6, 10))
+                    {
+
+                        if (myStats.cleanliness >= 6 && myStats.like.Contains("Cleanning")) { ManageHappiness(0.1f); print(":D Cleaning the " + temp.roomType); clean = true; }
+                        else if (myStats.dislikes.Contains("Cleanning")) { ManageHappiness(-0.2f); print(":O GROSS!! Im not cleaning that up"); }
+                        else { ManageHappiness(-0.1f); print(":( Cleanning the " + temp.roomType); clean = true; }
+                    }
+                    else print(":| This " + temp.GetComponent<Room_Class>().roomType + " is a mess");
+                    return;
                 }
-                else print(":| This " + c.gameObject.GetComponent<Room_Class>().roomType + " is a mess");
-            }
 
-
-            else if (c.gameObject.GetComponent<Room_Class>().roomState == Room_Class.RoomState.Broken && c.gameObject.GetComponent<Room_Class>().roomType != Room_Class.RoomType.Stairwell)
-            {
-                if (myStats.handyness >= Random.Range(6, 10))
+                /*else*/
+                if (temp.roomState == Room_Class.RoomState.Broken && temp.roomType != Room_Class.RoomType.Stairwell)
                 {
-                    if (myStats.handyness >= 6 && myStats.like.Contains("Fixing Things")) { ManageHappiness(0.1f); print(":D Fixing the " + c.gameObject.GetComponent<Room_Class>().roomType); fix = true; temp = c.gameObject; }
-                    else if (myStats.dislikes.Contains("Fixing Things")) { ManageHappiness(-0.2f); print(":O GROSS!! Im not fixing that up"); }
-                    else { ManageHappiness(-0.1f); print(":( Fixxing the " + c.gameObject.GetComponent<Room_Class>().roomType); fix = true; temp = c.gameObject; }
+                    if (myStats.handyness >= Random.Range(6, 10))
+                    {
+                        if (myStats.handyness >= 6 && myStats.like.Contains("Fixing Things")) { ManageHappiness(0.1f); print(":D Fixing the " + temp.roomType); fix = true; }
+                        else if (myStats.dislikes.Contains("Fixing Things")) { ManageHappiness(-0.2f); print(":O GROSS!! Im not fixing that up"); }
+                        else { ManageHappiness(-0.1f); print(":( Fixxing the " + temp.roomType); fix = true; }
+                    }
+                    else print(":| This " + temp.roomType + " is wrecked");
+                    return;
                 }
-                else print(":| This " + c.gameObject.GetComponent<Room_Class>().roomType + " is wrecked");
+                else
+                    return;
             }
-
+            else if (myStats.happiness <= 0.4f) return;
         }
-
-        if (c.gameObject.GetComponent<Room_Class>().roomType == Room_Class.RoomType.Stairwell /*&& !stairTravel*/)
+        if (temp.roomType == Room_Class.RoomType.Stairwell)
         {
             int randomChance = Random.Range(0, 100);
+            print(randomChance);
             if (randomChance >= 51)
             {
-                if (c.gameObject == stairs[0].gameObject && c.gameObject.GetComponent<Room_Class>().roomState == Room_Class.RoomState.Fixed_Clean) transform.position = SecondFloorAOI[0].transform.position;
-                else if (c.gameObject == stairs[1].gameObject && stairs[0].roomState == Room_Class.RoomState.Fixed_Clean) transform.position = FirstFloorAOI[3].transform.position;
+                if (temp.gameObject == stairs[0].gameObject && temp.roomState == Room_Class.RoomState.Fixed_Clean) transform.position = SecondFloorAOI[0].transform.position;
+                else if (temp.gameObject == stairs[1].gameObject && stairs[0].roomState == Room_Class.RoomState.Fixed_Clean) transform.position = FirstFloorAOI[3].transform.position;
             }
-         //   stairTravel = true;
         }
     }
-
-    //private void OnTriggerExit2D(Collider2D c)
-    //{
-    //    if (c.gameObject.GetComponent<Room_Class>().roomType == Room_Class.RoomType.Stairwell && stairTravel) stairTravel = false;
-    //}
 }
+    public class NamedBoolean
+    {
+        [SerializeField] string name;
+        [SerializeField] bool boolean;
+    }
