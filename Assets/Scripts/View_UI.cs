@@ -199,7 +199,14 @@ public class View_UI : MonoBehaviour
     /// </summary>
     public void OpenNpcManagerPanel()
     {
-        npcManagerPanel.SetActive(true);
+        if (npcManagerPanel.activeSelf)
+        {
+            npcManagerPanel.SetActive(false);
+        }
+        else
+        {
+            npcManagerPanel.SetActive(true);
+        }
         audioManager.PlayOneShotByName("OpenPanel");
     }
 
