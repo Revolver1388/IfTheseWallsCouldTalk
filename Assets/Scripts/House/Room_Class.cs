@@ -12,18 +12,30 @@ public class Room_Class : MonoBehaviour
     public RoomType roomType;
     [SerializeField]Sprite[] images;
     SpriteRenderer sprite;
-    public int appliances;
+    public int applianceCount;
+    [SerializeField] Appliance_Class[] appliances;
+    [SerializeField] GameObject forgroundItem;
 
     private void Awake()
     {
-        sprite = GetComponentInChildren<SpriteRenderer>();  
+        sprite = GetComponentInChildren<SpriteRenderer>();
+        appliances = GetComponentsInChildren<Appliance_Class>();
+    }
+    private void Start()
+    {
+        if (forgroundItem) forgroundItem.SetActive(false);
+        else
+            return;
     }
     private void Update()
     {
 
-            if (roomState == RoomState.Broken) { StartCoroutine(swap(0)); }
-            else if (roomState == RoomState.Fixed_Clean) {StartCoroutine(swap(1)); }
-        
+        if (roomState == RoomState.Broken) { StartCoroutine(swap(0)); }
+        else if (roomState == RoomState.Fixed_Clean)
+        {
+            StartCoroutine(swap(1));
+            if (roomType == RoomType.Kitchen) forgroundItem.SetActive(true);
+        }        
     }
     IEnumerator swap(int i)
     {

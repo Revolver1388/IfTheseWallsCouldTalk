@@ -87,5 +87,6 @@ public class TennantSelector : NPC_Base
             default:
                 break;
         }
+        tennants[i].CreateNewTennant();
     }
 }

@@ -77,3 +77,21 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Rooms
+    uniqueID: 395254903
+    locked: 0
+  - name: Doors
+    uniqueID: 1637412207
+    locked: 0
+  - name: ApplianceBack
+    uniqueID: 2463980823
+    locked: 0
+  - name: NPC
+    uniqueID: 1333299709
+    locked: 0
+  - name: ApplianceFront
+    uniqueID: 1582715459
+    locked: 0
+  - name: HouseFrame
+    uniqueID: 549657253
+    locked: 0
