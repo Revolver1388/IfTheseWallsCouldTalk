@@ -567,12 +567,19 @@ public class View_UI : MonoBehaviour
     {
         // TODO: Play Pause Button
         Debug.Log("Play/Pause Button!!!");
+        if (Time.timeScale == 1)
+            Time.timeScale = 0;
+        else if (Time.timeScale == 0)
+            Time.timeScale = 1;
+        else if (Time.timeScale > 1)
+            Time.timeScale = 1;
     }
 
     public void DoubleSpeedButton()
     {
         // TODO: Double Speed Button
         Debug.Log("Double speed Button!!!");
+        Time.timeScale = 2;
 
     }
 
@@ -580,7 +587,7 @@ public class View_UI : MonoBehaviour
     {
         // TODO: Quad speed button
         Debug.Log("quad speed Button!!!");
-
+        Time.timeScale = 4;
     }
 
     public void RepairRoomButton(string roomName)
