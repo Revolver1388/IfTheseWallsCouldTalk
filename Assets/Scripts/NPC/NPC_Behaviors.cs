@@ -136,15 +136,12 @@ public class NPC_Behaviors : MonoBehaviour
     }
     private void Move()
     {
-
         if (transform.position.x != FirstFloorAOI[currentLocation].transform.position.x)
         {
           transform.position = Vector3.MoveTowards(transform.position, new Vector3(FirstFloorAOI[currentLocation].transform.position.x, transform.position.y, transform.position.z), speed * Time.deltaTime);
           moving = true;
         }
-
         if (transform.position.x == FirstFloorAOI[currentLocation].transform.position.x) StartCoroutine(Wait());
-
         if (FirstFloorAOI[currentLocation].transform.position.x > transform.position.x) FlipSprite(true);
         else FlipSprite(false);
     }
@@ -206,7 +203,6 @@ public class NPC_Behaviors : MonoBehaviour
         if (temp.roomType == Room_Class.RoomType.Stairwell && !isStairs)
         {
             int randomChance = Random.Range(0, 100);
-            print(randomChance);
             if (randomChance >= 51)
             {
                 if (temp.gameObject == stairs[0].gameObject && temp.roomState == Room_Class.RoomState.Fixed_Clean) transform.position = SecondFloorAOI[0].transform.position;
