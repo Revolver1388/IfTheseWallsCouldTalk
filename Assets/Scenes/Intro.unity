@@ -657,16 +657,16 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: 4582eec17f8faab4eabe25a639b76768, type: 3}
     m_FontSize: 50
     m_FontStyle: 1
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 0
-    m_MaxSize: 50
+    m_MaxSize: 80
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: It's a real Fixer-Upper!!!
+  m_Text: If These Walls Could Talk
 --- !u!222 &586397117
 CanvasRenderer:
   m_ObjectHideFlags: 0
