@@ -87,6 +87,8 @@ public class TennantSelector : NPC_Base
             default:
                 break;
         }
+        print(timesPicked);
+        print("Cresting a new Tennant");
         tennants[i].CreateNewTennant();
     }
 }
