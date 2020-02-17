@@ -22,6 +22,8 @@ public class HouseManager : MonoBehaviour
     bool bedTwo = false;
     bool bedThree = false;
     public bool dayOver = false;
+
+
     // Start is called before the first frame update
     void Start()
     {
