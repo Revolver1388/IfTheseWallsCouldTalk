@@ -34,9 +34,10 @@ public class TennantSelector : NPC_Base
                 happiness = tennants[i].happiness;
                 handyness = tennants[i].handyness;
                 cleanliness = tennants[i].cleanliness;
-                portrait = tennants[i].portrait;
                 like = tennants[i].like;
                 dislikes = tennants[i].dislikes;
+                gender = tennants[i].gender;
+                portrait = tennants[i].portrait;
                 npc[timesPicked].gameObject.SetActive(true);
                 ui.CloseNpcManagerPanel();
                 timesPicked += 1;
@@ -48,9 +49,10 @@ public class TennantSelector : NPC_Base
                 happiness = tennants[i].happiness;
                 handyness = tennants[i].handyness;
                 cleanliness = tennants[i].cleanliness;
-                portrait = tennants[i].portrait;
                 like = tennants[i].like;
                 dislikes = tennants[i].dislikes;
+                gender = tennants[i].gender;
+                portrait = tennants[i].portrait;
                 npc[timesPicked].gameObject.SetActive(true);
                 ui.CloseNpcManagerPanel();
                 timesPicked += 1;
@@ -62,9 +64,10 @@ public class TennantSelector : NPC_Base
                 happiness = tennants[i].happiness;
                 handyness = tennants[i].handyness;
                 cleanliness = tennants[i].cleanliness;
-                portrait = tennants[i].portrait;
                 like = tennants[i].like;
                 dislikes = tennants[i].dislikes;
+                gender = tennants[i].gender;
+                portrait = tennants[i].portrait;
                 npc[timesPicked].gameObject.SetActive(true);
                 ui.CloseNpcManagerPanel();
                 timesPicked += 1;
@@ -76,9 +79,10 @@ public class TennantSelector : NPC_Base
                 happiness = tennants[i].happiness;
                 handyness = tennants[i].handyness;
                 cleanliness = tennants[i].cleanliness;
-                portrait = tennants[i].portrait;
                 like = tennants[i].like;
                 dislikes = tennants[i].dislikes;
+                gender = tennants[i].gender;
+                portrait = tennants[i].portrait;
                 npc[timesPicked].gameObject.SetActive(true);
                 ui.CloseNpcManagerPanel();
                 timesPicked += 1;
@@ -87,8 +91,6 @@ public class TennantSelector : NPC_Base
             default:
                 break;
         }
-        print(timesPicked);
-        print("Cresting a new Tennant");
         tennants[i].CreateNewTennant();
     }
 }

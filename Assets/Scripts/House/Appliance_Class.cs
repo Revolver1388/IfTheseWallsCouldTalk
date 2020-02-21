@@ -30,6 +30,8 @@ public class Appliance_Class : MonoBehaviour
     private void OnDisable()
     {
         if (!this.gameObject.name.Contains("Placeholder")) GetComponentInParent<Room_Class>().applianceCount--;
+        else
+            return;
     }
     void IncreaseHappyiness()
     {

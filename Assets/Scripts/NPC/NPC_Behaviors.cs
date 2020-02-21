@@ -11,7 +11,7 @@ public class NPC_Behaviors : MonoBehaviour
     bool clean = false;
     bool fix = false;
     [SerializeField] ParticleSystem[] ps;
-
+    [SerializeField] Sprite[] gender;
     #region movement Stuff
     [SerializeField] Transform myRoom;
     [SerializeField] Transform[] FirstFloorAOI;
@@ -44,7 +44,10 @@ public class NPC_Behaviors : MonoBehaviour
     private void OnEnable()
     {        
         meanIncome = Random.Range(myStats.incomeMax, myStats.incomeMin);
+        if (myStats.gender) sprite.sprite = gender[1];
+        else sprite.sprite = gender[0];
         anim.SetBool("New Bool", moving);
+        anim.SetBool("male", myStats.gender);
     }
     // Update is called once per frame
     void Update()
@@ -153,10 +156,7 @@ public class NPC_Behaviors : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D c)
     {
-
-       // if (c.gameObject != null) this.gameObject.transform.position = new Vector3(transform.position.x, transform.position.y,c.gameObject.transform.position.z - 1); 
         if (c.gameObject != null && c.gameObject.tag != "Movement") { temp = c.gameObject.GetComponent<Room_Class>(); CheckHappiness(); }
-        //if(temp)print(temp.gameObject.name);
         if (!temp) return;
     }
 

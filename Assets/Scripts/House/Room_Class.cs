@@ -29,13 +29,21 @@ public class Room_Class : MonoBehaviour
     }
     private void Update()
     {
-
-        if (roomState == RoomState.Broken) { StartCoroutine(swap(0)); }
-        else if (roomState == RoomState.Fixed_Clean)
+        if (gameObject.tag != "TwoArrayAsset")
         {
-            StartCoroutine(swap(1));
-            if (roomType == RoomType.Kitchen) forgroundItem.SetActive(true);
-        }        
+            if (roomState == RoomState.Broken) { StartCoroutine(swap(0)); }
+            else if (roomState == RoomState.Fixed_Dirty) StartCoroutine(swap(1));
+            else if (roomState == RoomState.Fixed_Clean)
+            {
+                StartCoroutine(swap(2));
+                if (roomType == RoomType.Kitchen) forgroundItem.SetActive(true);
+            }
+        }
+        else if (gameObject.tag == "TwoArrayAsset")
+        {
+            if (roomState == RoomState.Fixed_Dirty) StartCoroutine(swap(0));
+            else if (roomState == RoomState.Fixed_Clean) StartCoroutine(swap(1));
+        }    
     }
     IEnumerator swap(int i)
     {

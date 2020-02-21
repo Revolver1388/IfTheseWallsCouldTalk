@@ -40,6 +40,7 @@ TagManager:
   - 2ndFloor
   - 1stFloor
   - Happy
+  - TwoArrayAsset
   layers:
   - Default
   - TransparentFX
@@ -92,6 +93,9 @@ TagManager:
   - name: ApplianceFront
     uniqueID: 1582715459
     locked: 0
-  - name: HouseFrame
+  - name: DoorTransitions
     uniqueID: 549657253
+    locked: 0
+  - name: HouseLayer
+    uniqueID: 2326340821
     locked: 0
