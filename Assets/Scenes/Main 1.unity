@@ -2004,7 +2004,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8669a4070a7a5da4fa118177f481453c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam_Speed: 0.3
+  cam_Speed: 0.1
   distFromScreen: 10
 --- !u!20 &519420031
 Camera:
@@ -10324,7 +10324,7 @@ PrefabInstance:
     - target: {fileID: 4831980353976675392, guid: c3eafe1df560bc64da5fd5ae7b3d8ece,
         type: 3}
       propertyPath: lvl_Music.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4831980353976675392, guid: c3eafe1df560bc64da5fd5ae7b3d8ece,
         type: 3}
@@ -10374,28 +10374,28 @@ PrefabInstance:
     - target: {fileID: 4831980353976675392, guid: c3eafe1df560bc64da5fd5ae7b3d8ece,
         type: 3}
       propertyPath: lvl_Music.Array.data[1].name
-      value: BadMusic
+      value: Normal
       objectReference: {fileID: 0}
     - target: {fileID: 4831980353976675392, guid: c3eafe1df560bc64da5fd5ae7b3d8ece,
         type: 3}
       propertyPath: lvl_Music.Array.data[2].name
-      value: GoodMusic
+      value: Normal
       objectReference: {fileID: 0}
     - target: {fileID: 4831980353976675392, guid: c3eafe1df560bc64da5fd5ae7b3d8ece,
         type: 3}
       propertyPath: lvl_Music.Array.data[1].clip
       value: 
-      objectReference: {fileID: 8300000, guid: 006331fd90698ad49a8c67e9e2e8b2c4, type: 3}
+      objectReference: {fileID: 8300000, guid: 47d6ba363d78f4b438de07efbb3c2bb5, type: 3}
     - target: {fileID: 4831980353976675392, guid: c3eafe1df560bc64da5fd5ae7b3d8ece,
         type: 3}
       propertyPath: lvl_Music.Array.data[0].clip
       value: 
-      objectReference: {fileID: 8300000, guid: 913d2fff566cf144984454aa9408dc83, type: 3}
+      objectReference: {fileID: 8300000, guid: 3cd01b69c7a8cd54cb801d392df33216, type: 3}
     - target: {fileID: 4831980353976675392, guid: c3eafe1df560bc64da5fd5ae7b3d8ece,
         type: 3}
       propertyPath: lvl_Music.Array.data[2].clip
       value: 
-      objectReference: {fileID: 8300000, guid: c68788866aeacbf4bbc7cb21bbb383b4, type: 3}
+      objectReference: {fileID: 8300000, guid: 06bc853c75dc60c499bd8693e439ba0a, type: 3}
     - target: {fileID: 4831980353976675392, guid: c3eafe1df560bc64da5fd5ae7b3d8ece,
         type: 3}
       propertyPath: sfx.Array.data[0].clip
