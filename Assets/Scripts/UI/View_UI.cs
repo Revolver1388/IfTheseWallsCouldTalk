@@ -44,7 +44,12 @@ public class View_UI : MonoBehaviour
     public bool Attic;
 
 
+    //Music Buttons
+    [SerializeField] Button musicOnButton;
+    [SerializeField] Button musicOffButton;
 
+    //Calendar Panel
+    [SerializeField] GameObject calendarPanel;
 
     // Manager Panels
     [SerializeField] GameObject npcManagerPanel;
@@ -564,9 +569,33 @@ public class View_UI : MonoBehaviour
 
     #region: Buttons and such.......................
 
-    public void MusicOnOffButton()
+    public void MusicOffButton()
     {
         Debug.Log("music button pushed");
+        musicOffButton.gameObject.SetActive(false);
+        musicOnButton.gameObject.SetActive(true);
+        audioManager.StopMusic();
+    }
+
+    public void MusicOnButton()
+    {
+        Debug.Log("music button pushed");
+        musicOffButton.gameObject.SetActive(true);
+        musicOnButton.gameObject.SetActive(false);
+        StartCoroutine(audioManager.PlayMusic("Normal"));
+    }
+
+    public void CalendarButton()
+    {
+        Debug.Log("Calender button pushed");
+        if (calendarPanel.activeSelf)
+        {
+            calendarPanel.SetActive(false);
+        }
+        else
+        {
+            calendarPanel.SetActive(true);
+        }
     }
 
     public void RoomManagerButton()

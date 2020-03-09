@@ -61,7 +61,7 @@ public class AudioManager : MonoBehaviour
      //   levelMusic.
     }
 
-    void StopMusic()
+    public void StopMusic()
     {
         levelMusic.Stop();
     }
