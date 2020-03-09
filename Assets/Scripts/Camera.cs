@@ -4,22 +4,25 @@ using UnityEngine;
 
 public class Camera : MonoBehaviour
 {
-    Camera main;
+    public Camera main;
     Vector3 damp;
-    [SerializeField]
-    float cam_Speed;
-    float cam_Dist = -10;
-    [SerializeField]
-    float distFromScreen;
-    float horizontal;
-    float vertical;
+    [SerializeField] float cam_Speed;
+    [SerializeField] float cam_Dist = -10;
+    [SerializeField] float distFromScreen;
+    private float horizontal;
+    private float vertical;
 
     private float zoom = 80f;
 
     // Start is called before the first frame update
     void Start()
     {
-        if (!main) main = FindObjectOfType<Camera>();        
+        
+        if (!main) main = FindObjectOfType<Camera>();
+        main.enabled = true;
+
+     
+
     }
 
     // Update is called once per frame
@@ -57,6 +60,8 @@ public class Camera : MonoBehaviour
             transform.position = new Vector3(transform.position.x, 2, cam_Dist);
 
         }
+
+       
     }
 
    

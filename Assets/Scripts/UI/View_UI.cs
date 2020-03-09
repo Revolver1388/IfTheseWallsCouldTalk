@@ -13,6 +13,7 @@ public class View_UI : MonoBehaviour
 
     [SerializeField] HouseManager houseManager;
     [SerializeField] public Text bankAccountText;
+
     //[SerializeField] public Text timeText;
     [SerializeField] public Text dayText;
     [SerializeField] public Image TimeImage;
@@ -29,9 +30,9 @@ public class View_UI : MonoBehaviour
     public bool Bedroom1 = true;
     public bool Outside = true;
     // Second Floor
-    public bool LivingRoom;
-    public bool Bedroom2;
-    public bool Bedroom3;
+    public bool LivingRoom = true;
+    public bool Bedroom2 = true;
+    public bool Bedroom3 = true;
     //Basement
     public bool Basement;
     public bool WineCellar;
@@ -39,7 +40,7 @@ public class View_UI : MonoBehaviour
     // Third Floor
     public bool Study;
     // Bathroom
-    public bool Bathroom;
+    public bool Bathroom = true;
     // Attic
     public bool Attic;
 

@@ -31,6 +31,8 @@ public class HouseManager : MonoBehaviour
     {
         rooms = FindObjectsOfType<Room_Class>();
         UI = FindObjectOfType<View_UI>();
+        bank = 100;
+        UI.bankAccountText.text = "$" + bank;
     }
 
     // Update is called once per frame
@@ -58,7 +60,7 @@ public class HouseManager : MonoBehaviour
         dayOver = false;
         yield return new WaitForSeconds(2);
         bank = bank + AddIncome();
-        UI.bankAccountText.text = $"{bank}";
+        UI.bankAccountText.text = "$" + bank;
         TallyRooms();
         totalCash = 0;
         endOfDayCash = 0;
