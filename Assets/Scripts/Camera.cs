@@ -16,13 +16,9 @@ public class Camera : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
-        
+    { 
         if (!main) main = FindObjectOfType<Camera>();
         main.enabled = true;
-
-     
-
     }
 
     // Update is called once per frame

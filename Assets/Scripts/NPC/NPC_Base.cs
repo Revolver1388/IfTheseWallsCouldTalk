@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class NPC_Base : MonoBehaviour
 {
-    protected string[] names = { "Matt", "Cam", "Kyle", "Marion", "Bernadette", "Chelsea", "Leif", "Bob", "Becky", "Peter", "Paul", "Heyzues", "Venom"};
+    protected string[] names = { "Matt", "Cam", "Kyle", "Marion", "Bernadette", "Chelsea", "Leif", "Bob", "Becky", "Peter", "Paul", "Heyzues", "Venom", "Scott"};
     protected string[] likes = { "Cooking", "TV", "Fixing Things", "Quiet", "Drinking", "Gardening", "Working Out", "Cosmetics", "Cleanning"};
     [SerializeField] public RawImage portrait;
     public bool gender = false;

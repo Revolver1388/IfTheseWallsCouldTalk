@@ -447,11 +447,6 @@ public class View_UI : MonoBehaviour
 
     #region: Item stuff.....................
 
-    //public void ItemButton(string itemName, int fullPrice, int discountPrice)
-    //{
-    //    OpenConfirmItemModal(itemName, fullPrice, discountPrice);
-    //}
-
     public void ItemButton()
     {
         choice = EventSystem.current.currentSelectedGameObject.transform.gameObject.name;
@@ -500,7 +495,11 @@ public class View_UI : MonoBehaviour
             choice = null;
             audioManager.PlayOneShotByName("Purchase");
         }
-        else audioManager.PlayOneShotByName("CantBuy");
+        else
+        {
+            audioManager.PlayOneShotByName("CantBuy");
+            StartCoroutine(ChangeTextColor(bankAccountText, Color.red, Color.green));
+        }
     }
 
     public void DiscountPriceButton()
@@ -518,9 +517,27 @@ public class View_UI : MonoBehaviour
             choice = null;
             audioManager.PlayOneShotByName("Purchase");
         }
-       else audioManager.PlayOneShotByName("CantBuy");
+        else
+        {
+            audioManager.PlayOneShotByName("CantBuy");
+            StartCoroutine(ChangeTextColor(bankAccountText, Color.red, Color.green));
+        }
     }
 
+    IEnumerator ChangeTextColor(Text t, Color a, Color b)
+    {
+        t.color = a;
+        yield return new WaitForSeconds(.3f);
+        t.color = b;
+        yield return new WaitForSeconds(.3f);
+        t.color = a;
+        yield return new WaitForSeconds(.3f);
+        t.color = b;
+        yield return new WaitForSeconds(.3f);
+        t.color = a;
+        yield return new WaitForSeconds(.3f);
+        t.color = b;
+    }
     void CloseAllPurchasePanels()
     {
         if (KitchenRoomPanel.activeSelf)

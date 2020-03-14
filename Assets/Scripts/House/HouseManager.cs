@@ -89,9 +89,9 @@ public class HouseManager : MonoBehaviour
                 default:
                     break;
             }
-            if (room.roomState == Room_Class.RoomState.Broken) score += 0;
-            else if (room.roomState == Room_Class.RoomState.Fixed_Dirty) score += 1;
-            else if (room.roomState == Room_Class.RoomState.Fixed_Clean) score += 2;
+            if (room.roomState == Room_Class.RoomState.Broken) score += -2;
+            else if (room.roomState == Room_Class.RoomState.Fixed_Dirty) score += -1;
+            else if (room.roomState == Room_Class.RoomState.Fixed_Clean) score += 1;
         }
         print(score);
         return score;
