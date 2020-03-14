@@ -43,8 +43,10 @@ public class View_UI : MonoBehaviour
     public bool Bathroom = true;
     // Attic
     public bool Attic;
-
-
+    string itemName;
+    string fullPrice;
+    string discountPrice;
+    Image itemImage;
     //Music Buttons
     [SerializeField] Button musicOnButton;
     [SerializeField] Button musicOffButton;
@@ -89,6 +91,7 @@ public class View_UI : MonoBehaviour
     [SerializeField] Text ItemConfirmModalItemNameText;
     [SerializeField] Text ItemConfirmModalFullPriceText;
     [SerializeField] Text ItemConfirmModalDiscountPriceText;
+    [SerializeField] Image ItemConfirmModalImage;
     //[SerializeField] GameObject KitchenItems;
     //[SerializeField] GameObject LivingroomItems;
     //[SerializeField] GameObject BathroomItems;
@@ -227,7 +230,7 @@ public class View_UI : MonoBehaviour
     /// </summary>
     public void OpenKitchenRoomPanel()
     {
-        KitchenRoomPanel.SetActive(true);
+        KitchenRoomPanel.SetActive(true);       
         audioManager.PlayOneShotByName("OpenPanel");
 
     }
@@ -451,24 +454,22 @@ public class View_UI : MonoBehaviour
 
     public void ItemButton()
     {
-        string itemName = "itemName";
-        int fullPrice = 100;
-        int discountPrice = 50;
         choice = EventSystem.current.currentSelectedGameObject.transform.gameObject.name;
+        itemName = EventSystem.current.currentSelectedGameObject.transform.gameObject.GetComponentInChildren<Text>().text;
+        fullPrice = EventSystem.current.currentSelectedGameObject.transform.gameObject.GetComponentInChildren<FullPrice>().GetComponent<Text>().text;
+        discountPrice = EventSystem.current.currentSelectedGameObject.transform.gameObject.GetComponentInChildren<DiscountPrice>().GetComponent<Text>().text;
+        itemImage = EventSystem.current.currentSelectedGameObject.transform.gameObject.GetComponentInChildren<ItemImage>().GetComponent<Image>();
 
-        OpenConfirmItemModal(itemName, fullPrice, discountPrice);
-
-
-
+        OpenConfirmItemModal(itemName, fullPrice, discountPrice,itemImage);
     }
 
-
-    public void OpenConfirmItemModal(string itemName, int fullPrice, int discountPrice)
+    public void OpenConfirmItemModal(string itemName, string fullPrice, string discountPrice, Image image)
     {
         ItemConfirmModal.SetActive(true);
         ItemConfirmModalItemNameText.text = itemName;
-        ItemConfirmModalFullPriceText.text = "Full Price: $" + fullPrice.ToString();
-        ItemConfirmModalDiscountPriceText.text = "Discount Price: $" + discountPrice.ToString();
+        ItemConfirmModalFullPriceText.text = "Full Price: $" + fullPrice;
+        ItemConfirmModalDiscountPriceText.text = "Discount Price: $" + discountPrice;
+        ItemConfirmModalImage.sprite = itemImage.sprite;
         audioManager.PlayOneShotByName("OpenPanel");
         CloseAllPurchasePanels();
     }
@@ -486,31 +487,38 @@ public class View_UI : MonoBehaviour
 
     public void FullPriceButton()
     {
-
-        // TODO: Purchase Item for full price via game controller
-        CloseConfirmItemModalAndRoomPanel();
-        for (int i = 0; i < theButtons.Length; i++)
+        if (int.Parse(fullPrice) <= houseManager.bank)
         {
-            if (theButtons[i].name == choice)
-                Item[i].SetActive(true);
+            CloseConfirmItemModalAndRoomPanel();
+            for (int i = 0; i < theButtons.Length; i++)
+            {
+                if (theButtons[i].name == choice)
+                    Item[i].SetActive(true);
+            }
+            houseManager.bank -= int.Parse(fullPrice);
+            bankAccountText.text = "$" + houseManager.bank;
+            choice = null;
+            audioManager.PlayOneShotByName("Purchase");
         }
-        choice = null;
-        audioManager.PlayOneShotByName("Purchase");
-
+        else audioManager.PlayOneShotByName("CantBuy");
     }
 
     public void DiscountPriceButton()
     {
-        // TODO: Purchase Item for discount price via game controller
-        CloseConfirmItemModalAndRoomPanel();
-        for (int i = 0; i < theButtons.Length; i++)
+        if (int.Parse(discountPrice) <= houseManager.bank)
         {
-            if (theButtons[i].name == choice)
-                Item[i].SetActive(true);
+            CloseConfirmItemModalAndRoomPanel();
+            for (int i = 0; i < theButtons.Length; i++)
+            {
+                if (theButtons[i].name == choice)
+                    Item[i].SetActive(true);
+            }
+            houseManager.bank -= int.Parse(discountPrice);
+            bankAccountText.text = "$" + houseManager.bank;
+            choice = null;
+            audioManager.PlayOneShotByName("Purchase");
         }
-        choice = null;
-        audioManager.PlayOneShotByName("Purchase");
-
+       else audioManager.PlayOneShotByName("CantBuy");
     }
 
     void CloseAllPurchasePanels()

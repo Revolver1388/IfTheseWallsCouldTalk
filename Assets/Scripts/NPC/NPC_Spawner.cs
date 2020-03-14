@@ -12,17 +12,6 @@ public class NPC_Spawner : NPC_Base
     private void Awake()
     {
         CreateNewTennant();
-        //house = FindObjectOfType<HouseManager>();
-        //NPC_name = names[Random.Range(0, names.Length)];
-        //like = likes[Random.Range(0, likes.Length)];
-        //dislikes = likes[Random.Range(0, likes.Length)];
-        //incomeMin = Random.Range(10, 17);
-        //incomeMax = Random.Range(15, 22);
-        //happiness = Random.Range(0.3f,0.7f);
-        //cleanliness = Random.Range(0, 10);
-        //handyness = Random.Range(0, 10);
-        //portrait = GetComponentInChildren<RawImage>();
-
     }
     // Start is called before the first frame update
     void Start()
