@@ -99,3 +99,6 @@ TagManager:
   - name: HouseLayer
     uniqueID: 2326340821
     locked: 0
+  - name: Effects
+    uniqueID: 4233948955
+    locked: 0

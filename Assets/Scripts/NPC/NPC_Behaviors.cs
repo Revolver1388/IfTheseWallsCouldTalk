@@ -44,8 +44,7 @@ public class NPC_Behaviors : MonoBehaviour
     private void OnEnable()
     {        
         meanIncome = Random.Range(myStats.incomeMax, myStats.incomeMin);
-        if (myStats.gender) sprite.sprite = gender[1];
-        else sprite.sprite = gender[0];
+        sprite.sprite = myStats.gender ? gender[1] : gender[0];
         anim.SetBool("New Bool", moving);
         anim.SetBool("male", myStats.gender);
     }
