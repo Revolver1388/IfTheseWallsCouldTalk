@@ -3370,10 +3370,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8669a4070a7a5da4fa118177f481453c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  main: {fileID: 0}
-  cam_Speed: 0.1
+  mainCam: {fileID: 0}
+  cam_Speed: 0.5
   cam_Dist: -10
-  distFromScreen: 2.23
+  distFromScreen: 0
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
