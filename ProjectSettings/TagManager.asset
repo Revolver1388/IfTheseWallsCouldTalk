@@ -41,6 +41,7 @@ TagManager:
   - 1stFloor
   - Happy
   - TwoArrayAsset
+  - NPCButton
   layers:
   - Default
   - TransparentFX

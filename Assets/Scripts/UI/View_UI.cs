@@ -22,7 +22,7 @@ public class View_UI : MonoBehaviour
     string choice;
     // Public bools that indicate whether a given room is available or not
     // Stairwells
-    public bool StairwellFirstFloor = false;
+    public bool StairwellFirstFloor = true;
     public bool StairwellSecondFloor = false;
     public bool StairwellThirdFloor = false;
     // First Floor
@@ -57,6 +57,7 @@ public class View_UI : MonoBehaviour
     // Manager Panels
     [SerializeField] GameObject npcManagerPanel;
     [SerializeField] GameObject roomManagerPanel;
+    [SerializeField] public GameObject tennantButton;
 
     // Room Panels
     [SerializeField] GameObject KitchenRoomPanel;
@@ -121,6 +122,7 @@ public class View_UI : MonoBehaviour
     void Start()
     {
         audioManager = FindObjectOfType<AudioManager>();
+        tennantButton = GameObject.FindGameObjectWithTag("NPCButton");
         //audioManager.PlayMusic("Normal");
         foreach (var item in Item)
         {
@@ -131,6 +133,8 @@ public class View_UI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space)) audioManager.NextSong();
+
         if (Kitchen) { KitchenButton.SetActive(true); }
         else { KitchenButton.SetActive(false); }
 
@@ -221,6 +225,7 @@ public class View_UI : MonoBehaviour
     public void CloseNpcManagerPanel()
     {
         npcManagerPanel.SetActive(false);
+        tennantButton.SetActive(true);
         audioManager.PlayOneShotByName("ClosePanel");
 
     }
@@ -597,7 +602,7 @@ public class View_UI : MonoBehaviour
 
     public void MusicOffButton()
     {
-        Debug.Log("music button pushed");
+        //Debug.Log("music button pushed");
         musicOffButton.gameObject.SetActive(false);
         musicOnButton.gameObject.SetActive(true);
         audioManager.StopMusic();
@@ -605,7 +610,7 @@ public class View_UI : MonoBehaviour
 
     public void MusicOnButton()
     {
-        Debug.Log("music button pushed");
+        //Debug.Log("music button pushed");
         musicOffButton.gameObject.SetActive(true);
         musicOnButton.gameObject.SetActive(false);
         StartCoroutine(audioManager.PlayMusic("Normal"));
@@ -613,7 +618,7 @@ public class View_UI : MonoBehaviour
 
     public void CalendarButton()
     {
-        Debug.Log("Calender button pushed");
+        //Debug.Log("Calender button pushed");
         if (calendarPanel.activeSelf)
         {
             calendarPanel.SetActive(false);

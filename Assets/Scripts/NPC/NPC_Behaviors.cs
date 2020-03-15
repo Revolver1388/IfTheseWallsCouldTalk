@@ -51,7 +51,7 @@ public class NPC_Behaviors : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        bathroomDoor.SetBool("Bool", bathroom);
+      //  bathroomDoor.SetBool("Bool", bathroom);
         if (clean)
         {
             moving = false;

@@ -93,7 +93,6 @@ public class HouseManager : MonoBehaviour
             else if (room.roomState == Room_Class.RoomState.Fixed_Dirty) score += -1;
             else if (room.roomState == Room_Class.RoomState.Fixed_Clean) score += 1;
         }
-        print(score);
         return score;
     }
 

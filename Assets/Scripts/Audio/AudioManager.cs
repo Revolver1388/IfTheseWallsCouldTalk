@@ -7,7 +7,7 @@ using UnityEngine.Audio;
 public class AudioManager : MonoBehaviour
 {
     Scene thisScene;
-
+    int songNumber = 0;
     #region Debug Menu
     public Slider music_Volume;
     public Slider SFX_Volume;
@@ -48,10 +48,17 @@ public class AudioManager : MonoBehaviour
     {
         StopMusic();
         yield return new WaitForSeconds(levelMusicDelay);
-        foreach(LevelMusic song in lvl_Music) { if (song.name == clipName) levelMusic.clip = song.clip; levelMusic.Play(); }
+        foreach(LevelMusic song in lvl_Music) { if (song.name == clipName) levelMusic.clip = song.clip; levelMusic.Play();}
         levelMusic.Play();
     }
 
+    public void NextSong()
+    {
+        if (songNumber >= lvl_Music.Length) songNumber = 0;
+        StopMusic();
+        levelMusic.PlayOneShot(lvl_Music[songNumber].clip);
+        songNumber += 1;
+    }
 
     public void PlayOneShotByName(string sound)
     { foreach (SfxClip clip in sfx) if (clip.name == sound) sfxSource.PlayOneShot(clip.clip); }
