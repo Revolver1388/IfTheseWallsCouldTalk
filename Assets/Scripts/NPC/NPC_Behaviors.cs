@@ -89,8 +89,7 @@ public class NPC_Behaviors : MonoBehaviour
     }
 
     IEnumerator HappySign()
-    {
-       
+    {       
         happyMetre.gameObject.SetActive(true);
         yield return new WaitForSeconds(2.5f);
         happyMetre.gameObject.SetActive(false);
@@ -102,7 +101,7 @@ public class NPC_Behaviors : MonoBehaviour
         clean = false;
         yield return new WaitForSeconds(t);
         x.roomState = Room_Class.RoomState.Fixed_Clean;
-        moving = true;
+        if(x.roomState == Room_Class.RoomState.Fixed_Clean) moving = true;
     }
 
     IEnumerator Fixing(float t, Room_Class x)
@@ -112,7 +111,7 @@ public class NPC_Behaviors : MonoBehaviour
         yield return new WaitForSeconds(t);
         ps[1].Play();
         x.roomState = Room_Class.RoomState.Fixed_Clean;
-        moving = true;
+        if(x.roomState == Room_Class.RoomState.Fixed_Clean) moving = true;
     }
 
     IEnumerator MovingAround(ParticleSystem p, float t)
@@ -168,38 +167,37 @@ public class NPC_Behaviors : MonoBehaviour
 
     void CheckHappiness()
     {
-        if (temp.roomType != Room_Class.RoomType.Stairwell)
-        {
-            if (myStats.happiness >= 0.5f)
-            {
-                if (temp.roomState == Room_Class.RoomState.Fixed_Dirty)
-                {
-                    if (myStats.cleanliness >= Random.Range(6, 10))
-                    {
 
-                        if (myStats.cleanliness >= 6 && myStats.like.Contains("Cleanning")) { ManageHappiness(0.1f); clean = true; }
-                        else if (myStats.dislikes.Contains("Cleanning")) { ManageHappiness(-0.2f); ui.npcUpdater.text = $"{myStats.NPC_name +" : O GROSS!! Im not cleaning that up"}"; }
-                        else { ManageHappiness(-0.1f); ui.npcUpdater.text = $"{myStats.NPC_name + " Started Cleanning the " + temp.roomType}"; clean = true; }
-                    }
-                    else print(":| This " + temp.GetComponent<Room_Class>().roomType + " is a mess");
-                    return;
-                }            
-                if (temp.roomState == Room_Class.RoomState.Broken /*&& temp.roomType != Room_Class.RoomType.Stairwell*/)
+        if (myStats.happiness >= 0.5f)
+        {
+            if (temp.roomState == Room_Class.RoomState.Fixed_Dirty)
+            {
+                if (myStats.cleanliness >= Random.Range(6, 10))
                 {
-                    if (myStats.handyness >= Random.Range(6, 10))
-                    {
-                        if (myStats.handyness >= 6 && myStats.like.Contains("Fixing Things")) { ManageHappiness(0.1f); fix = true; }
-                        else if (myStats.dislikes.Contains("Fixing Things")) { ManageHappiness(-0.2f); ui.npcUpdater.text = $"{myStats.NPC_name + " : Im not fixing this"}"; }
-                        else { ManageHappiness(-0.1f); ui.npcUpdater.text = $"{myStats.NPC_name + " Started Fixxing the " + temp.roomType}"; fix = true; }
-                    }
-                    else print(":| This " + temp.roomType + " is wrecked");
-                    return;
+
+                    if (myStats.cleanliness >= 6 && myStats.like.Contains("Cleanning")) { ManageHappiness(0.1f); clean = true; }
+                    else if (myStats.dislikes.Contains("Cleanning") || myStats.cleanliness <= 4) { ManageHappiness(-0.2f); ui.npcUpdater.text = $"{myStats.NPC_name + " : GROSS!! Im not cleaning that up"}"; }
+                    else { ManageHappiness(-0.1f); ui.npcUpdater.text = $"{myStats.NPC_name + " Started Cleanning the " + temp.roomType}"; clean = true; }
                 }
-                else
-                    return;
+                else print(":| This " + temp.GetComponent<Room_Class>().roomType + " is a mess");
+                return;
             }
-            //else if (myStats.happiness <= 0.4f) return;
+            if (temp.roomState == Room_Class.RoomState.Broken /*&& temp.roomType != Room_Class.RoomType.Stairwell*/)
+            {
+                if (myStats.handyness >= Random.Range(6, 10))
+                {
+                    if (myStats.handyness >= 6 && myStats.like.Contains("Fixing Things")) { ManageHappiness(0.1f); fix = true; }
+                    else if (myStats.dislikes.Contains("Fixing Things") || myStats.handyness <= 4) { ManageHappiness(-0.2f); ui.npcUpdater.text = $"{myStats.NPC_name + " : I Can't Fix this"}"; }
+                    else { ManageHappiness(-0.1f); ui.npcUpdater.text = $"{myStats.NPC_name + " Started Fixxing the " + temp.roomType}"; fix = true; }
+                }
+                else ui.npcUpdater.text = $"{myStats.NPC_name + " : This " + temp.roomType + " is wrecked"}";
+                return;
+            }
+            else
+                return;
         }
+        //else if (myStats.happiness <= 0.4f) return;
+
         if (temp.roomType == Room_Class.RoomType.Stairwell && !isStairs)
         {
             int randomChance = Random.Range(0, 100);
