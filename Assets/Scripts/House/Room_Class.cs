@@ -18,9 +18,10 @@ public class Room_Class : MonoBehaviour
     bool startClock = false;
     [SerializeField] float cleannningClock;
     float maxCleanningTime = 120;
-
+    View_UI ui;
     private void Awake()
     {
+        ui = FindObjectOfType<View_UI>();
         sprite = GetComponentInChildren<SpriteRenderer>();
         appliances = GetComponentsInChildren<Appliance_Class>();
     }
@@ -63,6 +64,6 @@ public class Room_Class : MonoBehaviour
         {
             cleannningClock += 1 * Time.deltaTime;
         }
-        else if (cleannningClock > maxCleanningTime) roomState = RoomState.Fixed_Dirty;
+        else if (cleannningClock > maxCleanningTime) roomState = RoomState.Fixed_Dirty; /*ui.npcUpdater.text = $"{ roomType + " is dirty."}" ;*/
     }
 }

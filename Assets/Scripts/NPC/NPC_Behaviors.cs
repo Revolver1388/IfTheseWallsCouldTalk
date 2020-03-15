@@ -80,8 +80,8 @@ public class NPC_Behaviors : MonoBehaviour
             isHappy = true;
             myStats.happiness += y;
             if (isHappy) { StartCoroutine(HappySign()); }           
-            if (y > 0) { happyMetre.sprite = happy[0]; happySad = true; ui.npcUpdater.text = $"{myStats.NPC_name + " liked that"}"; }
-            else if (y < 0) { happyMetre.sprite = happy[1]; happySad = false; ui.npcUpdater.text = $"{myStats.NPC_name + " disliked that"}"; }
+            if (y > 0) { happyMetre.sprite = happy[0]; happySad = true; }
+            else if (y < 0) { happyMetre.sprite = happy[1]; happySad = false; }
             anim_Metre.SetBool("isHappy", happySad);
         }
         else
@@ -175,7 +175,7 @@ public class NPC_Behaviors : MonoBehaviour
                 if (myStats.cleanliness >= Random.Range(6, 10))
                 {
 
-                    if (myStats.cleanliness >= 6 && myStats.like.Contains("Cleanning")) { ManageHappiness(0.1f); clean = true; }
+                    if (myStats.cleanliness >= 6 && myStats.like.Contains("Cleanning")) { ManageHappiness(0.1f); clean = true; ui.npcUpdater.text = $"{myStats.NPC_name + " likes " + myStats.like}"; }
                     else if (myStats.dislikes.Contains("Cleanning") || myStats.cleanliness <= 4) { ManageHappiness(-0.2f); ui.npcUpdater.text = $"{myStats.NPC_name + " : GROSS!! Im not cleaning that up"}"; }
                     else { ManageHappiness(-0.1f); ui.npcUpdater.text = $"{myStats.NPC_name + " Started Cleanning the " + temp.roomType}"; clean = true; }
                 }
@@ -186,7 +186,7 @@ public class NPC_Behaviors : MonoBehaviour
             {
                 if (myStats.handyness >= Random.Range(6, 10))
                 {
-                    if (myStats.handyness >= 6 && myStats.like.Contains("Fixing Things")) { ManageHappiness(0.1f); fix = true; }
+                    if (myStats.handyness >= 6 && myStats.like.Contains("Fixing Things")) { ManageHappiness(0.1f); fix = true; ui.npcUpdater.text = $"{myStats.NPC_name + " likes " + myStats.like}"; }
                     else if (myStats.dislikes.Contains("Fixing Things") || myStats.handyness <= 4) { ManageHappiness(-0.2f); ui.npcUpdater.text = $"{myStats.NPC_name + " : I Can't Fix this"}"; }
                     else { ManageHappiness(-0.1f); ui.npcUpdater.text = $"{myStats.NPC_name + " Started Fixxing the " + temp.roomType}"; fix = true; }
                 }
