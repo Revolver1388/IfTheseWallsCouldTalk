@@ -28,21 +28,21 @@ public class CameraScript : MonoBehaviour
     {
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
-        if (horizontal != 0 || vertical != 0) camBehavior();
-        //if (mainCam.orthographicSize > 5 && mainCam.orthographicSize <= 9)
-        //{
-        //    mainCam.transform.position = new Vector3(Mathf.Clamp(mainCam.transform.position.x, -11, -2), Mathf.Clamp(mainCam.transform.position.y, 2, 12), -10);
-        //}
-        //else if (mainCam.orthographicSize >= 1 && mainCam.orthographicSize <= 4)
-        //{
-        //    mainCam.transform.position = new Vector3(Mathf.Clamp(mainCam.transform.position.x, -15, 2), Mathf.Clamp(mainCam.transform.position.y, -2, 16), -10);
-        //}
+        //if (horizontal != 0 || vertical != 0) camBehavior();
+        if (mainCam.orthographicSize > 5 && mainCam.orthographicSize <= 9)
+        {
+            mainCam.transform.position = new Vector3(Mathf.Clamp(mainCam.transform.position.x, -11, -2), Mathf.Clamp(mainCam.transform.position.y, 2, 12), -10);
+        }
+        else if (mainCam.orthographicSize >= 1 && mainCam.orthographicSize <= 4)
+        {
+            mainCam.transform.position = new Vector3(Mathf.Clamp(mainCam.transform.position.x, -15, 2), Mathf.Clamp(mainCam.transform.position.y, -2, 16), -10);
+        }
         #region TouchInput
 
         if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved)
         {
             Vector2 touchDeltaPosition = Input.GetTouch(0).deltaPosition;
-            transform.Translate(Mathf.Clamp(-touchDeltaPosition.x * cam_Speed * 0.01f,-11,-2), Mathf.Clamp(-touchDeltaPosition.y * cam_Speed * 0.01f, 2, 12), 0);
+            transform.Translate(-touchDeltaPosition.x * cam_Speed * 0.01f, -touchDeltaPosition.y * cam_Speed * 0.01f, 0);
         }
 
         else if (Input.touchCount == 2)
