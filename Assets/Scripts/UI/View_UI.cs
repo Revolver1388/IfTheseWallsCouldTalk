@@ -58,6 +58,7 @@ public class View_UI : MonoBehaviour
     [SerializeField] GameObject npcManagerPanel;
     [SerializeField] GameObject roomManagerPanel;
     [SerializeField] public GameObject tennantButton;
+    [SerializeField] public Text npcUpdater;
 
     // Room Panels
     [SerializeField] GameObject KitchenRoomPanel;

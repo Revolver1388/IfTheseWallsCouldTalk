@@ -8,6 +8,7 @@ public class NPC_Behaviors : MonoBehaviour
     public int meanIncome;
     [SerializeField]
     Room_Class temp;
+    [SerializeField] View_UI ui;
     bool clean = false;
     bool fix = false;
     [SerializeField] ParticleSystem[] ps;
@@ -40,11 +41,13 @@ public class NPC_Behaviors : MonoBehaviour
         happyMetre.gameObject.SetActive(false);
         sprite = GetComponentInChildren<SpriteRenderer>();
         ps = GetComponentsInChildren<ParticleSystem>();
+        ui = GameObject.FindObjectOfType<View_UI>();
     }
     private void OnEnable()
     {        
         meanIncome = Random.Range(myStats.incomeMax, myStats.incomeMin);
         sprite.sprite = myStats.gender ? gender[1] : gender[0];
+        ui.npcUpdater.text = $"{ myStats.NPC_name + " has moved in"}"; 
         anim.SetBool("New Bool", moving);
         anim.SetBool("male", myStats.gender);
     }
@@ -76,10 +79,9 @@ public class NPC_Behaviors : MonoBehaviour
         {
             isHappy = true;
             myStats.happiness += y;
-            if (isHappy) { StartCoroutine(HappySign()); }
-
-            if (y > 0) { happyMetre.sprite = happy[0]; happySad = true; }
-            else if (y < 0) { happyMetre.sprite = happy[1]; happySad = false; }
+            if (isHappy) { StartCoroutine(HappySign()); }           
+            if (y > 0) { happyMetre.sprite = happy[0]; happySad = true; ui.npcUpdater.text = $"{myStats.NPC_name + " liked that"}"; }
+            else if (y < 0) { happyMetre.sprite = happy[1]; happySad = false; ui.npcUpdater.text = $"{myStats.NPC_name + " disliked that"}"; }
             anim_Metre.SetBool("isHappy", happySad);
         }
         else
@@ -98,7 +100,6 @@ public class NPC_Behaviors : MonoBehaviour
     IEnumerator Cleanning(float t, Room_Class x)
     {
         clean = false;
-        print("cleanning");
         yield return new WaitForSeconds(t);
         x.roomState = Room_Class.RoomState.Fixed_Clean;
         moving = true;
@@ -176,9 +177,9 @@ public class NPC_Behaviors : MonoBehaviour
                     if (myStats.cleanliness >= Random.Range(6, 10))
                     {
 
-                        if (myStats.cleanliness >= 6 && myStats.like.Contains("Cleanning")) { ManageHappiness(0.1f); print(":D Cleaning the " + temp.roomType); clean = true; }
-                        else if (myStats.dislikes.Contains("Cleanning")) { ManageHappiness(-0.2f); print(":O GROSS!! Im not cleaning that up"); }
-                        else { ManageHappiness(-0.1f); print(":( Cleanning the " + temp.roomType); clean = true; }
+                        if (myStats.cleanliness >= 6 && myStats.like.Contains("Cleanning")) { ManageHappiness(0.1f); clean = true; }
+                        else if (myStats.dislikes.Contains("Cleanning")) { ManageHappiness(-0.2f); ui.npcUpdater.text = $"{myStats.NPC_name +" : O GROSS!! Im not cleaning that up"}"; }
+                        else { ManageHappiness(-0.1f); ui.npcUpdater.text = $"{myStats.NPC_name + " Started Cleanning the " + temp.roomType}"; clean = true; }
                     }
                     else print(":| This " + temp.GetComponent<Room_Class>().roomType + " is a mess");
                     return;
@@ -187,9 +188,9 @@ public class NPC_Behaviors : MonoBehaviour
                 {
                     if (myStats.handyness >= Random.Range(6, 10))
                     {
-                        if (myStats.handyness >= 6 && myStats.like.Contains("Fixing Things")) { ManageHappiness(0.1f); print(":D Fixing the " + temp.roomType); fix = true; }
-                        else if (myStats.dislikes.Contains("Fixing Things")) { ManageHappiness(-0.2f); print(":O GROSS!! Im not fixing that up"); }
-                        else { ManageHappiness(-0.1f); print(":( Fixxing the " + temp.roomType); fix = true; }
+                        if (myStats.handyness >= 6 && myStats.like.Contains("Fixing Things")) { ManageHappiness(0.1f); fix = true; }
+                        else if (myStats.dislikes.Contains("Fixing Things")) { ManageHappiness(-0.2f); ui.npcUpdater.text = $"{myStats.NPC_name + " : Im not fixing this"}"; }
+                        else { ManageHappiness(-0.1f); ui.npcUpdater.text = $"{myStats.NPC_name + " Started Fixxing the " + temp.roomType}"; fix = true; }
                     }
                     else print(":| This " + temp.roomType + " is wrecked");
                     return;
