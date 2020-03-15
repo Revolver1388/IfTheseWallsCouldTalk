@@ -183,7 +183,7 @@ public class NPC_Behaviors : MonoBehaviour
                     else print(":| This " + temp.GetComponent<Room_Class>().roomType + " is a mess");
                     return;
                 }            
-                if (temp.roomState == Room_Class.RoomState.Broken && temp.roomType != Room_Class.RoomType.Stairwell)
+                if (temp.roomState == Room_Class.RoomState.Broken /*&& temp.roomType != Room_Class.RoomType.Stairwell*/)
                 {
                     if (myStats.handyness >= Random.Range(6, 10))
                     {

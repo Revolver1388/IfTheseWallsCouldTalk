@@ -27,12 +27,12 @@ public class Appliance_Class : MonoBehaviour
         if (!this.gameObject.name.Contains("Placeholder")) GetComponentInParent<Room_Class>().applianceCount++;
     }
 
-    private void OnDisable()
-    {
-        if (!this.gameObject.name.Contains("Placeholder")) GetComponentInParent<Room_Class>().applianceCount--;
-        else
-            return;
-    }
+    //private void OnDisable()
+    //{
+    //    if (!this.gameObject.name.Contains("Placeholder")) GetComponentInParent<Room_Class>().applianceCount--;
+    //    else
+    //        return;
+    //}
     void IncreaseHappyiness()
     {
         foreach (var nPC in tennants)
