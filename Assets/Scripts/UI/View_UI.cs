@@ -34,30 +34,34 @@ public class View_UI : MonoBehaviour
     public bool Bedroom2 = true;
     public bool Bedroom3 = true;
     //Basement
-    public bool Basement;
-    public bool WineCellar;
-    public bool RecRoom;
+    public bool Basement = false;
+    public bool WineCellar = false;
+    public bool RecRoom = false;
     // Third Floor
     public bool Study;
     // Bathroom
     public bool Bathroom = true;
     // Attic
-    public bool Attic;
+    public bool Attic = false;
+
+
+    // Items
     string itemName;
     string fullPrice;
     string discountPrice;
     Image itemImage;
-    //Music Buttons
+
+    // Music Buttons
     [SerializeField] Button musicOnButton;
     [SerializeField] Button musicOffButton;
 
-    //Calendar Panel
+    // Calendar Panel
     [SerializeField] GameObject calendarPanel;
 
     // Manager Panels
-    [SerializeField] GameObject npcManagerPanel;
     [SerializeField] GameObject roomManagerPanel;
-    [SerializeField] public GameObject tennantButton;
+
+    // NPC Thoughts Updater text
     [SerializeField] public Text npcUpdater;
 
     // Room Panels
@@ -109,6 +113,23 @@ public class View_UI : MonoBehaviour
 
 
 
+    // UI Manager Buttons Container
+    [SerializeField] GameObject uiButtonsContainer;
+
+    // Game speed panel
+    [SerializeField] GameObject gameSpeedPanel;
+
+    // Tenant Manager Panel
+    [SerializeField] GameObject tenantManagerPanel;
+    [SerializeField] GameObject tenant1Panel;
+    [SerializeField] GameObject tenant2Panel;
+    [SerializeField] GameObject tenant3Panel;
+    [SerializeField] GameObject tenant4Panel;
+    [SerializeField] GameObject getNewTenantPanel;
+
+    // Settings Panel
+    [SerializeField] GameObject settingsPanel;
+
 
 
 
@@ -123,7 +144,6 @@ public class View_UI : MonoBehaviour
     void Start()
     {
         audioManager = FindObjectOfType<AudioManager>();
-        tennantButton = GameObject.FindGameObjectWithTag("NPCButton");
         //audioManager.PlayMusic("Normal");
         foreach (var item in Item)
         {
@@ -205,32 +225,133 @@ public class View_UI : MonoBehaviour
     #endregion
 
 
+    public void toggleUIButton()
+    {
+        if (uiButtonsContainer.activeSelf)
+        {
+            uiButtonsContainer.SetActive(false);
+            gameSpeedPanel.SetActive(false);
+            audioManager.PlayOneShotByName("OpenPanel");
+
+        }
+        else
+        {
+            uiButtonsContainer.SetActive(true);
+            gameSpeedPanel.SetActive(true);
+            audioManager.PlayOneShotByName("OpenPanel");
+
+        }
+
+    }
+
+    public void toggleTenantManagerPanel()
+    {
+        if (tenantManagerPanel.activeSelf)
+        {
+            tenantManagerPanel.SetActive(false);
+            audioManager.PlayOneShotByName("OpenPanel");
+
+        }
+        else
+        {
+            tenantManagerPanel.SetActive(true);
+            audioManager.PlayOneShotByName("OpenPanel");
+
+        }
+    }
+
+
+    public void toggleSettingsPanel()
+    {
+        if (settingsPanel.activeSelf)
+        {
+            settingsPanel.SetActive(false);
+            audioManager.PlayOneShotByName("OpenPanel");
+
+        }
+        else
+        {
+            settingsPanel.SetActive(true);
+            audioManager.PlayOneShotByName("OpenPanel");
+
+        }
+    }
+
     #region: Open/Close Panels................
 
     /// <summary>
     /// Open/Close NPC Manager Panel
     /// </summary>
-    public void OpenNpcManagerPanel()
+    public void OpenGetNewTenantPanel()
     {
-        if (npcManagerPanel.activeSelf)
+        CloseAllTenantManagetTabs();
+        getNewTenantPanel.SetActive(true);
+        audioManager.PlayOneShotByName("OpenPanel");
+    }
+    public void CloseGetNewTenantPanel()
+    {
+        getNewTenantPanel.SetActive(false);
+        audioManager.PlayOneShotByName("OpenPanel");
+
+    }
+
+    private void CloseAllTenantManagetTabs()
+    {
+        CloseTenant1Panel();
+        CloseTenant2Panel();
+        CloseTenant3Panel();
+        CloseTenant4Panel();
+        CloseGetNewTenantPanel();
+
+    }
+
+    public void OpenTenant1Panel()
         {
-            npcManagerPanel.SetActive(false);
-        }
-        else
+        CloseAllTenantManagetTabs();
+        tenant1Panel.SetActive(true);
+        audioManager.PlayOneShotByName("OpenPanel");
+    }
+    public void CloseTenant1Panel()
         {
-            npcManagerPanel.SetActive(true);
-        }
+        tenant1Panel.SetActive(false);
         audioManager.PlayOneShotByName("OpenPanel");
     }
 
-    public void CloseNpcManagerPanel()
+    public void OpenTenant2Panel()
     {
-        npcManagerPanel.SetActive(false);
-        tennantButton.SetActive(true);
-        audioManager.PlayOneShotByName("ClosePanel");
-
+        CloseAllTenantManagetTabs();
+        tenant2Panel.SetActive(true);
+        audioManager.PlayOneShotByName("OpenPanel");
+    }
+    public void CloseTenant2Panel()
+    {
+        tenant2Panel.SetActive(false);
+        audioManager.PlayOneShotByName("OpenPanel");
     }
 
+    public void OpenTenant3Panel()
+    {
+        CloseAllTenantManagetTabs();
+        tenant3Panel.SetActive(true);
+        audioManager.PlayOneShotByName("OpenPanel");
+    }
+    public void CloseTenant3Panel()
+    {
+        tenant3Panel.SetActive(false);
+        audioManager.PlayOneShotByName("OpenPanel");
+    }
+
+    public void OpenTenant4Panel()
+    {
+        CloseAllTenantManagetTabs();
+        tenant4Panel.SetActive(true);
+        audioManager.PlayOneShotByName("OpenPanel");
+    }
+    public void CloseTenant4Panel()
+    {
+        tenant4Panel.SetActive(false);
+        audioManager.PlayOneShotByName("OpenPanel");
+    }
     /// <summary>
     /// Open/Close KitchenRoomPanel
     /// </summary>

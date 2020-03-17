@@ -39,8 +39,7 @@ public class TennantSelector : NPC_Base
                 gender = tennants[i].gender;
                 portrait = tennants[i].portrait;
                 npc[timesPicked].gameObject.SetActive(true);
-                ui.CloseNpcManagerPanel();
-                ui.tennantButton.SetActive(false);
+                ui.toggleTenantManagerPanel();
                 timesPicked += 1;
                 break;
             case 1:
@@ -55,8 +54,7 @@ public class TennantSelector : NPC_Base
                 gender = tennants[i].gender;
                 portrait = tennants[i].portrait;
                 npc[timesPicked].gameObject.SetActive(true);
-                ui.CloseNpcManagerPanel();
-                ui.tennantButton.SetActive(false);
+                ui.toggleTenantManagerPanel();
                 timesPicked += 1;
                 break;
             case 2:
@@ -71,8 +69,7 @@ public class TennantSelector : NPC_Base
                 gender = tennants[i].gender;
                 portrait = tennants[i].portrait;
                 npc[timesPicked].gameObject.SetActive(true);
-                ui.CloseNpcManagerPanel();
-                ui.tennantButton.SetActive(false);
+                ui.toggleTenantManagerPanel();
                 timesPicked += 1;
                 break;
             case 3:
@@ -87,8 +84,7 @@ public class TennantSelector : NPC_Base
                 gender = tennants[i].gender;
                 portrait = tennants[i].portrait;
                 npc[timesPicked].gameObject.SetActive(true);
-                ui.CloseNpcManagerPanel();
-                ui.tennantButton.SetActive(false);
+                ui.toggleTenantManagerPanel();
                 timesPicked += 1;
                 break;
 

@@ -44,15 +44,15 @@ public class HouseManager : MonoBehaviour
             if (dayTimer < dayLength) { dayTimer += 1 * Time.deltaTime; }
             else if (dayTimer >= dayLength) { dayOver = true; dayStart = false; }
         }
-        OpenTennantRental();
+        //OpenTennantRental();
         if (dayOver == true) StartCoroutine(EndOfDayFade());        
     }
 
-    void OpenTennantRental()
-    {
-        if (bedrooms[1].roomState != Room_Class.RoomState.Broken && !bedTwo) { UI.OpenNpcManagerPanel(); bedTwo = true; }
-        else if (bedrooms[2].roomState != Room_Class.RoomState.Broken && !bedThree) { UI.OpenNpcManagerPanel(); bedThree = true; }
-    }
+    //void OpenTennantRental()
+    //{
+    //    if (bedrooms[1].roomState != Room_Class.RoomState.Broken && !bedTwo) { UI.toggleTenantManagerPanel(); bedTwo = true; }
+    //    else if (bedrooms[2].roomState != Room_Class.RoomState.Broken && !bedThree) { UI.toggleTenantManagerPanel(); bedThree = true; }
+    //}
  
     IEnumerator EndOfDayFade()
     {
