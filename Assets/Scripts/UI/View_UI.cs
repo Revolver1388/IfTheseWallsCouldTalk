@@ -668,6 +668,7 @@ public class View_UI : MonoBehaviour
         itemImage = EventSystem.current.currentSelectedGameObject.transform.gameObject.GetComponentInChildren<ItemImage>().GetComponent<Image>();
 
         OpenConfirmItemModal(itemName, fullPrice, discountPrice,itemImage);
+        toggleRoomButtonsPanel();
     }
 
     public void OpenConfirmItemModal(string itemName, string fullPrice, string discountPrice, Image image)
@@ -685,6 +686,7 @@ public class View_UI : MonoBehaviour
     {
         ItemConfirmModal.SetActive(false);
         CloseAllPurchasePanels();
+        toggleRoomButtonsPanel();
     }
 
     public void CloseConfirmModalOnly()
@@ -697,6 +699,7 @@ public class View_UI : MonoBehaviour
         if (int.Parse(fullPrice) <= houseManager.bank)
         {
             CloseConfirmItemModalAndRoomPanel();
+            toggleRoomButtonsPanel();
             for (int i = 0; i < theButtons.Length; i++)
             {
                 if (theButtons[i].name == choice)
@@ -719,6 +722,8 @@ public class View_UI : MonoBehaviour
         if (int.Parse(discountPrice) <= houseManager.bank)
         {
             CloseConfirmItemModalAndRoomPanel();
+            toggleRoomButtonsPanel();
+
             for (int i = 0; i < theButtons.Length; i++)
             {
                 if (theButtons[i].name == choice)
@@ -869,6 +874,8 @@ public class View_UI : MonoBehaviour
     public void RepairRoomButton(string roomName)
     {
         CloseAllPurchasePanels();
+        toggleRoomButtonsPanel();
+
         foreach (var item in houseManager.rooms)
         {
             if (item.name == roomName)
