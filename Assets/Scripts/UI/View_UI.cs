@@ -130,7 +130,11 @@ public class View_UI : MonoBehaviour
     // Settings Panel
     [SerializeField] GameObject settingsPanel;
 
+    // Help Panel
+    [SerializeField] GameObject helpPanel;
 
+    // Room Buttons Panel
+    [SerializeField] GameObject roomButtonsPanel;
 
 
 
@@ -143,6 +147,13 @@ public class View_UI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        uiButtonsContainer.SetActive(true);
+        tenantManagerPanel.SetActive(true);
+        getNewTenantPanel.SetActive(true);
+        gameSpeedPanel.SetActive(true);
+
+
         audioManager = FindObjectOfType<AudioManager>();
         //audioManager.PlayMusic("Normal");
         foreach (var item in Item)
@@ -277,6 +288,19 @@ public class View_UI : MonoBehaviour
         }
     }
 
+    public void toggleHelpPanel()
+    {
+        if (helpPanel.activeSelf)
+        {
+            helpPanel.SetActive(false);
+        }
+        else
+        {
+            helpPanel.SetActive(true);
+        }
+    }
+
+
     #region: Open/Close Panels................
 
     /// <summary>
@@ -284,7 +308,7 @@ public class View_UI : MonoBehaviour
     /// </summary>
     public void OpenGetNewTenantPanel()
     {
-        CloseAllTenantManagetTabs();
+        CloseAllTenantManagerTabs();
         getNewTenantPanel.SetActive(true);
         audioManager.PlayOneShotByName("OpenPanel");
     }
@@ -295,7 +319,7 @@ public class View_UI : MonoBehaviour
 
     }
 
-    private void CloseAllTenantManagetTabs()
+    private void CloseAllTenantManagerTabs()
     {
         CloseTenant1Panel();
         CloseTenant2Panel();
@@ -307,7 +331,7 @@ public class View_UI : MonoBehaviour
 
     public void OpenTenant1Panel()
         {
-        CloseAllTenantManagetTabs();
+        CloseAllTenantManagerTabs();
         tenant1Panel.SetActive(true);
         audioManager.PlayOneShotByName("OpenPanel");
     }
@@ -319,7 +343,7 @@ public class View_UI : MonoBehaviour
 
     public void OpenTenant2Panel()
     {
-        CloseAllTenantManagetTabs();
+        CloseAllTenantManagerTabs();
         tenant2Panel.SetActive(true);
         audioManager.PlayOneShotByName("OpenPanel");
     }
@@ -331,7 +355,7 @@ public class View_UI : MonoBehaviour
 
     public void OpenTenant3Panel()
     {
-        CloseAllTenantManagetTabs();
+        CloseAllTenantManagerTabs();
         tenant3Panel.SetActive(true);
         audioManager.PlayOneShotByName("OpenPanel");
     }
@@ -343,7 +367,7 @@ public class View_UI : MonoBehaviour
 
     public void OpenTenant4Panel()
     {
-        CloseAllTenantManagetTabs();
+        CloseAllTenantManagerTabs();
         tenant4Panel.SetActive(true);
         audioManager.PlayOneShotByName("OpenPanel");
     }
@@ -352,12 +376,27 @@ public class View_UI : MonoBehaviour
         tenant4Panel.SetActive(false);
         audioManager.PlayOneShotByName("OpenPanel");
     }
+
+
+    public void toggleRoomButtonsPanel()
+    {
+        if (roomButtonsPanel.activeSelf)
+        {
+            roomButtonsPanel.SetActive(false);
+        }
+        else
+        {
+            roomButtonsPanel.SetActive(true);
+        }
+    }
+
     /// <summary>
     /// Open/Close KitchenRoomPanel
     /// </summary>
     public void OpenKitchenRoomPanel()
     {
-        KitchenRoomPanel.SetActive(true);       
+        KitchenRoomPanel.SetActive(true);
+        toggleRoomButtonsPanel();
         audioManager.PlayOneShotByName("OpenPanel");
 
     }
@@ -365,6 +404,8 @@ public class View_UI : MonoBehaviour
     public void CloseKitchenRoomPanel()
     {
         KitchenRoomPanel.SetActive(false);
+        toggleRoomButtonsPanel();
+
         audioManager.PlayOneShotByName("ClosePanel");
 
     }
@@ -377,6 +418,8 @@ public class View_UI : MonoBehaviour
     public void OpenLivingRoomPanel()
     {
         LivingRoomPanel.SetActive(true);
+        toggleRoomButtonsPanel();
+
         audioManager.PlayOneShotByName("OpenPanel");
 
     }
@@ -384,6 +427,8 @@ public class View_UI : MonoBehaviour
     public void CloseLivingRoomPanel()
     {
         LivingRoomPanel.SetActive(false);
+        toggleRoomButtonsPanel();
+
         audioManager.PlayOneShotByName("ClosePanel");
 
     }
@@ -396,6 +441,8 @@ public class View_UI : MonoBehaviour
     public void OpenBedRoom1Panel()
     {
         BedRoom1Panel.SetActive(true);
+        toggleRoomButtonsPanel();
+
         audioManager.PlayOneShotByName("OpenPanel");
 
     }
@@ -403,6 +450,8 @@ public class View_UI : MonoBehaviour
     public void CloseBedRoom1Panel()
     {
         BedRoom1Panel.SetActive(false);
+        toggleRoomButtonsPanel();
+
         audioManager.PlayOneShotByName("ClosePanel");
 
     }
@@ -413,6 +462,8 @@ public class View_UI : MonoBehaviour
     public void OpenBedRoom2Panel()
     {
         BedRoom2Panel.SetActive(true);
+        toggleRoomButtonsPanel();
+
         audioManager.PlayOneShotByName("OpenPanel");
 
     }
@@ -420,6 +471,8 @@ public class View_UI : MonoBehaviour
     public void CloseBedRoom2Panel()
     {
         BedRoom2Panel.SetActive(false);
+        toggleRoomButtonsPanel();
+
         audioManager.PlayOneShotByName("ClosePanel");
 
     }
@@ -430,6 +483,8 @@ public class View_UI : MonoBehaviour
     public void OpenBedRoom3Panel()
     {
         BedRoom3Panel.SetActive(true);
+        toggleRoomButtonsPanel();
+
         audioManager.PlayOneShotByName("OpenPanel");
 
     }
@@ -437,6 +492,8 @@ public class View_UI : MonoBehaviour
     public void CloseBedRoom3Panel()
     {
         BedRoom3Panel.SetActive(false);
+        toggleRoomButtonsPanel();
+
         audioManager.PlayOneShotByName("ClosePanel");
 
     }
@@ -449,6 +506,8 @@ public class View_UI : MonoBehaviour
     public void OpenRecRoomPanel()
     {
         RecRoomPanel.SetActive(true);
+        toggleRoomButtonsPanel();
+
         audioManager.PlayOneShotByName("OpenPanel");
 
     }
@@ -456,6 +515,8 @@ public class View_UI : MonoBehaviour
     public void CloseRecRoomPanel()
     {
         RecRoomPanel.SetActive(false);
+        toggleRoomButtonsPanel();
+
         audioManager.PlayOneShotByName("ClosePanel");
 
     }
@@ -466,6 +527,8 @@ public class View_UI : MonoBehaviour
     public void OpenWineCellarRoomPanel()
     {
         WineCellarRoomPanel.SetActive(true);
+        toggleRoomButtonsPanel();
+
         audioManager.PlayOneShotByName("OpenPanel");
 
     }
@@ -473,6 +536,8 @@ public class View_UI : MonoBehaviour
     public void CloseWineCellarRoomPanel()
     {
         WineCellarRoomPanel.SetActive(false);
+        toggleRoomButtonsPanel();
+
         audioManager.PlayOneShotByName("ClosePanel");
 
     }
@@ -487,6 +552,8 @@ public class View_UI : MonoBehaviour
     public void OpenBathRoomPanel()
     {
         BathRoomPanel.SetActive(true);
+        toggleRoomButtonsPanel();
+
         audioManager.PlayOneShotByName("OpenPanel");
 
     }
@@ -494,6 +561,8 @@ public class View_UI : MonoBehaviour
     public void CloseBathRoomPanel()
     {
         BathRoomPanel.SetActive(false);
+        toggleRoomButtonsPanel();
+
         audioManager.PlayOneShotByName("ClosePanel");
 
     }
@@ -504,6 +573,8 @@ public class View_UI : MonoBehaviour
     public void OpenAtticRoomPanel()
     {
         AtticRoomPanel.SetActive(true);
+        toggleRoomButtonsPanel();
+
         audioManager.PlayOneShotByName("OpenPanel");
 
     }
@@ -511,6 +582,8 @@ public class View_UI : MonoBehaviour
     public void CloseAtticRoomPanel()
     {
         AtticRoomPanel.SetActive(false);
+        toggleRoomButtonsPanel();
+
         audioManager.PlayOneShotByName("ClosePanel");
 
     }
@@ -523,6 +596,8 @@ public class View_UI : MonoBehaviour
     public void OpenBasementRoomPanel()
     {
         BasementRoomPanel.SetActive(true);
+        toggleRoomButtonsPanel();
+
         audioManager.PlayOneShotByName("OpenPanel");
 
     }
@@ -530,6 +605,8 @@ public class View_UI : MonoBehaviour
     public void CloseBasementRoomPanel()
     {
         BasementRoomPanel.SetActive(false);
+        toggleRoomButtonsPanel();
+
         audioManager.PlayOneShotByName("ClosePanel");
 
     }
@@ -540,6 +617,8 @@ public class View_UI : MonoBehaviour
     public void OpenOutsideRoomPanel()
     {
         OutsideRoomPanel.SetActive(true);
+        toggleRoomButtonsPanel();
+
         audioManager.PlayOneShotByName("OpenPanel");
 
     }
@@ -547,6 +626,8 @@ public class View_UI : MonoBehaviour
     public void CloseOutsideRoomPanel()
     {
         OutsideRoomPanel.SetActive(false);
+        toggleRoomButtonsPanel();
+
         audioManager.PlayOneShotByName("ClosePanel");
 
     }
@@ -558,6 +639,8 @@ public class View_UI : MonoBehaviour
     public void OpenStudyRoomPanel()
     {
         StudyRoomPanel.SetActive(true);
+        toggleRoomButtonsPanel();
+
         audioManager.PlayOneShotByName("OpenPanel");
 
     }
@@ -565,6 +648,8 @@ public class View_UI : MonoBehaviour
     public void CloseStudyRoomPanel()
     {
         StudyRoomPanel.SetActive(false);
+        toggleRoomButtonsPanel();
+
         audioManager.PlayOneShotByName("ClosePanel");
 
     }
