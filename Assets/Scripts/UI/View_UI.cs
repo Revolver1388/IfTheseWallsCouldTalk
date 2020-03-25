@@ -23,8 +23,8 @@ public class View_UI : MonoBehaviour
     // Public bools that indicate whether a given room is available or not
     // Stairwells
     public bool StairwellFirstFloor = true;
-    public bool StairwellSecondFloor = false;
-    public bool StairwellThirdFloor = false;
+    public bool StairwellSecondFloor = true;
+    public bool StairwellThirdFloor = true;
     // First Floor
     public bool Kitchen = true;
     public bool Bedroom1 = true;
@@ -38,7 +38,7 @@ public class View_UI : MonoBehaviour
     public bool WineCellar = false;
     public bool RecRoom = false;
     // Third Floor
-    public bool Study;
+    public bool Study = false;
     // Bathroom
     public bool Bathroom = true;
     // Attic
@@ -253,6 +253,9 @@ public class View_UI : MonoBehaviour
 
         }
 
+        LivingRoom = true;
+        Bedroom2 = true;
+        Bedroom3 = true;
     }
 
     public void toggleTenantManagerPanel()

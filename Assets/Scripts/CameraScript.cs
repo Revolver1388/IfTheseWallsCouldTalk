@@ -43,7 +43,7 @@ public class CameraScript : MonoBehaviour
         {
             Vector2 touchDeltaPosition = Input.GetTouch(0).deltaPosition;
             transform.Translate(-touchDeltaPosition.x * touch_Speed * 0.01f, -touchDeltaPosition.y * touch_Speed * 0.01f, 0);
-            mainCam.transform.position = new Vector3(Mathf.Clamp(mainCam.transform.position.x, -11, -2), Mathf.Clamp(mainCam.transform.position.y, 2, 12), -10);
+            mainCam.transform.position = new Vector3(Mathf.Clamp(mainCam.transform.position.x, -19, 6), Mathf.Clamp(mainCam.transform.position.y, -2, 20), -10);
         }
 
         else if (Input.touchCount == 2)
@@ -64,34 +64,34 @@ public class CameraScript : MonoBehaviour
         #endregion
     }
  
-    public void camBehavior()
-    {
+    //public void camBehavior()
+    //{
         
-        if (mainCam.transform.position.y <= 9 && mainCam.transform.position.y >= 2)
-        {
-            if (mainCam.transform.position.x >= -10 && mainCam.transform.position.x <= -2)
-            {
-                if (transform.position.z < -11 || transform.position.z > -9) transform.position = new Vector3(transform.position.x, transform.position.y, cam_Dist);
-                transform.position = Vector3.SmoothDamp(transform.position, transform.position - (transform.forward - (transform.right * horizontal) - (transform.up * vertical) * distFromScreen), ref damp, cam_Speed);
-            }
-            else if (mainCam.transform.position.x < -10)
-            {
-                transform.position = new Vector3(-10, transform.position.y, cam_Dist);
-            }
-            else if (mainCam.transform.position.x > -2)
-            {
-                transform.position = new Vector3(-2f, transform.position.y, cam_Dist);
-            }
-        } else if (mainCam.transform.position.y > 9)
-        {
-            transform.position = new Vector3(transform.position.x, 9f, cam_Dist);
-        }
-        else
-        {
-            transform.position = new Vector3(transform.position.x, 2, cam_Dist);
+    //    if (mainCam.transform.position.y <= 9 && mainCam.transform.position.y >= 2)
+    //    {
+    //        if (mainCam.transform.position.x >= -10 && mainCam.transform.position.x <= -2)
+    //        {
+    //            if (transform.position.z < -11 || transform.position.z > -9) transform.position = new Vector3(transform.position.x, transform.position.y, cam_Dist);
+    //            transform.position = Vector3.SmoothDamp(transform.position, transform.position - (transform.forward - (transform.right * horizontal) - (transform.up * vertical) * distFromScreen), ref damp, cam_Speed);
+    //        }
+    //        else if (mainCam.transform.position.x < -10)
+    //        {
+    //            transform.position = new Vector3(-10, transform.position.y, cam_Dist);
+    //        }
+    //        else if (mainCam.transform.position.x > -2)
+    //        {
+    //            transform.position = new Vector3(-2f, transform.position.y, cam_Dist);
+    //        }
+    //    } else if (mainCam.transform.position.y > 9)
+    //    {
+    //        transform.position = new Vector3(transform.position.x, 9f, cam_Dist);
+    //    }
+    //    else
+    //    {
+    //        transform.position = new Vector3(transform.position.x, 2, cam_Dist);
 
-        }
-    }
+    //    }
+    //}
 
    
   
