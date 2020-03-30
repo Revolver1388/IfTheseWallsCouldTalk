@@ -125,8 +125,7 @@ public class NPC_Behaviors : MonoBehaviour
     IEnumerator Wait()
     {
         moving = false;
-        yield return new WaitForSeconds(3);
-        currentLocation = Random.Range(0, FirstFloorAOI.Length);
+        yield return new WaitForSeconds(3);     
         moving = true;
         Move();
     }
@@ -136,6 +135,7 @@ public class NPC_Behaviors : MonoBehaviour
         yield return new WaitForSeconds(2);
         isStairs = false;
     }
+
     private void Move()
     {
         if (transform.position.x != FirstFloorAOI[currentLocation].transform.position.x)

@@ -39,7 +39,9 @@ public class NPC_Spawner : NPC_Base
         cleanliness = Random.Range(0, 10);
         handyness = Random.Range(0, 10);
         portrait = GetComponentInChildren<RawImage>();
+
         if (NPC_name == "Marion" || NPC_name == "Bernadette" || NPC_name == "Chelsea" || NPC_name == "Becky") gender = true;
+        else gender = false;
 
         if (like == dislikes) dislikes = likes[Random.Range(0, likes.Length)];
         rentalCardInfo[0].text = $"{NPC_name}";

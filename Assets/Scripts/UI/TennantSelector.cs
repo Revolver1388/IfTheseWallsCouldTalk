@@ -93,4 +93,12 @@ public class TennantSelector : NPC_Base
         }
         tennants[i].CreateNewTennant();
     }
+
+    public void CreateNewTennants()
+    {
+        foreach (var item in tennants)
+        {
+            item.CreateNewTennant();
+        }
+    }
 }

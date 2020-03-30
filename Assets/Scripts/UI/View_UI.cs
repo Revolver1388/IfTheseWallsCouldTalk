@@ -9,7 +9,7 @@ public class View_UI : MonoBehaviour
     #region : Imports and Variables etc.......................
 
     AudioManager audioManager;
-
+    TennantSelector tenants;
 
     [SerializeField] HouseManager houseManager;
     [SerializeField] public Text bankAccountText;
@@ -152,7 +152,7 @@ public class View_UI : MonoBehaviour
         tenantManagerPanel.SetActive(true);
         getNewTenantPanel.SetActive(true);
         gameSpeedPanel.SetActive(true);
-
+        tenants = FindObjectOfType<TennantSelector>();
 
         audioManager = FindObjectOfType<AudioManager>();
         //audioManager.PlayMusic("Normal");
@@ -311,16 +311,17 @@ public class View_UI : MonoBehaviour
     /// </summary>
     public void OpenGetNewTenantPanel()
     {
-        CloseAllTenantManagerTabs();
-        getNewTenantPanel.SetActive(true);
-        audioManager.PlayOneShotByName("OpenPanel");
+        tenants.CreateNewTennants();
+        //CloseAllTenantManagerTabs();
+        //getNewTenantPanel.SetActive(true);
+        //audioManager.PlayOneShotByName("OpenPanel");
     }
-    public void CloseGetNewTenantPanel()
-    {
-        getNewTenantPanel.SetActive(false);
-        audioManager.PlayOneShotByName("OpenPanel");
+    //public void CloseGetNewTenantPanel()
+    //{
+    //    getNewTenantPanel.SetActive(false);
+    //    audioManager.PlayOneShotByName("OpenPanel");
 
-    }
+    //}
 
     private void CloseAllTenantManagerTabs()
     {
@@ -328,7 +329,7 @@ public class View_UI : MonoBehaviour
         CloseTenant2Panel();
         CloseTenant3Panel();
         CloseTenant4Panel();
-        CloseGetNewTenantPanel();
+      // CloseGetNewTenantPanel();
 
     }
 
