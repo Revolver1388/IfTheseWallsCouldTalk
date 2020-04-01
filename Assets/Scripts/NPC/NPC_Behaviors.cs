@@ -11,7 +11,7 @@ public class NPC_Behaviors : MonoBehaviour
     [SerializeField] View_UI ui;
     bool clean = false;
     bool fix = false;
-    [SerializeField] ParticleSystem[] ps;
+    ParticleSystem[] ps;
     [SerializeField] Sprite[] gender;
     #region movement Stuff
     [SerializeField] Transform myRoom;
@@ -45,6 +45,7 @@ public class NPC_Behaviors : MonoBehaviour
     }
     private void OnEnable()
     {        
+        myStats.gender = false;
         meanIncome = Random.Range(myStats.incomeMax, myStats.incomeMin);
         sprite.sprite = myStats.gender ? gender[1] : gender[0];
         ui.npcUpdater.text = $"{ myStats.NPC_name + " has moved in"}"; 
@@ -126,8 +127,9 @@ public class NPC_Behaviors : MonoBehaviour
     {
         moving = false;
         yield return new WaitForSeconds(3);     
+        currentLocation = Random.Range(0, FirstFloorAOI.Length);
         moving = true;
-        Move();
+        Travel();
     }
     IEnumerator StairCooldown()
     {
@@ -136,7 +138,7 @@ public class NPC_Behaviors : MonoBehaviour
         isStairs = false;
     }
 
-    private void Move()
+    private void Travel()
     {
         if (transform.position.x != FirstFloorAOI[currentLocation].transform.position.x)
         {
@@ -161,7 +163,7 @@ public class NPC_Behaviors : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D c)
     {
-        if (c.gameObject.tag == "Movement" && !clean && !fix) Move();    
+        if (c.gameObject.tag == "Movement" && !clean && !fix) Travel();    
     }
 
 
@@ -210,8 +212,4 @@ public class NPC_Behaviors : MonoBehaviour
         }
     }
 }
-    public class NamedBoolean
-    {
-        [SerializeField] string name;
-        [SerializeField] bool boolean;
-    }
+

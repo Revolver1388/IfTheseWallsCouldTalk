@@ -63,6 +63,7 @@ public class View_UI : MonoBehaviour
 
     // NPC Thoughts Updater text
     [SerializeField] public Text npcUpdater;
+    private string tempUpdater;
 
     // Room Panels
     [SerializeField] GameObject KitchenRoomPanel;
@@ -130,8 +131,9 @@ public class View_UI : MonoBehaviour
     // Settings Panel
     [SerializeField] GameObject settingsPanel;
 
-    // Help Panel
+    // Info Panel
     [SerializeField] GameObject helpPanel;
+    [SerializeField] Text info;
 
     // Room Buttons Panel
     [SerializeField] GameObject roomButtonsPanel;
@@ -147,6 +149,7 @@ public class View_UI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        tempUpdater = npcUpdater.text;
 
         uiButtonsContainer.SetActive(true);
         tenantManagerPanel.SetActive(true);
@@ -160,6 +163,7 @@ public class View_UI : MonoBehaviour
         {
             item.SetActive(false);
         }
+        
     }
 
     // Update is called once per frame
@@ -227,7 +231,8 @@ public class View_UI : MonoBehaviour
         // Update the clock
         TimeImage.fillAmount = ((houseManager.dayTimer) / houseManager.dayLength);
 
-
+        //update info text
+        if (tempUpdater != npcUpdater.text) InfoUpdater();
 
     }
 
@@ -235,6 +240,11 @@ public class View_UI : MonoBehaviour
 
     #endregion
 
+    void InfoUpdater()
+    {
+        info.text = info.text + "\n" + npcUpdater.text;
+        tempUpdater = npcUpdater.text;
+    }
 
     public void toggleUIButton()
     {
@@ -499,7 +509,6 @@ public class View_UI : MonoBehaviour
         toggleRoomButtonsPanel();
 
         audioManager.PlayOneShotByName("ClosePanel");
-
     }
 
 

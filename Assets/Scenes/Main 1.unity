@@ -8306,7 +8306,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Help
+  m_Text: Info
 --- !u!222 &594642587
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -21263,6 +21263,7 @@ MonoBehaviour:
   getNewTenantPanel: {fileID: 668800077}
   settingsPanel: {fileID: 1027000416}
   helpPanel: {fileID: 1503221761}
+  info: {fileID: 2095016001}
   roomButtonsPanel: {fileID: 568074730}
 --- !u!4 &1524640140
 Transform:
@@ -29223,7 +29224,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: info here. blah blah etc etc.
+  m_Text: 
 --- !u!222 &2095016002
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -30581,8 +30582,8 @@ MonoBehaviour:
   roomState: 2
   roomType: 3
   images:
-  - {fileID: 21300000, guid: 25d8e17c5f21cc145be75851f26044ea, type: 3}
   - {fileID: 21300000, guid: 98921205e5900364a9b9451f8ac993e6, type: 3}
+  - {fileID: 21300000, guid: 25d8e17c5f21cc145be75851f26044ea, type: 3}
   - {fileID: 21300000, guid: 43353b1252025b644808666460d146ee, type: 3}
   applianceCount: 0
   appliances: []
