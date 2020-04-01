@@ -55,7 +55,9 @@ public class NPC_Behaviors : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      //  bathroomDoor.SetBool("Bool", bathroom);
+        anim.SetBool("New Bool", moving);
+        anim.SetBool("male", myStats.gender);
+        //  bathroomDoor.SetBool("Bool", bathroom);
         if (clean)
         {
             moving = false;
@@ -140,14 +142,16 @@ public class NPC_Behaviors : MonoBehaviour
 
     private void Travel()
     {
-        if (transform.position.x != FirstFloorAOI[currentLocation].transform.position.x)
+        if (moving)
         {
-          transform.position = Vector3.MoveTowards(transform.position, new Vector3(FirstFloorAOI[currentLocation].transform.position.x, transform.position.y, transform.position.z), speed * Time.deltaTime);
-          moving = true;
+            if (transform.position.x != FirstFloorAOI[currentLocation].transform.position.x)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, new Vector3(FirstFloorAOI[currentLocation].transform.position.x, transform.position.y, transform.position.z), speed * Time.deltaTime);
+            }
+            if (transform.position.x == FirstFloorAOI[currentLocation].transform.position.x) StartCoroutine(Wait());
+            if (FirstFloorAOI[currentLocation].transform.position.x > transform.position.x) FlipSprite(true);
+            else FlipSprite(false);
         }
-        if (transform.position.x == FirstFloorAOI[currentLocation].transform.position.x) StartCoroutine(Wait());
-        if (FirstFloorAOI[currentLocation].transform.position.x > transform.position.x) FlipSprite(true);
-        else FlipSprite(false);
     }
 
     void FlipSprite(bool M)
